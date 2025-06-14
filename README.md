@@ -1,4 +1,6 @@
 # mdisolutions
+# live review
+https://mdi-solutions.vercel.app/
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -26,4 +28,12 @@ npm run dev
 
 ```sh
 npm run build
+```
+
+### update file
+```
+    git remote add origin https://github.com/fake985me/mdi-solutions.git
+    git branch -M main
+    git push -u origin main
+
 ```
