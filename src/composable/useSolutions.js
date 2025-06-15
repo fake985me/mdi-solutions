@@ -1,5 +1,5 @@
 import a from '@/assets/static/solutions/training.jpg'
-import b from '@/assets/static/solutions/remote.jpg'
+import b from '@/assets/static/solutions/Remote.jpg'
 import c from '@/assets/static/solutions/onsite.jpg'
 import d from '@/assets/static/solutions/managed.jpg'
 import e from '@/assets/static/solutions/cable.jpg'
