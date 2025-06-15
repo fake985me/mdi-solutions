@@ -27,7 +27,7 @@
       <section class="pb-24 pt-6">
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <!-- Sidebar filter -->
-          <aside class="hidden lg:block">
+          <aside class="lg:block">
             <ul class="space-y-2 text-sm font-medium text-gray-900">
               <li
                 v-for="(category, index) in currentCategories"

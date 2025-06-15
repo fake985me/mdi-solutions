@@ -291,7 +291,7 @@ import {
   MenuItem,
   MenuItems,
 } from '@headlessui/vue'
-import { HomeIcon, UserGroupIcon, FolderIcon, CalendarIcon } from '@heroicons/vue/24/outline'
+import { HomeIcon, ServerIcon, FolderIcon, CalendarIcon } from '@heroicons/vue/24/outline'
 import { RouterLink } from 'vue-router'
 
 const getMobileIcon = (name) => {
@@ -299,7 +299,9 @@ const getMobileIcon = (name) => {
     case 'home':
       return HomeIcon
     case 'product':
-      return UserGroupIcon
+      return ServerIcon
+    case 'Service & Solutions':
+      return FolderIcon
     case 'our projects':
       return FolderIcon
     case 'contact':

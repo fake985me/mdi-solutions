@@ -3,6 +3,7 @@ import Carousel from '../components/Carousel.vue'
 import ProductView from '@/components/partial/ProductView.vue'
 import SolutionsView from '@/components/partial/SolutionsView.vue'
 import ProjectView from '@/components/partial/ProjectView.vue'
+import AboutUs from '@/components/partial/AboutUs.vue'
 </script>
 
 <template>
@@ -10,6 +11,7 @@ import ProjectView from '@/components/partial/ProjectView.vue'
     <Carousel />
     <ProductView />
     <SolutionsView />
+    <AboutUs />
     <ProjectView />
     ini home view
     <h1>Welcome to the Home View</h1>
