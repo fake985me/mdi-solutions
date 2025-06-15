@@ -13,9 +13,5 @@ import AboutUs from '@/components/partial/AboutUs.vue'
     <SolutionsView />
     <AboutUs />
     <ProjectView />
-    ini home view
-    <h1>Welcome to the Home View</h1>
-    <p>This is the main content of the home view.</p>
-    <p>Feel free to customize this view as needed.</p>
   </main>
 </template>
