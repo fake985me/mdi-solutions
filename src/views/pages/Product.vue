@@ -3,7 +3,7 @@
     <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div
-        class="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24 flex-wrap"
+        class="flex items-baseline justify-between border-b g-gradient-to-t from-transparent to-slate-900 pb-6 pt-24 flex-wrap"
       >
         <h1 class="text-3xl font-bold tracking-tight text-gray-900">Products</h1>
         <div class="flex space-x-2 mt-4 sm:mt-0">

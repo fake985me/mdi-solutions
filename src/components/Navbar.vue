@@ -354,7 +354,7 @@ const navigation = [
   //   ]
   // },
   {
-    name: 'Solutions',
+    name: 'Service & Solutions',
     href: '/solutions',
     current: false,
   },

@@ -1,8 +1,5 @@
 <template>
   <section class="slide-option">
-    <div class="container">
-      <h3 class="no-marg">Our customer</h3>
-    </div>
     <div id="infinite" class="highway-slider">
       <div class="container highway-barrier">
         <ul class="highway-lane">

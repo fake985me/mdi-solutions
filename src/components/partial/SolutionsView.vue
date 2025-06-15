@@ -2,13 +2,13 @@
   <section class="py-8 px-4 relative" id="Product">
     <!-- Judul -->
     <div class="text-center mb-6">
-      <h2 class="text-3xl font-bold">Our Solutions</h2>
+      <h2 class="text-3xl font-bold">Our Service & Solutions</h2>
       <p class="text-gray-500">make it easier</p>
     </div>
 
     <!-- Centered container -->
     <div class="flex justify-center">
-      <div class="w-full md:w-2/3">
+      <div class="w-full">
         <!-- Tabs -->
         <ul class="flex flex-wrap justify-center md:justify-start gap-3 mb-6">
           <li
@@ -28,7 +28,7 @@
         </ul>
 
         <!-- Transition Card -->
-        <div class="relative mb-16 min-h-[18rem] sm:min-h-[16rem] overflow-hidden">
+        <div class="relative min-h-[12rem] sm:min-h-[10rem] overflow-hidden">
           <transition name="fade-slide" mode="out-in">
             <div
               v-if="activeFeature"
@@ -81,15 +81,13 @@ const activeFeature = computed(() => features.find((feature) => feature.id === i
 .fade-slide-leave-active {
   transition: all 0.5s ease;
   position: absolute;
-  width: 100%;
 }
-
 .fade-slide-enter-from {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateX(50px);
 }
 .fade-slide-leave-to {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateX(-50px);
 }
 </style>
