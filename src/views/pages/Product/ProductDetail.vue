@@ -1,97 +1,83 @@
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-start mt-10 px-4 py-6">
-    <!-- Grid Utama -->
-    <div class="overflow-hidden max-w-5xl w-full grid md:grid-cols-[1fr_1px_1fr]">
-      <!-- Gambar Utama -->
-      <div class="w-full h-auto">
-        <img
-          :src="product.image"
-          :alt="product.title"
-          class="w-full h-auto object-cover rounded-lg"
-        />
-      </div>
-
-      <!-- Divider -->
-      <div class="bg-gray-300 w-px h-full mx-auto hidden md:block"></div>
-
-      <!-- Deskripsi -->
-      <div class="p-6 flex flex-col justify-between">
-        <div>
-          <h2 class="text-3xl font-bold font-serif text-gray-800 dark:text-sky-900 mb-2">
+  <div>
+    <!-- === -->
+    <section class="min-h-screen flex flex-col items-center justify-start mt-10 px-4 py-6">
+      <div class="overflow-hidden max-w-5xl w-full grid grid-cols-3 gap-4 grid-flow-row grid">
+        <div class="relative basis-1/2 text-center md:!text-left px-2 py-0 md:py-6 self-center">
+          <h1 class="text-2xl md:text-2xl text-center font-semibold text-violet-800">
             {{ product.title }}
-          </h2>
-          <p class="text-gray-900 dark:text-gray-800 mb-4">
+          </h1>
+
+          <!-- Gambar Utama -->
+          <div class="w-full h-auto">
+            <img :src="product.image" :alt="product.title" class="w-full h-auto object-cover rounded-lg" />
+          </div>
+
+          <p class="w-full px-3 md:!px-0 md:pr-8 text-normal md:text-xl my-6">
             {{ descriptions }}
           </p>
+        </div>
 
-          <!-- Spesifikasi -->
-          <div class="mb-4">
-            <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-600 mb-2">
-              Spesifications
-            </h3>
-            <ul class="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-600 text-sm">
-              <li><strong class="mr-1">Model :</strong>{{ product.title }}</li>
-              <li><strong class="mr-1">Port :</strong>{{ product.port }}</li>
-              <li><strong class="mr-1">Switching Capacity :</strong>{{ SwitchingCapacity }}</li>
-              <li><strong class="mr-1">Packet Forwarding :</strong>{{ PacketForwarding }}</li>
-              <li><strong class="mr-1">MAC Address Table :</strong>{{ MACAddressTable }}</li>
-              <li><strong class="mr-1">PoE Budget :</strong>{{ PoEBudget }}</li>
-              <li><strong class="mr-1">Jumbo Frame :</strong>{{ JumboFrame }}</li>
-              <li><strong class="mr-1">Dimensions :</strong>{{ dimensions }}</li>
-              <li><strong class="mr-1">Power Consumption :</strong>{{ PowerConsumption }}</li>
-            </ul>
+        <div class="w-full flex flex-col col-start-2 col-end-10 flex-wrap md:flex-row">
+          <div class="w-full xl:w-1/2 flex flex-row mt-6 md:!mt-0">
+            <div class="w-10/12 pl-4">
+              <h1 class="text-xl md:text-3xl font-semibold text-gray-800">
+                Spesifications
+              </h1>
+              <ul class="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-600 text-sm py-3">
+                <li>{{ fitur1 }}</li>
+                <li>{{ fitur2 }}</li>
+                <li>{{ fitur3 }}</li>
+                <li>{{ fitur4 }}</li>
+                <li>{{ fitur5 }}</li>
+                <li>{{ fitur6 }}</li>
+                <li>{{ fitur7 }}</li>
+                <li>{{ fitur8 }}</li>
+                <li>{{ fitur9 }}</li>
+                <li>{{ fitur10 }}</li>
+              </ul>
+            </div>
           </div>
 
-          <!-- Key Features -->
-          <div>
-            <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-600 mb-2">
-              Key Features
-            </h3>
-            <ul class="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-600 text-sm">
-              <li>{{ fitur1 }}</li>
-              <li>{{ fitur2 }}</li>
-              <li>{{ fitur3 }}</li>
-              <li>{{ fitur4 }}</li>
-              <li>{{ fitur5 }}</li>
-              <li>{{ fitur6 }}</li>
-              <li>{{ fitur7 }}</li>
-            </ul>
+          <div class="w-full xl:w-1/2 flex flex-row mt-6 md:!mt-0">
+            <div class="w-10/12 pl-4">
+              <h1 class="text-xl md:text-3xl font-semibold text-gray-800">
+                Key Features
+              </h1>
+              <ul class="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-600 text-sm py-3">
+                <li>{{ fitur11 }}</li>
+                <li>{{ fitur12 }}</li>
+                <li>{{ fitur13 }}</li>
+                <li>{{ fitur14 }}</li>
+                <li>{{ fitur15 }}</li>
+                <li>{{ fitur16 }}</li>
+                <li>{{ fitur17 }}</li>
+                <li>{{ fitur18 }}</li>
+                <li>{{ fitur19 }}</li>
+                <li>{{ fitur20 }}</li>
+              </ul>
+            </div>
           </div>
         </div>
+      </div>
+      <div class="relative basis-1/2 text-center md:!text-left px-2 py-0 md:py-6 self-center">
+        <h1 class="text-4xl md:text-5xl font-semibold text-gray-800">
+          Network configuration diagram
+        </h1>
 
-        <!-- PoE Info -->
-        <div class="mt-6">
-          <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-600 mb-2">PoE Power</h2>
-          <p class="text-gray-600">{{ info }}</p>
-        </div>
-
-        <!-- Environmental -->
-        <div class="mt-4">
-          <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-600 mb-2">
-            Environmental & Physical
-          </h2>
-          <ul class="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-600 text-sm">
-            <li>{{ environment1 }}</li>
-            <li>{{ environment2 }}</li>
-            <li>{{ environment3 }}</li>
-          </ul>
+        <div class="w-full h-auto">
+          <img :src="product.image" :alt="product.title" class="w-full h-auto object-cover rounded-lg" />
         </div>
       </div>
-    </div>
-
-    <!-- Galeri Gambar -->
-    <div class="w-full max-w-5xl mt-10">
-      <h3 class="text-xl font-semibold text-gray-800 mb-4">More Images</h3>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        <img
-          v-for="n in 4"
-          :key="n"
-          :src="product.image"
-          :alt="`Additional view ${n}`"
-          class="w-full h-32 object-contain bg-white border rounded shadow-sm hover:scale-105 transition"
-        />
+      <!-- Galeri Gambar -->
+      <div class="w-full max-w-5xl mt-10">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">More Images</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          <img v-for="n in 4" :key="n" :src="product.image" :alt="`Additional view ${n}`"
+            class="w-full h-32 object-contain bg-white border rounded shadow-sm hover:scale-105 transition" />
+        </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 

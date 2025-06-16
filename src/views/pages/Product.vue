@@ -3,21 +3,15 @@
     <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div
-        class="flex items-baseline justify-between border-b g-gradient-to-t from-transparent to-slate-900 pb-6 pt-24 flex-wrap"
-      >
+        class="flex items-baseline justify-between border-b g-gradient-to-t from-transparent to-slate-900 pb-6 pt-24 flex-wrap">
         <h1 class="text-3xl font-bold tracking-tight text-gray-900">Products</h1>
         <div class="flex space-x-2 mt-4 sm:mt-0">
-          <button
-            v-for="(tab, index) in tabs"
-            :key="index"
-            @click="switchTab(index)"
-            :class="[
-              'px-4 py-2 rounded text-sm font-medium',
-              activeTab === index
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300',
-            ]"
-          >
+          <button v-for="(tab, index) in tabs" :key="index" @click="switchTab(index)" :class="[
+            'px-4 py-2 rounded text-sm font-medium',
+            activeTab === index
+              ? 'bg-blue-600 text-white'
+              : 'bg-gray-200 text-gray-700 hover:bg-gray-300',
+          ]">
             {{ tab.title }}
           </button>
         </div>
@@ -29,17 +23,12 @@
           <!-- Sidebar filter -->
           <aside class="lg:block">
             <ul class="space-y-2 text-sm font-medium text-gray-900">
-              <li
-                v-for="(category, index) in currentCategories"
-                :key="index"
-                @click="activeCategoryTab = index"
-                :class="[
-                  'cursor-pointer rounded px-3 py-2',
-                  activeCategoryTab === index
-                    ? 'bg-indigo-100 text-indigo-600'
-                    : 'hover:bg-gray-100',
-                ]"
-              >
+              <li v-for="(category, index) in currentCategories" :key="index" @click="activeCategoryTab = index" :class="[
+                'cursor-pointer rounded px-3 py-2',
+                activeCategoryTab === index
+                  ? 'bg-indigo-100 text-indigo-600'
+                  : 'hover:bg-gray-100',
+              ]">
                 {{ category }}
               </li>
             </ul>
@@ -48,17 +37,10 @@
           <!-- Grid Produk -->
           <div class="lg:col-span-3">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div
-                v-for="product in paginatedProducts"
-                :key="product.id"
-                class="w-full bg-white shadow-md rounded-xl duration-300 hover:scale-105 hover:shadow-xl"
-              >
+              <div v-for="product in paginatedProducts" :key="product.id"
+                class="w-full bg-white shadow-md rounded-xl duration-300 hover:scale-105 hover:shadow-xl">
                 <RouterLink :to="`/product/${product.id}`">
-                  <img
-                    :src="product.image"
-                    :alt="product.title"
-                    class="w-full h-48 object-contain rounded-t-lg p-4"
-                  />
+                  <img :src="product.image" :alt="product.title" class="w-full h-48 object-contain rounded-t-lg p-4" />
                 </RouterLink>
                 <div class="px-4 py-3">
                   <h3 class="text-lg font-semibold text-gray-900 truncate">
@@ -76,17 +58,12 @@
 
             <!-- Pagination -->
             <div class="mt-6 flex justify-center space-x-2">
-              <button
-                v-for="page in totalPages"
-                :key="page"
-                @click="goToPage(page)"
-                :class="[
-                  'px-4 py-2 border rounded',
-                  currentPage === page
-                    ? 'bg-blue-600 text-white border-blue-600'
-                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100',
-                ]"
-              >
+              <button v-for="page in totalPages" :key="page" @click="goToPage(page)" :class="[
+                'px-4 py-2 border rounded',
+                currentPage === page
+                  ? 'bg-blue-600 text-white border-blue-600'
+                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100',
+              ]">
                 {{ page }}
               </button>
             </div>
@@ -106,7 +83,7 @@ import products from '@/composable/useProducts'
 const activeTab = ref(0)
 const activeCategoryTab = ref(0)
 
-const tabs = [{ title: 'XGS-PON' }, { title: 'G-PON' }, { title: 'SWITCH' }]
+const tabs = [{ title: 'XGS-PON' }, { title: 'G-PON' }, { title: 'SWITCH' }, { title: 'WIFI' }]
 const categories = {
   0: ['XGS-PON OLT', 'XGS-PON ONU', 'XGS-PON ONT'],
   1: ['G-PON OLT', 'G-PON ONT', 'G-PON ONU/PoE'],
