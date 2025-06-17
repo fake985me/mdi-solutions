@@ -4,41 +4,41 @@ import Product from '@/views/pages/Product.vue'
 import ProductDetail from '@/views/pages/Product/ProductDetail.vue'
 import Solutions from '@/views/pages/Solutions.vue'
 
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView,
+  },
+  {
+    path: '/product',
+    name: 'product',
+    component: Product,
+  },
+  {
+    path: '/product/:slug',
+    name: 'product-detail',
+    component: ProductDetail,
+  },
+  {
+    path: '/solutions',
+    name: 'solutions',
+    component: Solutions,
+  },
+  {
+    path: '/projects',
+    name: 'projects',
+    component: () => import('../views/pages/Projects.vue'),
+  },
+]
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView,
-    },
-    {
-      path: '/product',
-      name: 'product',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: Product,
-    },
-    {
-      path: '/product/:id',
-      name: 'product-detail',
-      component: ProductDetail,
-    },
-    {
-      path: '/solutions',
-      name: 'solutions',
-      component: Solutions,
-    },
-    {
-      path: '/projects',
-      name: 'projects',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/pages/Projects.vue'),
-    },
-  ],
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    // Scroll ke atas halaman saat navigasi
+    return { top: 0 }
+  },
 })
 
 export default router

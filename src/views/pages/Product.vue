@@ -2,16 +2,20 @@
   <div>
     <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Header -->
-      <div
-        class="flex items-baseline justify-between border-b g-gradient-to-t from-transparent to-slate-900 pb-6 pt-24 flex-wrap">
+      <div class="flex items-baseline justify-between border-b pb-2 pt-8 flex-wrap">
         <h1 class="text-3xl font-bold tracking-tight text-gray-900">Products</h1>
         <div class="flex space-x-2 mt-4 sm:mt-0">
-          <button v-for="(tab, index) in tabs" :key="index" @click="switchTab(index)" :class="[
-            'px-4 py-2 rounded text-sm font-medium',
-            activeTab === index
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-200 text-gray-700 hover:bg-gray-300',
-          ]">
+          <button
+            v-for="(tab, index) in tabs"
+            :key="index"
+            @click="switchTab(tab.title)"
+            :class="[
+              'px-4 py-2 rounded text-sm font-medium',
+              activeCategory === tab.title
+                ? 'bg-blue-900 text-white'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-400',
+            ]"
+          >
             {{ tab.title }}
           </button>
         </div>
@@ -20,16 +24,30 @@
       <!-- Filter dan Produk -->
       <section class="pb-24 pt-6">
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          <!-- Sidebar filter -->
-          <aside class="lg:block">
+          <!-- Sidebar Filter -->
+          <aside>
             <ul class="space-y-2 text-sm font-medium text-gray-900">
-              <li v-for="(category, index) in currentCategories" :key="index" @click="activeCategoryTab = index" :class="[
-                'cursor-pointer rounded px-3 py-2',
-                activeCategoryTab === index
-                  ? 'bg-indigo-100 text-indigo-600'
-                  : 'hover:bg-gray-100',
-              ]">
-                {{ category }}
+              <li
+                :class="[
+                  'cursor-pointer rounded px-3 py-2',
+                  activeSubCategory === null
+                    ? 'bg-indigo-100 text-indigo-600'
+                    : 'hover:bg-gray-100',
+                ]"
+                @click="switchSubCategory(null)"
+              >
+                All
+              </li>
+              <li
+                v-for="(sub, index) in currentSubCategories"
+                :key="index"
+                @click="switchSubCategory(sub)"
+                :class="[
+                  'cursor-pointer rounded px-3 py-2',
+                  activeSubCategory === sub ? 'bg-indigo-100 text-indigo-600' : 'hover:bg-gray-100',
+                ]"
+              >
+                {{ sub }}
               </li>
             </ul>
           </aside>
@@ -37,33 +55,42 @@
           <!-- Grid Produk -->
           <div class="lg:col-span-3">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div v-for="product in paginatedProducts" :key="product.id"
-                class="w-full bg-white shadow-md rounded-xl duration-300 hover:scale-105 hover:shadow-xl">
-                <RouterLink :to="`/product/${product.id}`">
-                  <img :src="product.image" :alt="product.title" class="w-full h-48 object-contain rounded-t-lg p-4" />
+              <div
+                v-for="product in paginatedProducts"
+                :key="product.id"
+                class="bg-white shadow-md rounded-xl hover:scale-105 duration-300 hover:shadow-xl"
+              >
+                <RouterLink :to="`/product/${product.slug}`">
+                  <img
+                    :src="product.image"
+                    :alt="product.title"
+                    class="w-full h-48 object-contain rounded-t-lg p-4"
+                  />
                 </RouterLink>
                 <div class="px-4 py-3">
                   <h3 class="text-lg font-semibold text-gray-900 truncate">
-                    <RouterLink :to="`/product/${product.id}`" class="hover:underline">
+                    <RouterLink :to="`/product/${product.slug}`" class="hover:underline">
                       {{ product.title }}
                     </RouterLink>
                   </h3>
                   <p class="text-sm text-gray-500" v-if="product.port">{{ product.port }}</p>
-                  <p class="text-sm text-gray-500" v-if="product.dimensions">
-                    {{ product.dimensions }}
-                  </p>
                 </div>
               </div>
             </div>
 
             <!-- Pagination -->
-            <div class="mt-6 flex justify-center space-x-2">
-              <button v-for="page in totalPages" :key="page" @click="goToPage(page)" :class="[
-                'px-4 py-2 border rounded',
-                currentPage === page
-                  ? 'bg-blue-600 text-white border-blue-600'
-                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100',
-              ]">
+            <div v-if="totalPages > 1" class="mt-6 flex justify-center space-x-2">
+              <button
+                v-for="page in totalPages"
+                :key="page"
+                @click="goToPage(page)"
+                :class="[
+                  'px-4 py-2 border rounded',
+                  currentPage === page
+                    ? 'bg-blue-600 text-white border-blue-600'
+                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100',
+                ]"
+              >
                 {{ page }}
               </button>
             </div>
@@ -75,51 +102,81 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { RouterLink } from 'vue-router'
+import { ref, computed, watch } from 'vue'
+import { useRoute, useRouter, RouterLink } from 'vue-router'
 import products from '@/composable/useProducts'
 
-// Tab dan kategori
-const activeTab = ref(0)
-const activeCategoryTab = ref(0)
+const route = useRoute()
+const router = useRouter()
 
-const tabs = [{ title: 'XGS-PON' }, { title: 'G-PON' }, { title: 'SWITCH' }, { title: 'WIFI' }]
-const categories = {
-  0: ['XGS-PON OLT', 'XGS-PON ONU', 'XGS-PON ONT'],
-  1: ['G-PON OLT', 'G-PON ONT', 'G-PON ONU/PoE'],
-  2: ['Core Switch', 'L2 Switch', 'L3 Switch'],
-}
+const tabs = [{ title: 'XGS-Pon' }, { title: 'G-Pon' }, { title: 'Switch' }, { title: 'WiFi' }]
 
-const currentCategories = computed(() => categories[activeTab.value] || [])
-
-// Filter produk berdasarkan kategori aktif
-const filteredProducts = computed(() => {
-  const selectedCategory = currentCategories.value[activeCategoryTab.value]
-  return products.value.filter((product) => product.category === selectedCategory)
-})
-
-// Pagination
+// State aktif
+const activeCategory = ref(route.query.category || tabs[0].title)
+const activeSubCategory = ref(route.query.sub || null)
 const currentPage = ref(1)
 const itemsPerPage = ref(6)
 
+// Sinkronisasi dengan query string saat berubah
+watch(
+  () => route.query,
+  (query) => {
+    if (query.category) activeCategory.value = query.category
+    if ('sub' in query) activeSubCategory.value = query.sub || null
+  },
+  { immediate: true },
+)
+
+// Subkategori yang tersedia dari produk aktif
+const currentSubCategories = computed(() => {
+  const filtered = products.value.filter((p) => p.category === activeCategory.value)
+  const subSet = new Set(filtered.map((p) => p.subCategory))
+  return Array.from(subSet)
+})
+
+// Produk hasil filter
+const filteredProducts = computed(() =>
+  products.value.filter(
+    (p) =>
+      p.category === activeCategory.value &&
+      (!activeSubCategory.value || p.subCategory === activeSubCategory.value),
+  ),
+)
+
+// Pagination
 const totalPages = computed(() => Math.ceil(filteredProducts.value.length / itemsPerPage.value))
 
 const paginatedProducts = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage.value
-  const end = start + itemsPerPage.value
-  return filteredProducts.value.slice(start, end)
+  return filteredProducts.value.slice(start, start + itemsPerPage.value)
 })
 
-// Fungsi
-function switchTab(index) {
-  activeTab.value = index
-  activeCategoryTab.value = 0
+// Event handler
+function switchTab(tab) {
+  activeCategory.value = tab
+  activeSubCategory.value = null
   currentPage.value = 1
+  updateQuery()
+}
+
+function switchSubCategory(sub) {
+  activeSubCategory.value = sub
+  currentPage.value = 1
+  updateQuery()
 }
 
 function goToPage(page) {
   if (page >= 1 && page <= totalPages.value) {
     currentPage.value = page
   }
+}
+
+function updateQuery() {
+  router.replace({
+    query: {
+      category: activeCategory.value,
+      ...(activeSubCategory.value ? { sub: activeSubCategory.value } : {}),
+    },
+  })
 }
 </script>

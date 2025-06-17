@@ -5,7 +5,7 @@
       <p class="text-gray-500 mt-2">Explore DASAN's comprehensive network technology offerings</p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <div
         v-for="(solution, index) in solutions"
         :key="index"
@@ -187,7 +187,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import features from '@/composable/useSolutions'
 import broadband from '@/assets/static/solutions/broadband.jpg'
 import mobiletransport from '@/assets/static/solutions/mobiletransport.jpg'
 import subscribercpe from '@/assets/static/solutions/subscribercpe.png'

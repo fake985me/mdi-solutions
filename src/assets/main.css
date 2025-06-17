@@ -5,3 +5,7 @@
 @tailwind utilities;
 
 /* @import './base.css'; */
+
+html {
+  scroll-behavior: smooth;
+}
