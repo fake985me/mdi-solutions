@@ -1,15 +1,15 @@
 <script setup>
-import { ref, computed, onMounted, defineAsyncComponent } from 'vue'
+import { ref, computed, watchEffect, defineAsyncComponent } from 'vue'
 import { useRoute } from 'vue-router'
 import products from '@/composable/useProducts'
 
 const route = useRoute()
-const slug = route.params.slug
+const slug = computed(() => route.params.slug)
 
 const product = ref(null)
 
-onMounted(() => {
-  product.value = products.value.find((p) => p.slug === slug)
+watchEffect(() => {
+  product.value = products.value.find((p) => p.slug === slug.value)
 })
 
 const detailComponent = computed(() => {
@@ -23,6 +23,14 @@ const detailComponent = computed(() => {
       return null
   }
 })
+
+watchEffect(() => {
+  console.log('slug:', slug.value)
+  console.log('products:', products.value)
+  product.value = products.value.find((p) => p.slug === slug.value)
+  console.log('found product:', product.value)
+})
+
 </script>
 
 <template>
