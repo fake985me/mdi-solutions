@@ -1,151 +1,205 @@
 <template>
-  <section class="py-8 px-4 relative" id="Product">
-    <div class="text-center mb-6">
-      <h2 class="text-3xl font-bold">Our Products</h2>
-      <p class="text-gray-500">choose what you need</p>
-    </div>
+  <section class="py-8 px-4 relative">
+    <h2 class="text-3xl font-bold text-center">Product Solutions</h2>
+    <p class="text-gray-800 mb-3">choose what you need</p>
 
     <!-- Tabs -->
-    <div class="flex justify-center flex-wrap gap-2 mb-6">
+    <div class="flex flex-wrap gap-3 border-b mb-4 justify-center">
       <div
-        v-for="(tab, tabName) in tabs"
-        :key="tabName"
-        @click="setTabActive(tabName)"
-        class="cursor-pointer px-4 py-2 border rounded-md text-sm font-medium"
-        :class="{
-          'bg-gray-900 text-white': tabName === activeTab,
-          'bg-gray-100 text-gray-700': tabName !== activeTab,
-        }"
+        v-for="(tab, i) in tabs"
+        :key="i"
+        @click="
+          () => {
+            activeTab = i
+            activeSubTab = 0
+            desktopIndex = 0
+            mobileIndex = 0
+          }
+        "
+        :class="[
+          'cursor-pointer py-2 px-2 border-b-2',
+          i === activeTab
+            ? 'border-blue-600 text-blue-600 font-bold'
+            : 'border-transparent border-b-slate-900 text-gray-800 hover:text-blue-800',
+        ]"
       >
-        {{ tabName }}
+        {{ tab.title }}
       </div>
     </div>
 
-    <!-- Card container -->
-    <div class="relative overflow-hidden max-w-7xl mx-auto">
-      <div class="flex justify-center gap-6 transition-all duration-500 ease-in-out">
+    <!-- Sub Tabs -->
+    <div
+      v-if="tabs[activeTab].subCategories"
+      class="flex flex-wrap gap-2 border-b mb-6 justify-center"
+    >
+      <div
+        v-for="(sub, j) in tabs[activeTab].subCategories"
+        :key="j"
+        @click="
+          () => {
+            activeSubTab = j
+            desktopIndex = 0
+            mobileIndex = 0
+          }
+        "
+        :class="[
+          'cursor-pointer text-sm py-1 px-3 border-b-2',
+          j === activeSubTab
+            ? 'border-blue-500 text-blue-600 font-medium'
+            : 'border-transparent border-b-slate-900 text-gray-800 hover:text-blue-800',
+        ]"
+      >
+        {{ sub }}
+      </div>
+    </div>
+
+    <!-- Desktop Grid (4 per page) -->
+    <div class="hidden md:flex justify-center items-center relative">
+      <button
+        v-if="pagedDesktop.length > 1"
+        @click="prevDesktop"
+        class="absolute left-0 top-1/2 -translate-y-1/2 bg-white border shadow rounded-full px-2 py-1 z-10"
+      >
+        ❮
+      </button>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div
-          v-for="(product, index) in groupedProducts[currentIndex]"
-          :key="index"
-          class="bg-white shadow-md rounded-lg w-full max-w-xs p-4 flex flex-col items-center text-center transition-all duration-300 hover:shadow-xl"
+          v-for="(product, i) in pagedDesktop[desktopIndex]"
+          :key="i"
+          class="bg-white shadow rounded-md p-4 w-[220px] text-center flex flex-col justify-between min-h-[320px] hover:shadow-lg transition"
         >
-          <img :src="product.logo" alt="logo" class="h-8 object-contain mb-2" />
-          <RouterLink :to="`/product/${product.slug}`" class="w-full flex flex-col items-center">
-            <img :src="product.image" :alt="product.title" class="h-28 object-contain mb-2" />
-            <h4 class="text-base font-semibold">{{ product.title }}</h4>
-            <ul>
-              <li class="text-sm text-gray-600 mt-1">{{ product.port }}</li>
-              <li class="text-sm text-gray-600 mt-1">{{ product.textc }}</li>
-            </ul>
+          <img :src="product.logo" alt="logo" class="h-6 mb-2 mx-auto" />
+          <RouterLink
+            :to="`/product/${product.slug}`"
+            class="block flex-1 flex-col justify-between"
+          >
+            <div>
+              <img :src="product.image" alt="" class="h-24 object-contain mb-2 mx-auto" />
+              <h4 class="text-sm font-semibold">{{ product.title }}</h4>
+              <ul class="text-xs text-gray-600 mt-1">
+                <li>{{ product.port }}</li>
+                <li>{{ product.textc }}</li>
+              </ul>
+            </div>
           </RouterLink>
         </div>
       </div>
 
-      <!-- Navigation Arrows -->
       <button
-        @click="prevSlide"
-        class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800/50 hover:bg-gray-700 text-white p-2 rounded-full z-10"
-      >
-        ❮
-      </button>
-      <button
-        @click="nextSlide"
-        class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800/50 hover:bg-gray-700 text-white p-2 rounded-full z-10"
+        v-if="pagedDesktop.length > 1"
+        @click="nextDesktop"
+        class="absolute right-0 top-1/2 -translate-y-1/2 bg-white border shadow rounded-full px-2 py-1 z-10"
       >
         ❯
       </button>
+    </div>
 
-      <!-- Dots -->
-      <div class="flex justify-center mt-6 gap-2 relative z-10">
-        <button
-          v-for="(group, idx) in groupedProducts"
-          :key="idx"
-          class="w-3 h-3 rounded-full bg-gray-300 transition-colors duration-300"
-          :class="{ 'bg-blue-600': idx === currentIndex }"
-          @click="goToSlide(idx)"
-        ></button>
+    <!-- Mobile (1 per page + navigation) -->
+    <div class="md:hidden text-center relative mt-4">
+      <div
+        v-if="pagedMobile.length"
+        class="mx-auto w-[85%] min-h-[350px] flex flex-col items-center relative"
+      >
+        <div class="bg-white shadow rounded-md p-4 w-full">
+          <img :src="pagedMobile[mobileIndex].logo" alt="logo" class="h-6 mb-2 mx-auto" />
+          <RouterLink :to="`/product/${pagedMobile[mobileIndex].slug}`">
+            <img
+              :src="pagedMobile[mobileIndex].image"
+              alt=""
+              class="h-28 object-contain mb-2 mx-auto"
+            />
+            <h4 class="text-base font-semibold">{{ pagedMobile[mobileIndex].title }}</h4>
+            <ul class="text-sm text-gray-600 mt-1">
+              <li>{{ pagedMobile[mobileIndex].port }}</li>
+              <li>{{ pagedMobile[mobileIndex].textc }}</li>
+            </ul>
+          </RouterLink>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="flex justify-center gap-6 mt-4">
+          <button
+            v-if="pagedMobile.length > 1"
+            @click="prevMobile"
+            class="text-2xl bg-gray-200 hover:bg-gray-300 rounded-full px-3 py-1"
+          >
+            ❮
+          </button>
+          <button
+            v-if="pagedMobile.length > 1"
+            @click="nextMobile"
+            class="text-2xl bg-gray-200 hover:bg-gray-300 rounded-full px-3 py-1"
+          >
+            ❯
+          </button>
+        </div>
       </div>
+    </div>
+
+    <!-- Kosong -->
+    <div v-if="filteredProducts.length === 0" class="text-center text-gray-500 py-8">
+      No products found in this category.
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import products from '@/composable/useProducts'
 
-const activeTab = ref('XGS-Pon')
-const currentIndex = ref(0)
-const productsPerSlide = ref(4)
+const activeTab = ref(0)
+const activeSubTab = ref(0)
+const desktopIndex = ref(0)
+const mobileIndex = ref(0)
 
-const tabs = ref({
-  'XGS-Pon': {
-    products: products.value.filter((p) =>
-      ['XGS-Pon', 'OLT', 'ONT', 'ONU'].includes(p.category, p.subCategory),
-    ),
+const tabs = [
+  { title: 'XGSPON', subCategories: ['All', 'OLT', 'ONT', 'XGSPON STICK'] },
+  { title: 'GPON', subCategories: ['All', 'OLT', 'ONT', 'ONU PoE', 'ONU'] },
+  {
+    title: 'SWITCH',
+    subCategories: ['All', 'CORE SWITCH', 'L3 SWITCH', 'L2 SWITCH PoE', 'L2 SWITCH'],
   },
-  'G-Pon': {
-    products: products.value.filter((p) =>
-      ['G-Pon', 'OLT', 'ONT', 'ONU'].includes(p.category, p.subCategory),
-    ),
-  },
-  Switch: {
-    products: products.value.filter((p) =>
-      ['Switch', 'CoreSwitch', 'L2Switch', 'L3Switch'].includes(p.category, p.subCategory),
-    ),
-  },
-  WiFi: {
-    products: products.value.filter((p) =>
-      ['WiFi', 'Controller', 'AccessPoint'].includes(p.category, p.subCategory),
-    ),
-  },
-})
+  { title: 'WIFI', subCategories: ['All'] },
+]
 
-function setTabActive(tab) {
-  activeTab.value = tab
-  currentIndex.value = 0
-}
-
-function nextSlide() {
-  const total = groupedProducts.value.length
-  currentIndex.value = (currentIndex.value + 1) % total
-}
-
-function prevSlide() {
-  const total = groupedProducts.value.length
-  currentIndex.value = (currentIndex.value - 1 + total) % total
-}
-
-function goToSlide(index) {
-  currentIndex.value = index
-}
-
-function updateProductsPerSlide() {
-  const width = window.innerWidth
-  if (width < 640) {
-    productsPerSlide.value = 1
-  } else if (width < 1024) {
-    productsPerSlide.value = 2
-  } else {
-    productsPerSlide.value = 4
+const filteredProducts = computed(() => {
+  const category = tabs[activeTab.value].title
+  const subCategory = tabs[activeTab.value].subCategories[activeSubTab.value] || 'All'
+  let filtered = products.value.filter((p) => p.category === category)
+  if (subCategory !== 'All') {
+    filtered = filtered.filter((p) => p.subCategory === subCategory)
   }
+  return filtered
+})
+
+const pagedDesktop = computed(() => {
+  const chunkSize = 4
+  const pages = []
+  const source = filteredProducts.value
+  for (let i = 0; i < source.length; i += chunkSize) {
+    pages.push(source.slice(i, i + chunkSize))
+  }
+  return pages
+})
+
+const pagedMobile = computed(() => {
+  return filteredProducts.value
+})
+
+const prevDesktop = () => {
+  desktopIndex.value =
+    (desktopIndex.value - 1 + pagedDesktop.value.length) % pagedDesktop.value.length
+}
+const nextDesktop = () => {
+  desktopIndex.value = (desktopIndex.value + 1) % pagedDesktop.value.length
 }
 
-onMounted(() => {
-  updateProductsPerSlide()
-  window.addEventListener('resize', updateProductsPerSlide)
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', updateProductsPerSlide)
-})
-
-const groupedProducts = computed(() => {
-  const currentProducts = tabs.value[activeTab.value]?.products || []
-  const result = []
-  for (let i = 0; i < currentProducts.length; i += productsPerSlide.value) {
-    result.push(currentProducts.slice(i, i + productsPerSlide.value))
-  }
-  return result
-})
+const prevMobile = () => {
+  mobileIndex.value = (mobileIndex.value - 1 + pagedMobile.value.length) % pagedMobile.value.length
+}
+const nextMobile = () => {
+  mobileIndex.value = (mobileIndex.value + 1) % pagedMobile.value.length
+}
 </script>
