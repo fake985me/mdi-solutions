@@ -109,7 +109,7 @@ import products from '@/composable/useProducts'
 const route = useRoute()
 const router = useRouter()
 
-const tabs = [{ title: 'XGS-Pon' }, { title: 'G-Pon' }, { title: 'Switch' }, { title: 'WiFi' }]
+const tabs = [{ title: 'XGSPON' }, { title: 'GPON' }, { title: 'SWITCH' }, { title: 'WIFI' }]
 
 // State aktif
 const activeCategory = ref(route.query.category || tabs[0].title)

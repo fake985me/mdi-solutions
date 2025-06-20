@@ -78,8 +78,13 @@
               <img :src="product.image" alt="" class="h-24 object-contain mb-2 mx-auto" />
               <h4 class="text-sm font-semibold">{{ product.title }}</h4>
               <ul class="text-xs text-gray-600 mt-1">
-                <li>{{ product.port }}</li>
-                <li>{{ product.textc }}</li>
+                <li class="text-sm">{{ product.subtitle }}</li>
+                <ul
+                  class="list-disc pl-5 text-justify text-xs text-gray-600 mt-1"
+                  v-if="getSpecs(product).length"
+                >
+                  <li v-for="(spec, index) in getSpecs(product)" :key="index">{{ spec }}</li>
+                </ul>
               </ul>
             </div>
           </RouterLink>
@@ -110,9 +115,16 @@
               class="h-28 object-contain mb-2 mx-auto"
             />
             <h4 class="text-base font-semibold">{{ pagedMobile[mobileIndex].title }}</h4>
-            <ul class="text-sm text-gray-600 mt-1">
-              <li>{{ pagedMobile[mobileIndex].port }}</li>
-              <li>{{ pagedMobile[mobileIndex].textc }}</li>
+            <ul class="text-sm text-justify text-gray-600 mt-1">
+              <li>{{ pagedMobile[mobileIndex].subtitle }}</li>
+              <ul
+                class="list-disc pl-5 text-justify text-sm text-gray-600 mt-1"
+                v-if="getSpecs(pagedMobile[mobileIndex]).length"
+              >
+                <li v-for="(spec, index) in getSpecs(pagedMobile[mobileIndex])" :key="index">
+                  {{ spec }}
+                </li>
+              </ul>
             </ul>
           </RouterLink>
         </div>
@@ -184,6 +196,13 @@ const pagedDesktop = computed(() => {
   return pages
 })
 
+// Daftar spec yang valid (tidak kosong dan bukan string 'null')
+const getSpecs = (product) => {
+  return Array.from({ length: 7 }, (_, i) => product[`spec${i + 1}`]).filter(
+    (s) => s && s !== 'null',
+  )
+}
+
 const pagedMobile = computed(() => {
   return filteredProducts.value
 })
@@ -202,4 +221,6 @@ const prevMobile = () => {
 const nextMobile = () => {
   mobileIndex.value = (mobileIndex.value + 1) % pagedMobile.value.length
 }
+
+console.log(getSpecs(products.value[0]))
 </script>

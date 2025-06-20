@@ -30,7 +30,6 @@
             <li v-if="product.Interface4">{{ product.Interface4 }}</li>
           </ul>
           <li><strong>Operating Temp:</strong> {{ product.operatingtemperature }}</li>
-          <li><strong>Storage Temp:</strong> {{ product.storagetemperature }}</li>
           <li><strong>Humidity:</strong> {{ product.operatinghumidity }}</li>
           <li><strong>Power:</strong> {{ product.power }}</li>
           <li><strong>Power Consumption:</strong> {{ product.powercomsumptions }}</li>
