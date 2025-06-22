@@ -34,7 +34,7 @@
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 aria-hidden="true"
-                class="w-16 h-16"
+                class="w-24 h-20"
                 viewBox="0 0 2 2"
               >
                 <path
@@ -54,7 +54,7 @@
                       item.current
                         ? 'bg-gray-900 text-white'
                         : 'text-white hover:bg-gray-700 hover:text-white',
-                      'rounded-md px-3 py-2 text-sm font-medium flex items-center gap-1',
+                      'rounded-md px-3 py-2 text-md font-medium flex items-center gap-1',
                     ]"
                   >
                     {{ item.name }}
@@ -323,12 +323,23 @@ const navigation = [
     current: false,
     children: [
       {
-        name: 'XGS-Pon/G-Pon',
+        name: 'XGSPON',
         href: '/product',
         children: [
           { name: 'OLT', href: '/product' },
-          { name: 'ONU', href: '/product' },
           { name: 'ONT', href: '/product' },
+          { name: 'XGSPON Stick', href: '/product' },
+        ],
+      },
+      {
+        name: 'GPON',
+        href: '/product',
+        children: [
+          { name: 'OLT', href: '/product' },
+          { name: 'ONT', href: '/product' },
+          { name: 'ONU', href: '/product' },
+          { name: 'ONU PoE', href: '/product' },
+          { name: 'GPON Stick', href: '/product' },
         ],
       },
       {
@@ -338,7 +349,12 @@ const navigation = [
           { name: 'Core Switch', href: '/product' },
           { name: 'L3 Switch', href: '/product' },
           { name: 'L2 Switch', href: '/product' },
+          { name: 'PoE Switch', href: '/product' },
         ],
+      },
+      {
+        name: 'WI-FI',
+        href: '/product',
       },
     ],
   },
@@ -372,3 +388,4 @@ const navigation = [
   },
 ]
 </script>
+perbaiki

@@ -30,7 +30,7 @@
     <!-- Sub Tabs -->
     <div
       v-if="tabs[activeTab].subCategories"
-      class="flex flex-wrap gap-2 border-b mb-6 justify-center"
+      class="flex flex-wrap gap-2 border rounded-md -mt-4 mb-8 justify-center"
     >
       <div
         v-for="(sub, j) in tabs[activeTab].subCategories"
@@ -43,10 +43,10 @@
           }
         "
         :class="[
-          'cursor-pointer text-sm py-1 px-3 border-b-2',
+          'cursor-pointer text-sm py-1 px-3 border-2',
           j === activeSubTab
-            ? 'border-blue-500 text-blue-600 font-medium'
-            : 'border-transparent border-b-slate-900 text-gray-800 hover:text-blue-800',
+            ? 'bg-black border-blue-500 rounded-md text-white font-medium'
+            : 'bg-white border-slate-900 rounded-md text-gray-900 hover:text-blue-800',
         ]"
       >
         {{ sub }}
@@ -58,7 +58,7 @@
       <button
         v-if="pagedDesktop.length > 1"
         @click="prevDesktop"
-        class="absolute left-0 top-1/2 -translate-y-1/2 bg-white border shadow rounded-full px-2 py-1 z-10"
+        class="absolute left-0 top-1/2 -translate-y-1/2 px-2 py-1 z-10"
       >
         ❮
       </button>
@@ -67,7 +67,7 @@
         <div
           v-for="(product, i) in pagedDesktop[desktopIndex]"
           :key="i"
-          class="bg-white shadow rounded-md p-4 w-[220px] text-center flex flex-col justify-between min-h-[320px] hover:shadow-lg transition"
+          class="bg-gradient-to-t from-blue-800 to-transparent border border-slate-950 shadow rounded-md p-4 w-[220px] text-center flex flex-col justify-between min-h-[320px] hover:shadow-lg transition"
         >
           <img :src="product.logo" alt="logo" class="h-6 mb-2 mx-auto" />
           <RouterLink
@@ -76,11 +76,17 @@
           >
             <div>
               <img :src="product.image" alt="" class="h-24 object-contain mb-2 mx-auto" />
-              <h4 class="text-sm font-semibold">{{ product.title }}</h4>
-              <ul class="text-xs text-gray-600 mt-1">
-                <li class="text-sm">{{ product.subtitle }}</li>
+              <h4 class="text-lg font-mono font-semibold mb-1">
+                {{ product.title }}
+              </h4>
+              <ul
+                class="text-xs text-shadow-2xl/30 shadow-slate-300 font-semibold italic text-black -mt-2"
+              >
+                <li class="text-sm overline">
+                  {{ product.subtitle }}
+                </li>
                 <ul
-                  class="list-disc pl-5 text-justify text-xs text-gray-600 mt-1"
+                  class="list-disc pl-5 text-justify text-xs text-gray-950 mt-1"
                   v-if="getSpecs(product).length"
                 >
                   <li v-for="(spec, index) in getSpecs(product)" :key="index">{{ spec }}</li>
@@ -94,7 +100,7 @@
       <button
         v-if="pagedDesktop.length > 1"
         @click="nextDesktop"
-        class="absolute right-0 top-1/2 -translate-y-1/2 bg-white border shadow rounded-full px-2 py-1 z-10"
+        class="absolute right-0 top-1/2 -translate-y-1/2 px-2 py-1 z-10"
       >
         ❯
       </button>
@@ -106,19 +112,21 @@
         v-if="pagedMobile.length"
         class="mx-auto w-[85%] min-h-[350px] flex flex-col items-center relative"
       >
-        <div class="bg-white shadow rounded-md p-4 w-full">
+        <div
+          class="bg-gradient-to-t from-blue-800 to-transparent border border-slate-950 shadow rounded-md p-4 w-full"
+        >
           <img :src="pagedMobile[mobileIndex].logo" alt="logo" class="h-6 mb-2 mx-auto" />
           <RouterLink :to="`/product/${pagedMobile[mobileIndex].slug}`">
             <img
               :src="pagedMobile[mobileIndex].image"
               alt=""
-              class="h-28 object-contain mb-2 mx-auto"
+              class="w-32 h-28 object-contain mb-2 mx-auto"
             />
-            <h4 class="text-base font-semibold">{{ pagedMobile[mobileIndex].title }}</h4>
-            <ul class="text-sm text-justify text-gray-600 mt-1">
+            <h4 class="text-base font-mono font-semibold">{{ pagedMobile[mobileIndex].title }}</h4>
+            <ul class="text-sm text-justify font-semibold italic text-black">
               <li>{{ pagedMobile[mobileIndex].subtitle }}</li>
               <ul
-                class="list-disc pl-5 text-justify text-sm text-gray-600 mt-1"
+                class="list-disc pl-5 text-justify text-sm whitespace-normal text-gray-950"
                 v-if="getSpecs(pagedMobile[mobileIndex]).length"
               >
                 <li v-for="(spec, index) in getSpecs(pagedMobile[mobileIndex])" :key="index">
@@ -131,18 +139,10 @@
 
         <!-- Mobile Navigation -->
         <div class="flex justify-center gap-6 mt-4">
-          <button
-            v-if="pagedMobile.length > 1"
-            @click="prevMobile"
-            class="text-2xl bg-gray-200 hover:bg-gray-300 rounded-full px-3 py-1"
-          >
+          <button v-if="pagedMobile.length > 1" @click="prevMobile" class="text-2xl px-3 py-1">
             ❮
           </button>
-          <button
-            v-if="pagedMobile.length > 1"
-            @click="nextMobile"
-            class="text-2xl bg-gray-200 hover:bg-gray-300 rounded-full px-3 py-1"
-          >
+          <button v-if="pagedMobile.length > 1" @click="nextMobile" class="text-2xl px-3 py-1">
             ❯
           </button>
         </div>
@@ -168,12 +168,12 @@ const mobileIndex = ref(0)
 
 const tabs = [
   { title: 'XGSPON', subCategories: ['All', 'OLT', 'ONT', 'XGSPON STICK'] },
-  { title: 'GPON', subCategories: ['All', 'OLT', 'ONT', 'ONU PoE', 'ONU'] },
+  { title: 'GPON', subCategories: ['All', 'OLT', 'ONT', 'ONU PoE', 'ONU', 'GPON STICK'] },
   {
     title: 'SWITCH',
-    subCategories: ['All', 'CORE SWITCH', 'L3 SWITCH', 'L2 SWITCH PoE', 'L2 SWITCH'],
+    subCategories: ['All', 'BACKBONE', 'L3 SWITCH', 'L2 SWITCH', 'PoE SWITCH'],
   },
-  { title: 'WIFI', subCategories: ['All'] },
+  { title: 'WIFI', subCategories: ['ALL'] },
 ]
 
 const filteredProducts = computed(() => {

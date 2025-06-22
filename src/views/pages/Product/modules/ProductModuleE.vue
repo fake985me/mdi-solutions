@@ -45,17 +45,36 @@
       <div class="flex-1 px-4 border-t lg:border-t-0 lg:border-l border-gray-300 pt-4 lg:pt-0">
         <h2 class="text-xl font-semibold mb-2">Specification</h2>
         <ul class="list-disc pl-5 space-y-1 text-sm text-gray-800">
-          <li><strong>Flash Memory :</strong> {{ product.flashmemory }}</li>
-          <li><strong>SDRAM Memory :</strong> {{ product.sdrammemory }}</li>
-          <li><strong>Interface :</strong></li>
+          <li><strong>Switching Capacity :</strong> {{ product.switching }}</li>
+          <li><strong>Throughput :</strong> {{ product.throughput }}</li>
+          <li><strong>Interface :</strong> {{ product.Interface }}</li>
           <ul class="list-disc pl-5">
             <li v-if="product.Interface1">{{ product.Interface1 }}</li>
             <li v-if="product.Interface2">{{ product.Interface2 }}</li>
             <li v-if="product.Interface3">{{ product.Interface3 }}</li>
             <li v-if="product.Interface4">{{ product.Interface4 }}</li>
           </ul>
-          <li><strong>Antenna :</strong> {{ product.antena }}</li>
+          <li><strong>Control Unit :</strong> {{ product.cu }}</li>
+          <ul class="list-disc pl-5">
+            <li v-if="product.cu1">{{ product.cu1 }}</li>
+            <li v-if="product.cu2">{{ product.cu2 }}</li>
+            <li v-if="product.cu3">{{ product.cu3 }}</li>
+            <li v-if="product.cu4">{{ product.cu4 }}</li>
+          </ul>
+          <li><strong>Additional Interface :</strong></li>
+          <ul class="list-disc pl-5">
+            <li v-if="product.aditionalinterface1">{{ product.aditionalinterface1 }}</li>
+            <li v-if="product.aditionalinterface2">{{ product.aditionalinterface2 }}</li>
+            <li v-if="product.aditionalinterface3">{{ product.aditionalinterface3 }}</li>
+            <li v-if="product.aditionalinterface4">{{ product.aditionalinterface4 }}</li>
+          </ul>
+          <li><strong>MAC Address :</strong> {{ product.macaddress }}</li>
+          <li><strong>Routing Table :</strong> {{ product.routingtable }}</li>
+          <li><strong>Dustproof and waterproof :</strong> {{ product.dustproofwaterproof }}</li>
+          <li><strong>Noise :</strong> {{ product.noise }}</li>
+          <li><strong>MTBF :</strong> {{ product.mtbf }}</li>
           <li><strong>Operating Temp :</strong> {{ product.operatingtemperature }}</li>
+          <li><strong>Storage Temp :</strong> {{ product.storagetemperature }}</li>
           <li><strong>Humidity :</strong> {{ product.operatinghumidity }}</li>
           <li><strong>Power :</strong></li>
           <ul class="list-disc pl-5">
