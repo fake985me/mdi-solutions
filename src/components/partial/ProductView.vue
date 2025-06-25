@@ -173,7 +173,7 @@ const tabs = [
     title: 'SWITCH',
     subCategories: ['All', 'BACKBONE', 'L3 SWITCH', 'L2 SWITCH', 'PoE SWITCH'],
   },
-  { title: 'WIRELESS', subCategories: ['ALL'] },
+  { title: 'WIRELESS', subCategories: ['All', 'AP', 'CONTROLLER'] },
 ]
 
 const filteredProducts = computed(() => {
