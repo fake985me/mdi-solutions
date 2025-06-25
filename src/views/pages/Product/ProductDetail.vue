@@ -19,6 +19,18 @@ const detailComponent = computed(() => {
       return defineAsyncComponent(() => import('./modules/ProductModuleA.vue'))
     case 'B':
       return defineAsyncComponent(() => import('./modules/ProductModuleB.vue'))
+    case 'C':
+      return defineAsyncComponent(() => import('./modules/ProductModuleC.vue'))
+    case 'D':
+      return defineAsyncComponent(() => import('./modules/ProductModuleD.vue'))
+    case 'E':
+      return defineAsyncComponent(() => import('./modules/ProductModuleE.vue'))
+    case 'F':
+      return defineAsyncComponent(() => import('./modules/ProductModuleF.vue'))
+    case 'G':
+      return defineAsyncComponent(() => import('./modules/ProductModuleG.vue'))
+    case 'H':
+      return defineAsyncComponent(() => import('./modules/ProductModuleH.vue'))
     default:
       return null
   }
@@ -30,7 +42,6 @@ watchEffect(() => {
   product.value = products.value.find((p) => p.slug === slug.value)
   console.log('found product:', product.value)
 })
-
 </script>
 
 <template>
