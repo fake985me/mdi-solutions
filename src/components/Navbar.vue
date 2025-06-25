@@ -384,8 +384,6 @@ const navigation = [
   {
     name: 'Contact',
     href: '/contact',
-    current: false,
   },
 ]
 </script>
-perbaiki

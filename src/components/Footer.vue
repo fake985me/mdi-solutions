@@ -57,11 +57,14 @@
           </h3>
           <ul class="space-y-1">
             <li>
-              <a href="#" class="hover:underline">Broadband Access</a>
+              <a href="/product" class="hover:underline">XGSPON</a>
             </li>
-            <li><a href="#" class="hover:underline">Mobile Service</a></li>
+            <li><a href="/product" class="hover:underline">GPON</a></li>
             <li>
-              <a href="#" class="hover:underline">Subscriber CPE</a>
+              <a href="/product" class="hover:underline">SWITCH</a>
+            </li>
+            <li>
+              <a href="/product" class="hover:underline">WIRELESS</a>
             </li>
           </ul>
         </div>
@@ -72,27 +75,48 @@
           </h3>
           <ul class="space-y-1">
             <li>
-              <a href="#" class="hover:underline">OLT</a>
+              <a href="/product" class="hover:underline">OLT</a>
             </li>
-            <li><a href="#" class="hover:underline">ONU</a></li>
+            <li><a href="/product" class="hover:underline">ONU</a></li>
             <li>
-              <a href="#" class="hover:underline">ONT</a>
+              <a href="/product" class="hover:underline">ONU PoE</a>
             </li>
             <li>
-              <a href="#" class="hover:underline">PoE Switch</a>
+              <a href="/product" class="hover:underline">ONT</a>
+            </li>
+            <li>
+              <a href="/product" class="hover:underline">SWITCH</a>
+            </li>
+            <li>
+              <a href="/product" class="hover:underline">PoE Switch</a>
+            </li>
+            <li>
+              <a href="/product" class="hover:underline">WIFI</a>
             </li>
           </ul>
         </div>
 
         <div>
           <h3 class="text-gray-900 dark:text-gray-100 font-semibold uppercase tracking-wide mb-2">
-            Company
+            Service
           </h3>
           <ul class="space-y-1">
             <li>
-              <a href="#" class="hover:underline">about</a>
+              <a href="/contact" class="hover:underline">Training</a>
             </li>
-            <li><a href="#" class="hover:underline">Contact</a></li>
+            <li>
+              <a href="/contact" class="hover:underline">Support</a>
+            </li>
+            <li>
+              <a href="/contact" class="hover:underline">Remote Service</a>
+            </li>
+            <li>
+              <a href="/contact" class="hover:underline">Maintenance</a>
+            </li>
+            <li>
+              <a href="/contact" class="hover:underline">Managed Service</a>
+            </li>
+            <li><a href="/contact" class="hover:underline">Contact</a></li>
           </ul>
         </div>
 
@@ -101,11 +125,11 @@
             Help & Support
           </h3>
           <ul class="space-y-1">
-            <li><a href="#" class="hover:underline">FAQ</a></li>
+            <li><a href="/contact" class="hover:underline">FAQ</a></li>
             <li>
-              <a href="#" class="hover:underline">Documentation</a>
+              <a href="#" class="hover:underline">Download</a>
             </li>
-            <li><a href="#" class="hover:underline">Support</a></li>
+            <li><a href="/contact" class="hover:underline">Support</a></li>
           </ul>
         </div>
       </div>

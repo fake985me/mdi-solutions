@@ -30,7 +30,7 @@
     <!-- Sub Tabs -->
     <div
       v-if="tabs[activeTab].subCategories"
-      class="flex flex-wrap gap-2 border rounded-md -mt-4 mb-8 justify-center"
+      class="flex flex-wrap gap-2 -mt-2 mb-8 justify-center"
     >
       <div
         v-for="(sub, j) in tabs[activeTab].subCategories"
@@ -58,7 +58,7 @@
       <button
         v-if="pagedDesktop.length > 1"
         @click="prevDesktop"
-        class="absolute left-0 top-1/2 -translate-y-1/2 px-2 py-1 z-10"
+        class="block absolute left-0 top-1/2 -translate-y-1/2 px-2 py-1 z-10"
       >
         ❮
       </button>
@@ -110,10 +110,10 @@
     <div class="md:hidden text-center relative mt-4">
       <div
         v-if="pagedMobile.length"
-        class="mx-auto w-[85%] min-h-[350px] flex flex-col items-center relative"
+        class="mx-auto w-[250px] min-h-[130px] flex flex-col items-center relative"
       >
         <div
-          class="bg-gradient-to-t from-blue-800 to-transparent border border-slate-950 shadow rounded-md p-4 w-full"
+          class="block bg-gradient-to-t from-blue-800 to-transparent border border-slate-950 shadow rounded-md p-4 max-w-2xl w-full"
         >
           <img :src="pagedMobile[mobileIndex].logo" alt="logo" class="h-6 mb-2 mx-auto" />
           <RouterLink :to="`/product/${pagedMobile[mobileIndex].slug}`">
@@ -173,7 +173,7 @@ const tabs = [
     title: 'SWITCH',
     subCategories: ['All', 'BACKBONE', 'L3 SWITCH', 'L2 SWITCH', 'PoE SWITCH'],
   },
-  { title: 'WIFI', subCategories: ['ALL'] },
+  { title: 'WIRELESS', subCategories: ['ALL'] },
 ]
 
 const filteredProducts = computed(() => {

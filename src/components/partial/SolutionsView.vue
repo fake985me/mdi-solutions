@@ -1,65 +1,51 @@
 <template>
-  <section class="py-8 px-4 relative" id="Product">
-    <!-- Judul -->
-    <div class="text-center mb-6">
-      <h2 class="text-3xl font-bold">Our Service & Solutions</h2>
-      <p class="text-gray-500">make it easier</p>
+  <section class="py-12 px-6 relative" id="Product">
+    <!-- Title -->
+    <div class="text-center mb-10">
+      <h2 class="text-4xl font-bold text-gray-800">Our Service & Solutions</h2>
+      <p class="text-gray-500 text-lg mt-2">Make it easier</p>
     </div>
 
-    <!-- Centered container -->
+    <!-- Tabs -->
     <div class="flex justify-center">
-      <div class="w-full">
-        <!-- Tabs -->
-        <ul class="flex flex-wrap justify-center md:justify-start gap-3 mb-6">
+      <div class="w-full max-w-6xl">
+        <ul class="flex flex-wrap justify-center md:justify-start gap-4 mb-8">
           <li
             v-for="feature in features"
             :key="feature.id"
             :class="[
-              'px-4 py-2 rounded-md text-sm font-medium cursor-pointer transition',
+              'px-5 py-2.5 rounded-lg text-sm font-medium cursor-pointer transition-all',
               isOpen === feature.id
                 ? 'bg-gray-900 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200',
             ]"
+            @click.prevent="isOpen = feature.id"
           >
-            <a @click.prevent="isOpen = feature.id">
-              {{ feature.name }}
-            </a>
+            {{ feature.name }}
           </li>
         </ul>
 
-        <!-- Transition Card -->
-        <div class="relative min-h-[12rem] sm:min-h-[10rem] overflow-hidden">
-          <transition name="fade-slide" mode="out-in">
-            <div
-              v-if="activeFeature"
-              :key="activeFeature.id"
-              class="bg-white shadow-md rounded-xl flex flex-col sm:flex-row gap-4 p-4 items-center sm:items-start h-90"
-            >
-              <!-- Gambar -->
-              <div class="w-full sm:w-40 md:w-56 h-40 sm:h-full flex-shrink-0">
-                <img
-                  :src="activeFeature.details.imageUrl"
-                  :alt="activeFeature.details.title"
-                  class="object-cover w-full h-full rounded-lg p-1"
-                />
-              </div>
-
-              <!-- Teks -->
-              <div class="w-full flex-1 flex flex-col justify-center text-center sm:text-left">
-                <h3 class="text-lg sm:text-xl font-semibold mb-2">
-                  {{ activeFeature.details.title }}
-                </h3>
-                <p class="text-gray-600 text-sm mb-4">
-                  {{ activeFeature.details.description }}
-                </p>
-                <button
-                  class="self-center sm:self-start px-5 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-full transition"
-                >
-                  Learn More
-                </button>
-              </div>
-            </div>
-          </transition>
+        <!-- Feature Card -->
+        <div
+          v-if="activeFeature"
+          :key="activeFeature.id"
+          class="w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden md:flex"
+        >
+          <div class="md:w-1/2">
+            <img
+              :src="activeFeature.details.imageUrl"
+              :alt="activeFeature.details.title"
+              class="h-64 w-full object-cover md:h-full"
+            />
+          </div>
+          <div class="p-8 md:w-1/2">
+            <h3 class="text-xl font-semibold text-indigo-600 uppercase tracking-wide mb-2">
+              {{ activeFeature.details.title }}
+            </h3>
+            <p class="text-gray-600 text-base leading-relaxed">
+              {{ activeFeature.details.description }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -77,17 +63,5 @@ const activeFeature = computed(() => features.find((feature) => feature.id === i
 </script>
 
 <style scoped>
-.fade-slide-enter-active,
-.fade-slide-leave-active {
-  transition: all 0.5s ease;
-  position: absolute;
-}
-.fade-slide-enter-from {
-  opacity: 0;
-  transform: translateX(50px);
-}
-.fade-slide-leave-to {
-  opacity: 0;
-  transform: translateX(-50px);
-}
+/* Tambahan opsional styling kustom */
 </style>
