@@ -7,12 +7,12 @@ import e from '@/assets/static/solutions/cable.jpg'
 const features = [
   {
     id: 1,
-    name: 'Training Education',
+    name: 'Training',
     details: {
       imageUrl: a,
-      title: 'Taining & Education',
+      title: 'Training',
       description:
-        'Learn how to use our platform effectively. Our training and education resources will help you get the most out of your experience.',
+        'This training is designed to provide a comprehensive understanding of GPON (Gigabit Passive Optical Network) technology, covering basic theory, network architecture, device introduction, to installation and configuration practices. GPON is a modern fiber optic network solution that is widely used by internet service providers (ISPs), telecommunications operators, and enterprises.',
     },
   },
   {
