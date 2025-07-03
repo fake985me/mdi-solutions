@@ -8,13 +8,7 @@
       </div>
       <div class="mb-4">
         <label for="password" class="block text-gray-700">Password</label>
-        <input
-          v-model="password"
-          type="password"
-          id="password"
-          class="w-full p-2 border rounded"
-          required
-        />
+        <input v-model="password" type="password" id="password" class="w-full p-2 border rounded" required />
       </div>
       <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
         Login
@@ -36,13 +30,15 @@ const router = useRouter()
 const authStore = useAuthStore()
 
 const handleSubmit = async () => {
-  try {
-    const userCredential = await signInWithEmailAndPassword(auth, email.value, password.value)
-    authStore.setUser(userCredential.user)
+  const result = await authStore.signIn(email.value, password.value)
+
+  if (result.success) {
+    // Redirect to the dashboard or home page after successful login
     router.push('/dashboard')
-  } catch (error) {
-    console.error('Login gagal:', error.code, error.message)
-    alert('Login gagal: ' + error.message)
+  } else {
+    console.error('Login failed:', result.error)
+    // Handle login error (e.g., show a notification or alert)
+    alert('Login failed: ' + result.error.message)
   }
 }
 </script>

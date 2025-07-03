@@ -203,52 +203,65 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, onMounted } from 'vue'
-import { supabase, type User } from '@/lib/supabase'
+import { firebase, db } from '@/lib/firebaseConfig'
+import { doc, getDoc } from 'firebase/firestore'
 
 const currentTime = ref(new Date().toLocaleString())
 const totalUsers = ref(0)
 const activeUsers = ref(0)
 const totalRoles = ref(0)
 const systemAlerts = ref(0)
-const recentUsers = ref<User[]>([])
+const recentUsers = ref([])
 
 async function fetchAdminData() {
   try {
-    // Fetch total users count
-    const { count: usersCount } = await supabase
+    // Total users
+    const { count: usersCount } = await firebase
       .from('users')
       .select('*', { count: 'exact', head: true })
-
     totalUsers.value = usersCount || 0
 
-    // Fetch active users count
-    const { count: activeUsersCount } = await supabase
+    // Active users
+    const { count: activeUsersCount } = await firebase
       .from('users')
-      .select('*', { count: 'exact', head: true })
       .eq('is_active', true)
-
+      .select('*', { count: 'exact', head: true })
     activeUsers.value = activeUsersCount || 0
 
-    // Fetch total roles count
-    const { count: rolesCount } = await supabase
+    // Total roles
+    const { count: rolesCount } = await firebase
       .from('user_roles')
       .select('*', { count: 'exact', head: true })
-
     totalRoles.value = rolesCount || 0
 
-    // Fetch recent users
-    const { data: users } = await supabase
+    // Recent users (ambil 5 terbaru)
+    const { data: users } = await firebase
       .from('users')
-      .select(`
-        *,
-        role:user_roles(*)
-      `)
       .order('created_at', { ascending: false })
-      .limit(5)
+      .select('*')
 
-    recentUsers.value = users || []
+    const topUsers = (users || []).slice(0, 5)
+
+    // Tambahkan role.name berdasarkan role_id
+    const usersWithRoles = await Promise.all(
+      topUsers.map(async user => {
+        if (user.role_id) {
+          try {
+            const roleSnap = await getDoc(doc(db, 'user_roles', user.role_id))
+            user.role = roleSnap.exists() ? roleSnap.data() : null
+          } catch (err) {
+            user.role = null
+          }
+        } else {
+          user.role = null
+        }
+        return user
+      })
+    )
+
+    recentUsers.value = usersWithRoles
 
   } catch (error) {
     console.error('Error fetching admin data:', error)
@@ -256,14 +269,11 @@ async function fetchAdminData() {
 }
 
 function exportData() {
-  // TODO: Implement data export functionality
   console.log('Export data functionality to be implemented')
 }
 
 onMounted(() => {
   fetchAdminData()
-
-  // Update time every minute
   setInterval(() => {
     currentTime.value = new Date().toLocaleString()
   }, 60000)
