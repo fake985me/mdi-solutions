@@ -154,6 +154,47 @@
       No products found in this category.
     </div>
   </section>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div
+      v-for="(product, i) in pagedDesktop[desktopIndex]"
+      :key="i"
+      class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 transform hover:-translate-y-1"
+    >
+      <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-primary-50 to-primary-100">
+        <div class="w-64 h-48 flex items-center justify-center">
+          <div class="w-16 h-16 bg-primary-200 rounded-full flex items-center justify-center">
+            <img :src="product.image" alt="" class="h-24 object-contain mb-2 mx-auto" />
+          </div>
+        </div>
+      </div>
+      <div class="p-6">
+        <div class="flex items-start justify-between mb-3">
+          <h3 class="text-lg font-semibold text-gray-900 line-clamp-2">{{ product.title }}</h3>
+          <span class="text-primary-600 font-bold text-xl">${{ product.subtitle }}</span>
+        </div>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+          {{ product.description }}
+        </p>
+        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+          <span>SKU: {{ product.sku }}</span>
+          <span>{{ product.unit }}</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span
+            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800"
+          >
+            {{ product.category }}
+          </span>
+          <span
+            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-100 text-success-800"
+          >
+            In Stock
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -223,4 +264,54 @@ const nextMobile = () => {
 }
 
 console.log(getSpecs(products.value[0]))
+
+// Sample products to display (4 random products as requested)
+const sampleProducts = ref([
+  {
+    id: '1',
+    name: 'Wireless Bluetooth Headphones',
+    description:
+      'High-quality wireless headphones with noise cancellation and 30-hour battery life.',
+    price: 129.99,
+    sku: 'WBH-001',
+    unit: 'pcs',
+    category: 'Electronics',
+  },
+  {
+    id: '2',
+    name: 'Professional Drill Set',
+    description: 'Complete 18V cordless drill set with multiple bits and carrying case.',
+    price: 89.5,
+    sku: 'PDS-002',
+    unit: 'set',
+    category: 'Tools',
+  },
+  {
+    id: '3',
+    name: 'Ergonomic Office Chair',
+    description: 'Comfortable office chair with lumbar support and adjustable height.',
+    price: 245.0,
+    sku: 'EOC-003',
+    unit: 'pcs',
+    category: 'Office Supplies',
+  },
+  {
+    id: '4',
+    name: 'Safety Hard Hat',
+    description: 'ANSI-approved safety hard hat with adjustable suspension system.',
+    price: 24.99,
+    sku: 'SHH-004',
+    unit: 'pcs',
+    category: 'Safety Equipment',
+  },
+])
 </script>
+
+<style scoped>
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+</style>

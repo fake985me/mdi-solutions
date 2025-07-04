@@ -1,7 +1,7 @@
 import a from '@/assets/static/solutions/training.jpg'
 import b from '@/assets/static/solutions/Remote.jpg'
 import c from '@/assets/static/solutions/onsite.jpg'
-import d from '@/assets/static/solutions/managed.jpg'
+import d from '@/assets/static/solutions/managed.png'
 import e from '@/assets/static/solutions/cable.jpg'
 
 const features = [
@@ -17,42 +17,32 @@ const features = [
   },
   {
     id: 2,
-    name: 'Remote Support',
+    name: 'Maintenance and Support Services',
     details: {
       imageUrl: b,
-      title: 'Provide direction and help resolve problems remotely',
+      title: 'Remote and On-Site Support',
       description:
-        'Troubleshooting, Configuration changes, Network audits, Customer migration, Additions, Changes, Software upgrades, 24x7 help desk support, and more.',
+        'With proper maintenance and taking preventive measures to avoid future network issues, such as regular maintenance and security audits, we can ensure smooth operations, minimize downtime, increase productivity, and protect data from the risk of loss or security breaches.',
     },
   },
   {
     id: 3,
-    name: 'On-Site Support',
-    details: {
-      imageUrl: c,
-      title: 'Coming to the location to provide support',
-      description:
-        'Professional support engineers, resident engineers, equipment and installation engineers (E,F & I), and more.',
-    },
-  },
-  {
-    id: 4,
     name: 'Managed Services',
     details: {
       imageUrl: d,
       title: 'Eficient network management',
       description:
-        'Service solutions to facilitate network efficiency in your business. We provide managed services to ensure your network runs smoothly and efficiently.',
+        'We provide services and set clear SLAs, as appropriate and effective solutions, optimizing the use of IT resources, to improve the operational efficiency of your business.',
     },
   },
   {
-    id: 5,
-    name: 'Installation Services',
+    id: 4,
+    name: 'Design and Build',
     details: {
       imageUrl: e,
       title: 'true and correct installation of equipment',
       description:
-        'We ensure that your equipment is installed correctly and efficiently. Our team of experts will handle the installation process to ensure everything is set up properly.',
+        'Our team of experts will help handle the process from design, consultation and installation, according to what you want.',
     },
   },
 ]
