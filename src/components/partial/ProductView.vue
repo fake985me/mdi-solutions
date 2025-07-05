@@ -58,27 +58,37 @@
       <button
         v-if="pagedDesktop.length > 1"
         @click="prevDesktop"
-        class="block absolute left-0 top-1/2 -translate-y-1/2 px-2 py-1 z-10"
+        class="block absolute left-4 top-1/2 -translate-y-1/2 px-2 py-1 z-10"
       >
         ❮
       </button>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto max-w-7xl px-16">
         <div
           v-for="(product, i) in pagedDesktop[desktopIndex]"
           :key="i"
-          class="bg-gradient-to-t from-blue-800 to-transparent border border-slate-950 shadow rounded-md p-4 w-[220px] text-center flex flex-col justify-between min-h-[320px] hover:shadow-lg transition"
+          class="h-[450px] bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 transform hover:-translate-y-1"
         >
-          <img :src="product.logo" alt="logo" class="h-6 mb-2 mx-auto" />
           <RouterLink
             :to="`/product/${product.slug}`"
             class="block flex-1 flex-col justify-between"
           >
-            <div>
-              <img :src="product.image" alt="" class="h-24 object-contain mb-2 mx-auto" />
-              <h4 class="text-lg font-mono font-semibold mb-1">
-                {{ product.title }}
-              </h4>
+            <img :src="getLogo(product)" alt="logo" class="h-6 mb-2 mx-auto" />
+            <div class="aspect-w-16 aspect-h-16 bg-gradient-to-br from-primary-50 to-primary-100">
+              <div class="w-50 h-48 flex object-contain justify-center item-center mx-auto p-4">
+                <div
+                  class="w-80% h-80% bg-primary-200 rounded-full flex items-center justify-center"
+                >
+                  <img :src="product.image" alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between mb-1">
+                <h3 class="text-lg font-mono font-semibold mb-1 line-clamp-2">
+                  {{ product.title }}
+                </h3>
+              </div>
               <ul
                 class="text-xs text-shadow-2xl/30 shadow-slate-300 font-semibold italic text-black -mt-2"
               >
@@ -96,11 +106,10 @@
           </RouterLink>
         </div>
       </div>
-
       <button
         v-if="pagedDesktop.length > 1"
         @click="nextDesktop"
-        class="absolute right-0 top-1/2 -translate-y-1/2 px-2 py-1 z-10"
+        class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 z-10"
       >
         ❯
       </button>
@@ -110,30 +119,49 @@
     <div class="md:hidden text-center relative mt-4">
       <div
         v-if="pagedMobile.length"
-        class="mx-auto w-[250px] min-h-[130px] flex flex-col items-center relative"
+        class="mx-auto w-[280px] min-h-[130px] flex flex-col items-center relative"
       >
         <div
-          class="block bg-gradient-to-t from-blue-800 to-transparent border border-slate-950 shadow rounded-md p-4 max-w-2xl w-full"
+          class="w-[280px] h-[500px] bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 transform hover:-translate-y-1"
         >
-          <img :src="pagedMobile[mobileIndex].logo" alt="logo" class="h-6 mb-2 mx-auto" />
           <RouterLink :to="`/product/${pagedMobile[mobileIndex].slug}`">
-            <img
-              :src="pagedMobile[mobileIndex].image"
-              alt=""
-              class="w-32 h-28 object-contain mb-2 mx-auto"
-            />
-            <h4 class="text-base font-mono font-semibold">{{ pagedMobile[mobileIndex].title }}</h4>
-            <ul class="text-sm text-justify font-semibold italic text-black">
-              <li>{{ pagedMobile[mobileIndex].subtitle }}</li>
+            <img :src="getLogo(pagedMobile[mobileIndex])" alt="logo" class="h-6 mb-2 mx-auto" />
+            <div class="aspect-w-92 aspect-h-24 bg-gradient-to-br from-primary-50 to-primary-100">
+              <div class="w-full h-48 flex object-contain justify-center item-center mx-auto p-4">
+                <div
+                  class="w-42 h-80% bg-primary-200 rounded-full flex items-center justify-center"
+                >
+                  <img
+                    :src="pagedMobile[mobileIndex].image"
+                    alt=""
+                    class="w-32 h-28 object-contain mb-2 mx-auto"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-center justify-center mb-1">
+                <h3 class="text-lg font-mono font-semibold mt-1 line-clamp-2">
+                  {{ pagedMobile[mobileIndex].title }}
+                </h3>
+              </div>
               <ul
-                class="list-disc pl-5 text-justify text-sm whitespace-normal text-gray-950"
-                v-if="getSpecs(pagedMobile[mobileIndex]).length"
+                class="text-xs text-shadow-2xl/30 shadow-slate-300 font-semibold italic text-black -mt-2"
               >
-                <li v-for="(spec, index) in getSpecs(pagedMobile[mobileIndex])" :key="index">
-                  {{ spec }}
+                <li class="text-sm overline">
+                  {{ pagedMobile[mobileIndex].subtitle }}
                 </li>
+                <ul
+                  class="list-disc pl-5 text-justify text-sm whitespace-normal text-gray-950"
+                  v-if="getSpecs(pagedMobile[mobileIndex]).length"
+                >
+                  <li v-for="(spec, index) in getSpecs(pagedMobile[mobileIndex])" :key="index">
+                    {{ spec }}
+                  </li>
+                </ul>
               </ul>
-            </ul>
+            </div>
           </RouterLink>
         </div>
 
@@ -154,54 +182,17 @@
       No products found in this category.
     </div>
   </section>
-
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    <div
-      v-for="(product, i) in pagedDesktop[desktopIndex]"
-      :key="i"
-      class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 transform hover:-translate-y-1"
-    >
-      <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-primary-50 to-primary-100">
-        <div class="w-64 h-48 flex items-center justify-center">
-          <div class="w-16 h-16 bg-primary-200 rounded-full flex items-center justify-center">
-            <img :src="product.image" alt="" class="h-24 object-contain mb-2 mx-auto" />
-          </div>
-        </div>
-      </div>
-      <div class="p-6">
-        <div class="flex items-start justify-between mb-3">
-          <h3 class="text-lg font-semibold text-gray-900 line-clamp-2">{{ product.title }}</h3>
-          <span class="text-primary-600 font-bold text-xl">${{ product.subtitle }}</span>
-        </div>
-        <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-          {{ product.description }}
-        </p>
-        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-          <span>SKU: {{ product.sku }}</span>
-          <span>{{ product.unit }}</span>
-        </div>
-        <div class="flex items-center space-x-2">
-          <span
-            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800"
-          >
-            {{ product.category }}
-          </span>
-          <span
-            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-100 text-success-800"
-          >
-            In Stock
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import products from '@/composable/useProducts'
+import defaultLogo from '@/assets/static/logo_card.png'
 
+const getLogo = (product) => {
+  return product?.logo && product.logo !== 'null' ? product.logo : defaultLogo
+}
 const activeTab = ref(0)
 const activeSubTab = ref(0)
 const desktopIndex = ref(0)
@@ -264,47 +255,6 @@ const nextMobile = () => {
 }
 
 console.log(getSpecs(products.value[0]))
-
-// Sample products to display (4 random products as requested)
-const sampleProducts = ref([
-  {
-    id: '1',
-    name: 'Wireless Bluetooth Headphones',
-    description:
-      'High-quality wireless headphones with noise cancellation and 30-hour battery life.',
-    price: 129.99,
-    sku: 'WBH-001',
-    unit: 'pcs',
-    category: 'Electronics',
-  },
-  {
-    id: '2',
-    name: 'Professional Drill Set',
-    description: 'Complete 18V cordless drill set with multiple bits and carrying case.',
-    price: 89.5,
-    sku: 'PDS-002',
-    unit: 'set',
-    category: 'Tools',
-  },
-  {
-    id: '3',
-    name: 'Ergonomic Office Chair',
-    description: 'Comfortable office chair with lumbar support and adjustable height.',
-    price: 245.0,
-    sku: 'EOC-003',
-    unit: 'pcs',
-    category: 'Office Supplies',
-  },
-  {
-    id: '4',
-    name: 'Safety Hard Hat',
-    description: 'ANSI-approved safety hard hat with adjustable suspension system.',
-    price: 24.99,
-    sku: 'SHH-004',
-    unit: 'pcs',
-    category: 'Safety Equipment',
-  },
-])
 </script>
 
 <style scoped>

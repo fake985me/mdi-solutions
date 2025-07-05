@@ -11,11 +11,17 @@
               :key="item.name"
               :to="item.href"
               class="flex flex-col items-center space-y-1"
+              :class="[
+                isCurrent(item)
+                  ? 'bg-gray-900 text-white'
+                  : 'text-white hover:bg-gray-700 hover:text-white',
+                'rounded-md px-3 py-2 text-md font-medium flex items-center gap-1',
+              ]"
             >
               <component
                 :is="getMobileIcon(item.name)"
                 class="size-6"
-                :class="item.current ? 'text-white' : 'text-gray-400'"
+                :class="isCurrent(item) ? 'text-white' : 'text-gray-400'"
               />
               <span
                 class="text-xs text-gray-400"
@@ -292,15 +298,24 @@ import {
   MenuItems,
 } from '@headlessui/vue'
 import { HomeIcon, ServerIcon, FolderIcon, CalendarIcon } from '@heroicons/vue/24/outline'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
 
-const getMobileIcon = (name) => {
+// Ambil route saat ini
+const route = useRoute()
+
+// Cek apakah link aktif berdasarkan path
+const isCurrent = (item) => {
+  return item.href === route.path
+}
+
+// Fungsi aman untuk ambil ikon mobile
+const getMobileIcon = (name = '') => {
   switch (name.toLowerCase()) {
     case 'home':
       return HomeIcon
     case 'product':
       return ServerIcon
-    case 'Service & Solutions':
+    case 'service & solutions':
       return FolderIcon
     case 'our projects':
       return FolderIcon
@@ -311,16 +326,15 @@ const getMobileIcon = (name) => {
   }
 }
 
+// Daftar menu navigasi
 const navigation = [
   {
     name: 'Home',
     href: '/',
-    current: true,
   },
   {
     name: 'product',
     href: '/product',
-    current: false,
     children: [
       {
         name: 'XGSPON',
@@ -358,28 +372,13 @@ const navigation = [
       },
     ],
   },
-  // {
-  //   name: 'Solutions', href: '/solutions', current: false, children: [
-  //     { name: 'FTTH', href: '/solutions/active' },
-  //     { name: 'FTTB', href: '/solutions/completed' },
-  //   ]
-  // },
-  // {
-  //   name: 'Solutions', href: '/solutions', current: false, children: [
-  //     { name: 'Active', href: '/solutions/active' },
-  //     { name: 'Completed', href: '/solutions/completed' },
-  //     { name: 'Archived', href: '/solutions/archived' },
-  //   ]
-  // },
   {
     name: 'Service & Solutions',
     href: '/solutions',
-    current: false,
   },
   {
     name: 'Our Projects',
     href: '/projects',
-    current: false,
   },
   {
     name: 'Contact',

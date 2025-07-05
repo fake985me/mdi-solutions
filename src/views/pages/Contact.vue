@@ -48,11 +48,13 @@
 
         <div class="w-full lg:-mt-96 lg:w-2/6 px-8 py-12 ml-auto bg-blue-900 rounded-2xl">
           <div class="flex flex-col text-white">
-            <h1 class="font-bold uppercase text-4xl my-4">Drop in our office</h1>
+            <h1 class="font-bold uppercase text-4xl my-4">Moimstone Dasan Indonesia</h1>
             <p class="text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt arcu diam,
-              eu feugiat felis fermentum id. Curabitur vitae nibh viverra, auctor turpis sed,
-              scelerisque ex.
+              Established in 2012, As value added partner of Dasan Networks, Moimstone Dasan
+              Indonesia (MDI) specializes in providing reliable and efficient system integration
+              solutions to help businesses streamline their operations. With 12 years of experience
+              in EDGE Access Industry, we've earned a reputation as a trusted partner, known for our
+              unwavering commitment to delivering dependable technology solutions
             </p>
 
             <div class="flex my-4 w-2/3 lg:w-1/2">
@@ -61,7 +63,10 @@
               </div>
               <div class="flex flex-col">
                 <h2 class="text-2xl">Main Office</h2>
-                <p class="text-gray-400">5555 Tailwind RD, Pleasant Grove, UT 73533</p>
+                <p class="text-gray-400">
+                  Tifa Arum Realty, 2nd Floor, Suite 20812710, RT.6/RW.1, West Kuningan, Mampang
+                  Prapatan, South Jakarta City, Jakarta 12710
+                </p>
               </div>
             </div>
 
@@ -71,14 +76,14 @@
               </div>
               <div class="flex flex-col">
                 <h2 class="text-2xl">Call Us</h2>
-                <p class="text-gray-400">Tel: xxx-xxx-xxx</p>
-                <p class="text-gray-400">Fax: xxx-xxx-xxx</p>
+                <p class="text-gray-400">Tel: (021) 29306714</p>
+                <p class="text-gray-400">E-Mail: mdi.info@mdi-solutions.com</p>
               </div>
             </div>
 
             <div class="flex my-4 w-2/3 lg:w-1/2">
               <a
-                href="https://www.facebook.com/ENLIGHTENEERING/"
+                href="/"
                 target="_blank"
                 rel="noreferrer"
                 class="rounded-full bg-white h-8 w-8 inline-block mx-1 text-center pt-1"
@@ -86,7 +91,7 @@
                 <i class="fab fa-facebook-f text-blue-900" />
               </a>
               <a
-                href="https://www.linkedin.com/company/enlighteneering-inc-"
+                href="/"
                 target="_blank"
                 rel="noreferrer"
                 class="rounded-full bg-white h-8 w-8 inline-block mx-1 text-center pt-1"
