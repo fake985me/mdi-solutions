@@ -1,9 +1,9 @@
 <template>
   <div class="auth-layout">
-    <header>
-      <button @click="handleLogout">Sign Out</button>
-    </header>
     <main>
+      <header>
+        <button @click="handleLogout">Sign Out</button>
+      </header>
       <slot />
     </main>
   </div>
