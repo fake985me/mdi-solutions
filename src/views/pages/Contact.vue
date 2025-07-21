@@ -1,108 +1,114 @@
 <template>
-  <section class="w-full max-w-7xl mx-auto px-4 py-8">
-    <div class="flex justify-center items-center">
-      <!-- COMPONENT CODE -->
-      <div class="container mx-auto my-4 px-4 lg:px-20">
-        <div
-          class="w-full p-8 my-4 md:px-12 lg:w-9/12 lg:pl-20 lg:pr-40 mr-auto rounded-2xl shadow-2xl"
-        >
-          <div class="flex">
-            <h1 class="font-bold uppercase text-4xl">Get in touch with us</h1>
-          </div>
-          <div class="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
-            <input
-              class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-              type="text"
-              placeholder="First Name*"
-            />
-            <input
-              class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-              type="text"
-              placeholder="Last Name*"
-            />
-            <input
-              class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-              type="email"
-              placeholder="Email*"
-            />
-            <input
-              class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-              type="number"
-              placeholder="Phone*"
-            />
-          </div>
-          <div class="my-4">
-            <textarea
-              placeholder="Message*"
-              class="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-            ></textarea>
-          </div>
-          <div class="my-2 w-1/2 lg:w-1/4">
-            <button
-              class="uppercase text-sm font-bold tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline"
-            >
-              Send Message
-            </button>
-          </div>
+  <section class="bg-blue-50 dark:bg-slate-800" id="contact">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+      <div class="mb-4">
+        <div class="mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12">
+          <p class="text-base font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-200">
+            Contact
+          </p>
+          <h2 class="font-heading mb-4 font-bold tracking-tight text-gray-900 dark:text-white text-3xl sm:text-5xl">
+            Get in Touch
+          </h2>
+          <!-- <p class="mx-auto mt-4 max-w-3xl text-xl text-gray-600 dark:text-slate-400">In hac habitasse platea
+            dictumst
+          </p> -->
         </div>
-
-        <div class="w-full lg:-mt-96 lg:w-2/6 px-8 py-12 ml-auto bg-blue-900 rounded-2xl">
-          <div class="flex flex-col text-white">
-            <h1 class="font-bold uppercase text-4xl my-4">Moimstone Dasan Indonesia</h1>
-            <p class="text-gray-400">
-              Established in 2012, As value added partner of Dasan Networks, Moimstone Dasan
-              Indonesia (MDI) specializes in providing reliable and efficient system integration
-              solutions to help businesses streamline their operations. With 12 years of experience
-              in EDGE Access Industry, we've earned a reputation as a trusted partner, known for our
-              unwavering commitment to delivering dependable technology solutions
+      </div>
+      <div class="flex items-stretch justify-center">
+        <div class="grid md:grid-cols-2">
+          <div class="h-full pr-6">
+            <p class="mt-3 mb-12 text-lg text-gray-600 dark:text-slate-400">
+              Provide your network connectivity solutions Trusted distributor and Experienced technical
+              support for DASAN equipment in Indonesia Offers something that is beyond your reach
             </p>
-
-            <div class="flex my-4 w-2/3 lg:w-1/2">
-              <div class="flex flex-col">
-                <i class="fas fa-map-marker-alt pt-2 pr-2" />
+            <ul class="mb-6 md:mb-0">
+              <li class="flex">
+                <div class="flex h-10 w-10 items-center justify-center rounded bg-blue-900 text-gray-50">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="h-6 w-6">
+                    <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+                    <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="ml-4 mb-4">
+                  <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">Our Address
+                  </h3>
+                  <p class="text-gray-600 dark:text-slate-400">Gedung Tifa Arum Realty</p>
+                  <p class="text-gray-600 dark:text-slate-400">3th Floor Suite 301 </p>
+                </div>
+              </li>
+              <li class="flex">
+                <div class="flex h-10 w-10 items-center justify-center rounded bg-blue-900 text-gray-50">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="h-6 w-6">
+                    <path
+                      d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2">
+                    </path>
+                    <path d="M15 7a2 2 0 0 1 2 2"></path>
+                    <path d="M15 3a6 6 0 0 1 6 6"></path>
+                  </svg>
+                </div>
+                <div class="ml-4 mb-4">
+                  <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">Contact
+                  </h3>
+                  <p class="text-gray-600 dark:text-slate-400">Office : +62 21 2930-6714</p>
+                  <p class="text-gray-600 dark:text-slate-400">Mail: support@mdi-solutions.com <br>
+                    info@mdi-solutions.com</p>
+                </div>
+              </li>
+              <li class="flex">
+                <div class="flex h-10 w-10 items-center justify-center rounded bg-blue-900 text-gray-50">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="h-6 w-6">
+                    <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+                    <path d="M12 7v5l3 3"></path>
+                  </svg>
+                </div>
+                <div class="ml-4 mb-4">
+                  <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">Sales and Marketing</h3>
+                  <p class="text-gray-600 dark:text-slate-400">Eko Wibowo : +62 857-1623-9555</p>
+                  <p class="text-gray-600 dark:text-slate-400">Hadi : +62 887-0978-7005</p>
+                  <p class="text-gray-600 dark:text-slate-400">Karma Satrianak : +62 877-8900-8833</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="card h-fit max-w-6xl p-5 md:p-12" id="form">
+            <h2 class="mb-4 text-2xl font-bold dark:text-white">Ready to Get Started?</h2>
+            <form id="contactForm">
+              <div class="mb-6">
+                <div class="mx-0 mb-1 sm:mb-4">
+                  <div class="mx-0 mb-1 sm:mb-4">
+                    <label for="name" class="pb-1 text-xs uppercase tracking-wider"></label><input type="text" id="name"
+                      autocomplete="given-name" placeholder="Your name"
+                      class="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
+                      name="name">
+                  </div>
+                  <div class="mx-0 mb-1 sm:mb-4">
+                    <label for="email" class="pb-1 text-xs uppercase tracking-wider"></label><input type="email"
+                      id="email" autocomplete="email" placeholder="Your email address"
+                      class="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
+                      name="email">
+                  </div>
+                </div>
+                <div class="mx-0 mb-1 sm:mb-4">
+                  <label for="textarea" class="pb-1 text-xs uppercase tracking-wider"></label><textarea id="textarea"
+                    name="textarea" cols="30" rows="5" placeholder="Write your message..."
+                    class="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"></textarea>
+                </div>
               </div>
-              <div class="flex flex-col">
-                <h2 class="text-2xl">Main Office</h2>
-                <p class="text-gray-400">
-                  Tifa Arum Realty, 2nd Floor, Suite 20812710, RT.6/RW.1, West Kuningan, Mampang
-                  Prapatan, South Jakarta City, Jakarta 12710
-                </p>
+              <div class="text-center">
+                <button type="submit" class="w-full bg-blue-800 text-white px-6 py-3 font-xl rounded-md sm:mb-0">Send
+                  Message</button>
               </div>
-            </div>
-
-            <div class="flex my-4 w-2/3 lg:w-1/2">
-              <div class="flex flex-col">
-                <i class="fas fa-phone-alt pt-2 pr-2" />
-              </div>
-              <div class="flex flex-col">
-                <h2 class="text-2xl">Call Us</h2>
-                <p class="text-gray-400">Tel: (021) 29306714</p>
-                <p class="text-gray-400">E-Mail: mdi.info@mdi-solutions.com</p>
-              </div>
-            </div>
-
-            <div class="flex my-4 w-2/3 lg:w-1/2">
-              <a
-                href="/"
-                target="_blank"
-                rel="noreferrer"
-                class="rounded-full bg-white h-8 w-8 inline-block mx-1 text-center pt-1"
-              >
-                <i class="fab fa-facebook-f text-blue-900" />
-              </a>
-              <a
-                href="/"
-                target="_blank"
-                rel="noreferrer"
-                class="rounded-full bg-white h-8 w-8 inline-block mx-1 text-center pt-1"
-              >
-                <i class="fab fa-linkedin-in text-blue-900" />
-              </a>
-            </div>
+            </form>
           </div>
         </div>
       </div>
-      <!-- COMPONENT CODE -->
     </div>
   </section>
 </template>

@@ -1,5 +1,8 @@
 <template>
-  <section id="project" class="container relative mx-auto px-5 flex flex-col md:flex-row gap-10 py-10 h-full">
+  <section
+    id="project"
+    class="container relative mx-auto px-5 flex flex-col md:flex-row gap-10 py-10 h-full"
+  >
     <!-- Title -->
     <div class="md:w-1/3 text-center md:text-left">
       <h2 class="text-3xl md:text-4xl font-bold font-theme-heading">Our Projects</h2>
@@ -10,52 +13,90 @@
     <div class="w-full md:w-2/3">
       <div class="flex flex-col items-center">
         <!-- Card Utama -->
-        <div class="card w-full max-w-[850px] bg-white rounded-[25px] shadow-xl overflow-hidden relative">
+        <div
+          class="card w-full max-w-[850px] bg-white rounded-[25px] shadow-xl overflow-hidden relative"
+        >
           <!-- Input radio: pakai v-model untuk selected index -->
           <div v-for="(city, index) in cities" :key="'input-' + index">
-            <input type="radio" name="select" :id="`slide_${index}`" class="hidden" v-model="selected" :value="index" />
+            <input
+              type="radio"
+              name="select"
+              :id="`slide_${index}`"
+              class="hidden"
+              v-model="selected"
+              :value="index"
+            />
           </div>
 
           <!-- Swipe Area -->
           <div
             class="inner_part flex flex-col md:flex-row items-center justify-center gap-4 p-4 transition-all duration-300 relative touch-pan-x"
-            ref="swipeArea" @touchstart="onTouchStart" @touchend="onTouchEnd">
+            ref="swipeArea"
+            @touchstart="onTouchStart"
+            @touchend="onTouchEnd"
+          >
             <!-- Gambar (bisa fullscreen) -->
-            <label for="slideImg"
+            <label
+              for="slideImg"
               class="img-container block rounded-[20px] overflow-hidden shadow-lg w-full md:w-[260px] h-[260px] cursor-pointer relative"
               :class="{
                 'fixed inset-0 w-screen h-screen bg-black z-50 flex items-center justify-center rounded-none':
                   isExpanded,
-              }">
-              <img :src="cities[selected]?.image" :alt="cities[selected]?.title"
-                class="w-full h-full object-cover transition-opacity duration-500" :class="{
+              }"
+            >
+              <img
+                :src="cities[selected]?.image"
+                :alt="cities[selected]?.title"
+                class="w-full h-full object-cover transition-opacity duration-500"
+                :class="{
                   'rounded-none': isExpanded,
-                }" />
+                }"
+              />
               <!-- Tombol Close (hanya muncul saat fullscreen) -->
-              <button v-if="isExpanded" @click="isExpanded = false"
-                class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75">
+              <button
+                v-if="isExpanded"
+                @click="isExpanded = false"
+                class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75"
+              >
                 ✕
               </button>
             </label>
 
             <!-- Konten: judul, deskripsi, tombol (non-fullscreen saja) -->
-            <div v-if="!isExpanded" class="content w-full md:w-[530px] transition-opacity duration-500">
+            <div
+              v-if="!isExpanded"
+              class="content w-full md:w-[530px] transition-opacity duration-500"
+            >
               <h2 class="text-[30px] font-bold text-[#0d0925] mb-4">
                 {{ cities[selected]?.title }}
               </h2>
               <p class="text-[19px] text-[#4e4a67] mb-6 leading-[1.5em] text-justify">
                 {{ cities[selected]?.description }}
               </p>
+              <button
+                class="px-6 py-3 bg-black text-[#fff0e6] font-semibold rounded-full hover:bg-gray-300 hover:text-black w-full md:w-auto md:float-right transition"
+              >
+                Read More
+              </button>
             </div>
           </div>
         </div>
 
         <!-- Navigasi Slider (dots) Bawah card (non-fullscreen) -->
-        <div v-if="!isExpanded && cities.length > 0" class="slider mt-4 flex space-x-2 justify-center">
-          <label v-for="(city, index) in cities" :key="'nav-' + index" :for="`slide_${index}`"
-            class="slide relative h-[10px] w-[50px] bg-gray-300 rounded cursor-pointer">
-            <span class="absolute top-0 left-0 h-full w-full bg-black rounded transition-transform origin-left"
-              :class="{ 'scale-x-100': selected === index, 'scale-x-0': selected !== index }"></span>
+        <div
+          v-if="!isExpanded && cities.length > 0"
+          class="slider mt-4 flex space-x-2 justify-center"
+        >
+          <label
+            v-for="(city, index) in cities"
+            :key="'nav-' + index"
+            :for="`slide_${index}`"
+            class="slide relative h-[10px] w-[50px] bg-gray-300 rounded cursor-pointer"
+          >
+            <span
+              class="absolute top-0 left-0 h-full w-full bg-black rounded transition-transform origin-left"
+              :class="{ 'scale-x-100': selected === index, 'scale-x-0': selected !== index }"
+            ></span>
           </label>
         </div>
       </div>
@@ -70,10 +111,6 @@ import axios from 'axios'
 import a from '@/assets/static/project/menaradanareksa.jpg'
 import b from '@/assets/static/project/tamanmelatidepok.jpg'
 import c from '@/assets/static/project/pelindo.jpg'
-import d from '@/assets/static/project/tamanmelatisurabaya.jpg'
-import e from '@/assets/static/project/axia.jpg'
-import f from '@/assets/static/project/cartenz.png'
-import g from '@/assets/static/project/chadstone-building-.jpg'
 
 const cities = ref([])
 const selected = ref(0)
@@ -99,7 +136,7 @@ const fetchCities = async () => {
           'Jl. Medan Merdeka Sel. No.14, Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110',
       },
       {
-        title: 'Apartement Merr Taman Melati Margonda',
+        title: 'Apartement Merr Taman Melati Depok',
         image: b,
         description:
           'Jl. Margonda Raya No.525A, Pondok Cina, Kecamatan Beji, Kota Depok, Jawa Barat 16424',
@@ -111,28 +148,22 @@ const fetchCities = async () => {
           'Jl. Perak Timur No.478, Perak Utara, Kec. Pabean Cantikan, Surabaya, Jawa Timur 60165',
       },
       {
-        title: 'Apartement Taman Melati Merr Surabaya',
-        image: d,
+        title: 'Pelindo Place Office Tower (Duplikat)',
+        image: b,
         description:
-          'Jl. Mulyorejo Utara No.201, RT.006/RW.001, Mulyorejo, Kec. Mulyorejo, Kota SBY,Jawa Timur 60115',
+          'Jl. Perak Timur No.478, Perak Utara, Kec. Pabean Cantikan, Surabaya, Jawa Timur 60165',
       },
       {
-        title: 'Axia South Cikarang Tower 3',
-        image: e,
+        title: 'A Pelindo Place Office Tower',
+        image: a,
         description:
-          'Jl. M.H. Thamrin No.101, Cibatu, Cikarang Sel., Kabupaten Bekasi, Jawa Barat 17550',
+          'Jl. Perak Timur No.478, Perak Utara, Kec. Pabean Cantikan, Surabaya, Jawa Timur 60165',
       },
       {
-        title: 'Pollux Chadstone Cikarang',
-        image: g,
+        title: 'C Pelindo Place Office Tower',
+        image: b,
         description:
-          'Jalan Raya Cikarang - Cibarusah, Exit Toll KM31 Cikarang Barat, Pasirsari, Cikarang Sel, Kabupaten Bekasi, Jawa Barat 17530',
-      },
-      {
-        title: 'Carstensz Residence and Mall',
-        image: f,
-        description:
-          'Jl. Jenderal Sudirman No.1, Cihuni, Kec. Pagedangan, Kabupaten Tangerang, Banten 15332',
+          'Jl. Perak Timur No.478, Perak Utara, Kec. Pabean Cantikan, Surabaya, Jawa Timur 60165',
       },
     ]
   }
