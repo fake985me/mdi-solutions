@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { useAuthStore } from '@/stores/auth'
 import HomeView from '../views/HomeView.vue'
 import Product from '@/views/pages/Product.vue'
 import ProductDetail from '@/views/pages/Product/ProductDetail.vue'
@@ -37,18 +36,6 @@ const routes = [
     name: 'contact',
     component: () => import('../views/pages/Contact.vue'),
   },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/auth/Login.vue'),
-    meta: { layout: 'guest' },
-  },
-  {
-    path: '/dashboard',
-    name: 'dashboard',
-    component: () => import('../views/pages/admin/Dashboard.vue'),
-    meta: { requiresAuth: true, layout: 'auth' },
-  },
 ]
 
 const router = createRouter({
@@ -58,13 +45,6 @@ const router = createRouter({
     // Scroll ke atas halaman saat navigasi
     return { top: 0 }
   },
-})
-
-router.beforeEach((to) => {
-  const useAuth = useAuthStore()
-  if (to.meta.requiresAuth && !useAuth.user) {
-    return '/login'
-  }
 })
 
 export default router
