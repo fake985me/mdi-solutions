@@ -79,7 +79,7 @@
                 <div
                   class="w-80% h-80% bg-primary-200 rounded-full flex items-center justify-center"
                 >
-                  <img :src="product.image" alt="" />
+                  <img :src="product.image" alt="" class="w-48 h-32 object-contain mb-2 mx-auto" />
                 </div>
               </div>
             </div>
