@@ -51,9 +51,9 @@
             </div>
           </div>
           <div class="mt-12 sm:mt-16 lg:mt-0">
-            <div class="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-              <img loading="lazy" width="647" height="486"
-                class="w-full rounded-xl shadow-2xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
+            <div class="flex justify-center lg:justify-end">
+              <img alt="Inbox user interface" loading="lazy" width="647" height="486"
+                class="w-[500px] h-[320px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5"
                 style="color: transparent" src="../../assets/static/solutions/training.jpg" />
             </div>
           </div>
@@ -88,9 +88,9 @@
             </div>
           </div>
           <div class="mt-12 sm:mt-16 lg:mt-0">
-            <div class="-ml-48 pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
+            <div class="flex justify-center lg:justify-start">
               <img alt="Inbox user interface" loading="lazy" width="647" height="486"
-                class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
+                class="w-[500px] h-[320px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5"
                 style="color: transparent" src="../../assets/static/solutions/Remote.jpg" />
             </div>
           </div>
@@ -122,9 +122,9 @@
             </div>
           </div>
           <div class="mt-12 sm:mt-16 lg:mt-0">
-            <div class="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-              <img loading="lazy" width="646" height="485"
-                class="w-full rounded-xl shadow-2xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
+            <div class="flex justify-center lg:justify-end">
+              <img alt="Inbox user interface" loading="lazy" width="647" height="486"
+                class="w-[500px] h-[320px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5"
                 style="color: transparent" src="../../assets/static/solutions/managed.png" />
             </div>
           </div>
@@ -155,9 +155,9 @@
             </div>
           </div>
           <div class="mt-12 sm:mt-16 lg:mt-0">
-            <div class="-ml-48 pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
+            <div class="flex justify-center lg:justify-start">
               <img alt="Inbox user interface" loading="lazy" width="647" height="486"
-                class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
+                class="w-[500px] h-[320px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5"
                 style="color: transparent" src="../../assets/static/solutions/cable.jpg" />
             </div>
           </div>
