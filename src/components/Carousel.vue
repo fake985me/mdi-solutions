@@ -82,18 +82,18 @@ let intervalId = null
 
 const slides = [
   {
-    bg: new URL('@/assets/static/carousel/2.jpg', import.meta.url).href,
-    centerImg: new URL('@/assets/static/carousel/dasan.png', import.meta.url).href,
-    centerImgWidth: 500,
-    centerImgHeight: 250,
-    text: 'provide your network connectivity solutions',
-  },
-  {
     bg: new URL('@/assets/static/carousel/1.jpg', import.meta.url).href,
     centerImg: new URL('@/assets/static/carousel/mdi.png', import.meta.url).href,
     centerImgWidth: 500,
     centerImgHeight: 250,
     text: 'Trusted distributor and Experienced technical support for DASAN equipment in Indonesia',
+  },
+  {
+    bg: new URL('@/assets/static/carousel/2.jpg', import.meta.url).href,
+    centerImg: new URL('@/assets/static/carousel/dasan.png', import.meta.url).href,
+    centerImgWidth: 500,
+    centerImgHeight: 250,
+    text: 'provide your network connectivity solutions',
   },
   {
     bg: new URL('@/assets/static/carousel/3.jpg', import.meta.url).href,
