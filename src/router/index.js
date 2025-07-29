@@ -41,7 +41,8 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  scrollBehavior() {
+  scrollBehavior(to, from, savedPosition) {
+    // Scroll ke atas halaman saat navigasi
     return { top: 0 }
   },
 })
