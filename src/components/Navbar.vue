@@ -1,6 +1,6 @@
 <template>
   <!-- Mobile Top Nav - Logo Only -->
-  <div class="md:hidden sticky top-0 z-40 bg-gray-800 px-4 py-2 flex items-center h-14">
+  <div class="md:hidden sticky top-0 z-40 bg-gray-800 px-42 py-10 flex items-center h-14">
     <RouterLink to="/">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" class="w-24 h-20" viewBox="0 0 2 2">
         <path fill="#3636e0"
@@ -11,7 +11,7 @@
 
 
   <!-- Desktop Navbar -->
-  <Disclosure as="nav" class="bg-gray-800 hidden md:block" v-slot="{ open }">
+  <Disclosure as="nav" class="bg-gray-800 hidden md:block sticky top-0 z-50" v-slot="{ open }">
     <div class="mx-2 max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
@@ -185,17 +185,17 @@ const navigation = ref([
           { name: 'OLT', href: '/product?category=GPON&sub=OLT' },
           { name: 'ONT', href: '/product?category=GPON&sub=ONT' },
           { name: 'ONU', href: '/product?category=GPON&sub=ONU' },
-          { name: 'ONU PoE', href: '/product?category=GPON&sub=ONUPoE' },
-          { name: 'GPON Stick', href: '/product?category=GPON&sub=GPONStick' },
+          { name: 'ONU PoE', href: '/product?category=GPON&sub=ONU+PoE' },
+          { name: 'GPON Stick', href: '/product?category=GPON&sub=GPON+STICK' },
         ],
       },
       {
         name: 'SWITCH', href: '/product?category=Switch',
         children: [
           { name: 'Core Switch', href: '/product?category=SWITCH&sub=BACKBONE' },
-          { name: 'L3 Switch', href: '/product?category=SWITCH&sub=L3Switch' },
-          { name: 'L2 Switch', href: '/product?category=SWITCH&sub=L2Switch' },
-          { name: 'PoE Switch', href: '/product?category=SWITCH&sub=PoESwitch' },
+          { name: 'L3 Switch', href: '/product?category=SWITCH&sub=L3+SWITCH' },
+          { name: 'L2 Switch', href: '/product?category=SWITCH&sub=L2+SWITCH' },
+          { name: 'PoE Switch', href: '/product?category=SWITCH&sub=PoE+SWITCH' },
         ],
       },
       {
