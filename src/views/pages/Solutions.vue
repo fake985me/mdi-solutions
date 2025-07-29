@@ -21,150 +21,62 @@
 
   <!-- ====== -->
 
-  <section>
-    <div class="relative overflow-hidden pt-16 pb-32 space-y-24">
-      <div class="relative">
-        <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
-          <div class="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
-            <div>
-              <div>
-                <!-- <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" aria-hidden="true" class="h-8 w-8 text-white">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z">
-                    </path>
-                  </svg>
-                </span> -->
-              </div>
-
-              <div class="mt-6">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-700">Training</h2>
-                <p class="mt-4 text-lg text-gray-600">
-                  This training is designed to provide a comprehensive understanding of GPON
-                  (Gigabit Passive Optical Network) technology, covering basic theory, network
-                  architecture, device introduction, to installation and configuration practices.
-                  GPON is a modern fiber optic network solution that is widely used by internet
-                  service providers (ISPs), telecommunications operators, and enterprises.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="mt-12 sm:mt-16 lg:mt-0">
-            <div class="flex justify-center lg:justify-end">
-              <img alt="Inbox user interface" loading="lazy" width="647" height="486"
-                class="w-[500px] h-[320px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5"
-                style="color: transparent" src="../../assets/static/solutions/training.jpg" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="relative">
-        <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
-          <div class="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0 lg:col-start-2">
-            <div>
-              <div>
-                <!-- <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" aria-hidden="true" class="h-8 w-8 text-white">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z">
-                    </path>
-                  </svg>
-                </span> -->
-              </div>
-              <div class="mt-6">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-700">
-                  Maintenance and Support Services
-                </h2>
-                <p class="mt-4 text-lg text-gray-600">
-                  With proper maintenance and taking preventive measures to avoid future network
-                  issues, such as regular maintenance and security audits, we can ensure smooth
-                  operations, minimize downtime, increase productivity, and protect data from the
-                  risk of loss or security breaches.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="mt-12 sm:mt-16 lg:mt-0">
-            <div class="flex justify-center lg:justify-start">
-              <img alt="Inbox user interface" loading="lazy" width="647" height="486"
-                class="w-[500px] h-[320px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5"
-                style="color: transparent" src="../../assets/static/solutions/Remote.jpg" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="relative">
-        <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
-          <div class="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
-            <div>
-              <div>
-                <!-- <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" aria-hidden="true" class="h-8 w-8 text-white">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z">
-                    </path>
-                  </svg>
-                </span> -->
-              </div>
-              <div class="mt-6">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-700">Managed Services</h2>
-                <p class="mt-4 text-lg text-gray-600">
-                  We provide services and set clear SLAs, as appropriate and effective solutions,
-                  optimizing the use of IT resources, to improve the operational efficiency of your
-                  business.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="mt-12 sm:mt-16 lg:mt-0">
-            <div class="flex justify-center lg:justify-end">
-              <img alt="Inbox user interface" loading="lazy" width="647" height="486"
-                class="w-[500px] h-[320px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5"
-                style="color: transparent" src="../../assets/static/solutions/managed.png" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="relative">
-        <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
-          <div class="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0 lg:col-start-2">
-            <div>
-              <div>
-                <!-- <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" aria-hidden="true" class="h-8 w-8 text-white">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z">
-                    </path>
-                  </svg>
-                </span> -->
-              </div>
-              <div class="mt-6">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-700">Design and Build</h2>
-                <p class="mt-4 text-lg text-gray-600">
-                  Our team of experts will help handle the process from design, consultation and
-                  installation, according to what you want.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="mt-12 sm:mt-16 lg:mt-0">
-            <div class="flex justify-center lg:justify-start">
-              <img alt="Inbox user interface" loading="lazy" width="647" height="486"
-                class="w-[500px] h-[320px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5"
-                style="color: transparent" src="../../assets/static/solutions/cable.jpg" />
-            </div>
-          </div>
-        </div>
+  <section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    
+    <!-- Card 1 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+      <img src="../../assets/static/solutions/training.jpg" class="w-full h-[200px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5" alt="Training">
+      <div class="text-center md:text-left">
+        <h2 class="text-2xl font-bold text-gray-700">Training</h2>
+        <p class="mt-2 text-gray-600 text-base">
+          This training provides a comprehensive understanding of GPON technology, from basic theory to hands-on configuration.
+        </p>
       </div>
     </div>
-  </section>
+
+    <!-- Card 2 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+      <div class="md:order-last">
+        <img src="../../assets/static/solutions/Remote.jpg" class="w-full h-[200px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5" alt="Maintenance">
+      </div>
+      <div class="text-center md:text-left">
+        <h2 class="text-2xl font-bold text-gray-700">Maintenance and Support</h2>
+        <p class="mt-2 text-gray-600 text-base">
+          Regular maintenance and audits ensure smooth operations, minimize downtime, and protect your systems from threats.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+      <img src="../../assets/static/solutions/managed.png" class="w-full h-[200px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5" alt="Managed Services">
+      <div class="text-center md:text-left">
+        <h2 class="text-2xl font-bold text-gray-700">Managed Services</h2>
+        <p class="mt-2 text-gray-600 text-base">
+          We offer managed services with clear SLAs to help your business operate efficiently and scale effectively.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+      <div class="md:order-last">
+        <img src="../../assets/static/solutions/cable.jpg" class="w-full h-[200px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5" alt="Design and Build">
+      </div>
+      <div class="text-center md:text-left">
+        <h2 class="text-2xl font-bold text-gray-700">Design and Build</h2>
+        <p class="mt-2 text-gray-600 text-base">
+          From network design to deployment, our team handles consultation, planning, and installation to meet your needs.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
 </template>
 
 <script setup>
