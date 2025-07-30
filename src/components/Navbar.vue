@@ -167,6 +167,7 @@ const dropdownOpen = ref(null)
 
 const navigation = ref([
   { name: 'Home', href: '/' },
+  { name: 'Solutions', href: '/solutions' },
   {
     name: 'Product',
     href: '/product',
@@ -207,8 +208,14 @@ const navigation = ref([
       },
     ]
   },
-  { name: 'Solutions', href: '/solutions' },
-  { name: 'Projects', href: '/projects' },
+  {
+    name: 'Projects', href: '/projects',
+    children: [
+      { name: 'Isp Customer', href: '/projects?id=ispcustomer' },
+      { name: 'Managed Services', href: '/projects?id=managedservices' },
+      { name: 'FTTX Project', href: '/projects?id=fttxproject' },
+    ]
+  },
   {
     name: 'Contact',
     href: '/contact',
