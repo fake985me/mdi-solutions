@@ -4,7 +4,7 @@
       <!-- Header -->
       <div class="flex items-baseline justify-between border-b pb-2 pt-8 flex-wrap">
         <h1 class="text-3xl font-bold tracking-tight text-gray-900">Products</h1>
-        <div class="flex space-x-2 mt-4 sm:mt-0">
+        <div class="flex lg:space-x-2 sm:space-x-0 gap-1 mt-4 sm:mt-0">
           <button v-for="(tab, index) in tabs" :key="index" @click="switchTab(tab.title)" :class="[
             'px-4 py-2 rounded text-sm font-medium',
             activeCategory === tab.title

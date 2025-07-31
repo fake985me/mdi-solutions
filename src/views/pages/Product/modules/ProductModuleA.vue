@@ -7,7 +7,7 @@
         class="text-base sm:text-lg text-sky-800 tracking-tight hover:underline self-start sm:self-auto">
         ← Back
       </button>
-      <h2 class="text-xl sm:text-2xl font-bold text-center w-full px-80 sm:w-auto mt-2 sm:mt-0">
+      <h2 class="text-3xl lg:mr-[860px] sm:mr-0 font-bold tracking-tight text-gray-900 sm:justify-between">
         Product Detail
       </h2>
     </div>

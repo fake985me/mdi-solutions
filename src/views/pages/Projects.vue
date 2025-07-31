@@ -1,6 +1,10 @@
 <template>
-  <section>
+  <section id="ispcustomer">
     <div class="relative overflow-hidden pt-16 pb-32 space-y-24">
+      <h1
+        class="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight sm:text-4xl text-gray-900 dark:text-white">
+        ISP Customer
+      </h1>
       <!-- =============================1========================== -->
       <div class="relative">
         <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
@@ -56,6 +60,15 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="managedservices">
+    <div class="relative overflow-hidden pt-16 pb-32 space-y-24">
+      <h1
+        class="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight sm:text-4xl text-gray-900 dark:text-white">
+        Manged Service Project
+      </h1>
       <!-- =============================1========================== -->
       <div class="relative">
         <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
@@ -209,6 +222,46 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { onMounted, watch, nextTick } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+function scrollToSection(id) {
+  nextTick(() => {
+    setTimeout(() => {
+      console.log('[DEBUG] scrollToSection called with id:', id)
+      const el = document.getElementById(id)
+      console.log('[DEBUG] Element found:', !!el)
+
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+        console.log('[DEBUG] Scrolling to:', el)
+      } else {
+        console.warn(`[DEBUG] Element with ID '${id}' not found.`)
+      }
+    }, 200)
+  })
+}
+
+
+// Scroll saat pertama kali halaman dibuka
+onMounted(() => {
+  if (route.query.id) {
+    scrollToSection(route.query.id)
+  }
+})
+
+// Scroll saat query berubah (misalnya klik menu project)
+watch(() => route.query.id, (newId) => {
+  if (newId) {
+    scrollToSection(newId)
+  }
+})
+</script>
+
 
 <style>
 @media (min-width: 1024px) {

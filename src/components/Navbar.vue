@@ -155,16 +155,14 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { Disclosure } from '@headlessui/vue'
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 
 const route = useRoute()
-
 const dropdownOpen = ref(null)
-
 const navigation = ref([
   { name: 'Home', href: '/' },
   { name: 'Solutions', href: '/solutions' },
@@ -248,5 +246,26 @@ const resetDropdown = () => {
 
 watch(() => route.fullPath, () => {
   resetDropdown()
+})
+
+function scrollToSection(id) {
+  nextTick(() => {
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
+  })
+}
+
+onMounted(() => {
+  if (route.query.id) {
+    scrollToSection(route.query.id)
+  }
+})
+
+watch(() => route.query.id, (newId) => {
+  if (newId) {
+    scrollToSection(newId)
+  }
 })
 </script>
