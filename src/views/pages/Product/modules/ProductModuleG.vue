@@ -7,7 +7,7 @@
         class="text-base sm:text-lg text-sky-800 tracking-tight hover:underline self-start sm:self-auto">
         ← Back
       </button>
-      <h2 class="text-xl sm:text-2xl font-bold text-center w-full px-80 sm:w-auto mt-2 sm:mt-0">
+      <h2 class="text-3xl lg:mr-[860px] sm:mr-0 font-bold tracking-tight text-gray-900 sm:justify-between">
         Product Detail
       </h2>
     </div>
@@ -93,7 +93,7 @@
     <!-- Related Products -->
     <section class="mt-16 w-full max-w-7xl px-4" v-if="relatedProducts.length">
       <h2 class="text-2xl font-bold mb-6 text-gray-900 text-center">Related Products</h2>
-      <div class="flex grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 justify-center gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div v-for="item in relatedProducts" :key="item.id"
           class="w-full bg-white border border-slate-900 shadow-md rounded-xl hover:scale-105 duration-300 hover:shadow-xl">
           <RouterLink :to="{
@@ -147,6 +147,8 @@ const goBack = () => {
     },
   })
 }
+
+
 
 const props = defineProps({
   product: {

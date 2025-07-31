@@ -3680,7 +3680,7 @@ const products = ref([
     image: 'https://ik.imagekit.io/iamfake/products/controller-w7210.png?updatedAt=1750752417835',
     category: 'WIRELESS',
     subCategory: 'CONTROLLER',
-    title: 'W7110',
+    title: 'W7100',
     subtitle: 'AP Controller',
     spec1: '8 ports 10/100/1000BASE-T or 100/1000BASE-X (Combo)',
     spec2: '4 ports 10G/1G BASE-X SFP+(Combo)',

@@ -200,8 +200,8 @@ const navigation = ref([
       {
         name: 'WIFI', href: '/product?category=WIRELESS',
         children: [
-          { name: 'Accees Point', href: '/product?category=WIRELESS&sub=AP' },
-          { name: 'Controller', href: '/product?category=WI-FI&sub=OutdoorAP' },
+          { name: 'Accees Point', href: '/product?category=WIRELESS&sub=Access+Point' },
+          { name: 'Controller', href: '/product?category=WIRELESS&sub=CONTROLLER' },
         ],
       },
     ]

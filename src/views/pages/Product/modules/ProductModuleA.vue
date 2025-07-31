@@ -78,7 +78,7 @@
     <!-- Related Products -->
     <section class="mt-16 w-full max-w-7xl px-4" v-if="relatedProducts.length">
       <h2 class="text-2xl font-bold mb-6 text-gray-900 text-center">Related Products</h2>
-      <div class="flex grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 justify-center gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div v-for="item in relatedProducts" :key="item.id"
           class="w-full bg-white border border-slate-900 shadow-md rounded-xl hover:scale-105 duration-300 hover:shadow-xl">
           <RouterLink :to="{
