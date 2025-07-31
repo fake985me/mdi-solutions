@@ -79,7 +79,7 @@
           </div>
           <div class="card h-fit max-w-6xl p-5 md:p-12" id="form">
             <h2 class="mb-4 text-2xl font-bold dark:text-white">Ready to Get Started?</h2>
-            <form id="contactForm">
+            <form id="contactForm" @submit="openMailClient">
               <div class="mb-6">
                 <div class="mx-0 mb-1 sm:mb-4">
                   <div class="mx-0 mb-1 sm:mb-4">
@@ -112,3 +112,22 @@
     </div>
   </section>
 </template>
+
+<script setup>
+function openMailClient(event) {
+  event.preventDefault()
+
+  const name = document.getElementById('name').value
+  const email = document.getElementById('email').value
+  const message = document.getElementById('textarea').value
+
+  const subject = encodeURIComponent(`Contact Form Submission from ${name}`)
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)
+
+  // Email tujuan
+  const recipient = 'support@mdi-solutions.com'
+
+  // Buat mailto link dan buka
+  window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`
+}
+</script>
