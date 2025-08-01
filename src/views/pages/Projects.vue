@@ -1,7 +1,7 @@
 <template>
   <!-- ISP Customer Section -->
   <section id="ispcustomer" class="bg-white">
-    <div class="max-w-5xl mx-auto px-4 py-40 space-y-16">
+    <div class="max-w-5xl mx-auto px-2 py-20 space-y-12">
       <h1 class="text-center text-3xl font-bold tracking-tight sm:text-4xl text-gray-900">
         ISP Customer
       </h1>
@@ -23,7 +23,7 @@
               {{ item.text }}
               <span v-if="item.hoverText" class="text-sky-500 hover:text-sky-700">{{
                 item.hoverText
-                }}</span>
+              }}</span>
             </p>
           </div>
         </article>

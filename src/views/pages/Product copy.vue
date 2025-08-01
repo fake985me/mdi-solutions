@@ -1,7 +1,6 @@
 <template>
   <div>
-
-    <div class="max-w-screen-xl mx-auto py-8 px-4 lg:py-4 lg:px-6">
+    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="flex items-baseline justify-between border-b pb-2 pt-8 flex-wrap">
         <h1 class="text-3xl font-bold tracking-tight text-gray-900">Products</h1>
@@ -17,9 +16,10 @@
         </div>
       </div>
 
-      <div class="flex flex-col md:flex-row">
-        <!-- Sidebar Filter -->
-        <div class="mr-0 md:mr-8 mb-6 md:mb-0 pt-4">
+      <!-- Filter dan Produk -->
+      <section class="pb-24 pt-6">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <!-- Sidebar Filter -->
           <aside>
             <ul class="space-y-2 text-sm font-medium text-gray-900">
               <li :class="[
@@ -38,10 +38,8 @@
               </li>
             </ul>
           </aside>
-        </div>
 
-        <!-- Grid Produk -->
-        <div class="flex-1 flex flex-col sm:flex-row flex-wrap -mb-4 -mx-2 pt-4">
+          <!-- Grid Produk -->
           <div class="lg:col-span-3">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <div v-for="product in paginatedProducts" :key="product.id"
@@ -80,11 +78,9 @@
               </button>
             </div>
           </div>
-
-
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="py-12 px-4 max-w-7xl mx-auto">
     <div class="text-center mb-4">
-      <h2 class="text-3xl font-bold text-gray-900">Product Solutions</h2>
+      <h2 class="text-3xl font-bold text-gray-900">Product</h2>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -23,9 +23,6 @@
   <!-- ====== -->
 
   <div class="py-4">
-    <div class="text-center mb-10">
-      <h2 class="text-3xl font-bold text-gray-900">Service</h2>
-    </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
 
       <!-- Card 1 -->
