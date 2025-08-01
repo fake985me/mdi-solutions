@@ -82,21 +82,21 @@
             <form id="contactForm" @submit.prevent="handleSubmit">
               <!-- Name -->
               <div class="mb-4">
-                <label for="name" class="block text-sm font-medium">Name</label>
+                <label for="name" class="block text-sm text-gray-100 font-medium">Name</label>
                 <input id="name" v-model="form.name" required placeholder="Your name"
                   class="w-full mt-1 border rounded-md p-2" />
               </div>
 
               <!-- Email -->
               <div class="mb-4">
-                <label for="email" class="block text-sm font-medium">Email</label>
+                <label for="email" class="block text-sm text-gray-100  font-medium">Email</label>
                 <input id="email" v-model="form.email" type="email" required placeholder="Your email address"
                   class="w-full mt-1 border rounded-md p-2" />
               </div>
 
               <!-- Message -->
               <div class="mb-4">
-                <label for="message" class="block text-sm font-medium">Message</label>
+                <label for="message" class="block text-sm text-gray-100  font-medium">Message</label>
                 <textarea id="message" v-model="form.message" required placeholder="Your message..." rows="5"
                   class="w-full mt-1 border rounded-md p-2"></textarea>
               </div>
