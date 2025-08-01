@@ -79,32 +79,32 @@
           </div>
           <div class="card h-fit max-w-6xl p-5 md:p-12" id="form">
             <h2 class="mb-4 text-2xl font-bold dark:text-white">Ready to Get Started?</h2>
-            <form id="contactForm" @submit="openMailClient">
-              <div class="mb-6">
-                <div class="mx-0 mb-1 sm:mb-4">
-                  <div class="mx-0 mb-1 sm:mb-4">
-                    <label for="name" class="pb-1 text-xs uppercase tracking-wider"></label><input type="text" id="name"
-                      autocomplete="given-name" placeholder="Your name"
-                      class="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
-                      name="name">
-                  </div>
-                  <div class="mx-0 mb-1 sm:mb-4">
-                    <label for="email" class="pb-1 text-xs uppercase tracking-wider"></label><input type="email"
-                      id="email" autocomplete="email" placeholder="Your email address"
-                      class="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
-                      name="email">
-                  </div>
-                </div>
-                <div class="mx-0 mb-1 sm:mb-4">
-                  <label for="textarea" class="pb-1 text-xs uppercase tracking-wider"></label><textarea id="textarea"
-                    name="textarea" cols="30" rows="5" placeholder="Write your message..."
-                    class="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"></textarea>
-                </div>
+            <form id="contactForm" @submit.prevent="handleSubmit">
+              <!-- Name -->
+              <div class="mb-4">
+                <label for="name" class="block text-sm font-medium">Name</label>
+                <input id="name" v-model="form.name" required placeholder="Your name"
+                  class="w-full mt-1 border rounded-md p-2" />
               </div>
-              <div class="text-center">
-                <button type="submit" class="w-full bg-blue-800 text-white px-6 py-3 font-xl rounded-md sm:mb-0">Send
-                  Message</button>
+
+              <!-- Email -->
+              <div class="mb-4">
+                <label for="email" class="block text-sm font-medium">Email</label>
+                <input id="email" v-model="form.email" type="email" required placeholder="Your email address"
+                  class="w-full mt-1 border rounded-md p-2" />
               </div>
+
+              <!-- Message -->
+              <div class="mb-4">
+                <label for="message" class="block text-sm font-medium">Message</label>
+                <textarea id="message" v-model="form.message" required placeholder="Your message..." rows="5"
+                  class="w-full mt-1 border rounded-md p-2"></textarea>
+              </div>
+
+              <!-- Button -->
+              <button type="submit" class="w-full bg-blue-700 text-white p-3 rounded-md hover:bg-blue-800">
+                Send Message
+              </button>
             </form>
           </div>
         </div>
@@ -113,21 +113,43 @@
   </section>
 </template>
 
-<script setup>
-function openMailClient(event) {
-  event.preventDefault()
+<script>
+export default {
+  name: "ContactForm",
+  data() {
+    return {
+      form: {
+        name: "",
+        email: "",
+        message: ""
+      }
+    };
+  },
+  methods: {
+    handleSubmit() {
+      const { name, email, message } = this.form;
+      const subject = encodeURIComponent(`Message from ${name}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+      const recipient = "info@mdi-solutions.com";
 
-  const name = document.getElementById('name').value
-  const email = document.getElementById('email').value
-  const message = document.getElementById('textarea').value
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
+      const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
 
-  const subject = encodeURIComponent(`Contact Form Submission from ${name}`)
-  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)
+      // Buka Gmail di tab baru
+      const newTab = window.open(gmailUrl, "_blank");
 
-  // Email tujuan
-  const recipient = 'support@mdi-solutions.com'
-
-  // Buat mailto link dan buka
-  window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`
-}
+      // Jika browser memblokir tab, langsung fallback
+      if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+        window.location.href = mailtoUrl;
+      } else {
+        // Tunggu 1.5 detik, jika user menutup tab terlalu cepat, fallback
+        setTimeout(() => {
+          if (newTab.closed) {
+            window.location.href = mailtoUrl;
+          }
+        }, 1500);
+      }
+    }
+  }
+};
 </script>
