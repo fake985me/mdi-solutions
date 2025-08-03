@@ -1,88 +1,100 @@
 <template>
-  <div id="hero" class="bg-black text-white py-10 relative overflow-hidden">
-    <div
-      v-for="(slide, index) in slides"
-      :key="index"
-      v-show="index === currentIndex"
-      class="absolute inset-0 transition-opacity duration-1000"
-      :style="{ backgroundImage: `url(${slide.bg})` }"
-    >
-      <div class="bg-black/50 absolute inset-0"></div>
+  <div id="hero" class="bg-white text-white py-10 relative overflow-hidden">
+    <Transition name="fade" mode="out-in">
       <div
-        class="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 m-4"
+        :key="currentIndex"
+        class="absolute inset-0"
       >
+        <component
+          v-if="slides[currentIndex].component"
+          :is="slides[currentIndex].component"
+          class="absolute inset-0 w-full h-full object-cover z-0"
+        />
         <div
-          v-if="slide.imgLeft || slide.midLeft || slide.midRight || slide.imgRight"
-          class="flex flex-col md:flex-row items-center justify-center gap-6 w-full max-w-6xl mx-auto"
+          v-else
+          class="absolute inset-0 bg-cover bg-center z-0"
+          :style="{ backgroundImage: `url(${slides[currentIndex].bg})` }"
+        ></div>
+
+        <div class="bg-black/50 absolute inset-0 z-0"></div>
+
+        <!-- Konten -->
+        <div
+          class="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 m-4"
         >
-          <img
-            v-if="slide.imgLeft"
-            :src="slide.imgLeft"
-            class="w-25 max-w-[220px] h-auto animate-fadeInLeft"
-          />
-          <img
-            v-if="slide.midLeft"
-            :src="slide.midLeft"
-            class="w-70 max-w-[140px] h-auto animate-fadeInLeft"
-          />
-          <img
-            v-if="slide.midRight"
-            :src="slide.midRight"
-            class="w-80 max-w-[160px] h-auto animate-fadeInRight"
-          />
-          <img
-            v-if="slide.imgRight"
-            :src="slide.imgRight"
-            class="w-90 max-w-[180px] h-auto animate-fadeInRight"
-          />
+          <div
+            v-if="slides[currentIndex].imgLeft || slides[currentIndex].midLeft || slides[currentIndex].midRight || slides[currentIndex].imgRight"
+            class="flex flex-col md:flex-row items-center justify-center gap-6 w-full max-w-6xl mx-auto"
+          >
+            <img
+              v-if="slides[currentIndex].imgLeft"
+              :src="slides[currentIndex].imgLeft"
+              class="w-25 max-w-[220px] h-auto animate-fadeInLeft"
+            />
+            <img
+              v-if="slides[currentIndex].midLeft"
+              :src="slides[currentIndex].midLeft"
+              class="w-70 max-w-[140px] h-auto animate-fadeInLeft"
+            />
+            <img
+              v-if="slides[currentIndex].midRight"
+              :src="slides[currentIndex].midRight"
+              class="w-80 max-w-[160px] h-auto animate-fadeInRight"
+            />
+            <img
+              v-if="slides[currentIndex].imgRight"
+              :src="slides[currentIndex].imgRight"
+              class="w-90 max-w-[180px] h-auto animate-fadeInRight"
+            />
+          </div>
+
+          <div v-if="slides[currentIndex].centerImg" class="mb-4">
+            <img
+              :src="slides[currentIndex].centerImg"
+              class="w-90 md:w-[620px] mx-auto animate-fadeInDown"
+            />
+          </div>
+
+          <p
+            class="text-2xl mt-4 animate-fadeInUp max-w-2xl mx-auto drop-shadow-[0_2px_3px_rgba(101,101,223,0.8)] text-shadow-xl text-shadow-sky-300"
+          >
+            {{ slides[currentIndex].text }}
+          </p>
         </div>
-        <div v-if="slide.centerImg" class="mb-4">
-          <img :src="slide.centerImg" class="w-90 md:w-[620px] mx-auto animate-fadeInDown" />
-        </div>
-        <p
-          class="text-2xl mt-4 animate-fadeInUp max-w-2xl mx-auto drop-shadow-[0_2px_3px_rgba(101,101,223,0.8)] text-shadow-xl text-shadow-sky-300"
-        >
-          {{ slide.text }}
-        </p>
       </div>
-    </div>
+    </Transition>
+
 
     <!-- Navigasi -->
-    <button
-      @click="prevSlide"
-      class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800/50 hover:bg-gray-700/80 text-white p-3 rounded-full z-20"
-    >
+    <button @click="prevSlide"
+      class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800/50 hover:bg-gray-700/80 text-white p-3 rounded-full z-20">
       ❮
     </button>
-    <button
-      @click="nextSlide"
-      class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800/50 hover:bg-gray-700/80 text-white p-3 rounded-full z-20"
-    >
+    <button @click="nextSlide"
+      class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800/50 hover:bg-gray-700/80 text-white p-3 rounded-full z-20">
       ❯
     </button>
 
     <!-- Dots -->
     <div class="absolute bottom-6 flex gap-2 justify-center w-full z-20">
-      <button
-        v-for="(slide, index) in slides"
-        :key="index"
-        class="w-3 h-3 rounded-full bg-gray-300 transition-all duration-300"
-        :class="{ 'bg-blue-500 scale-125': index === currentIndex }"
-        @click="goToSlide(index)"
-      ></button>
+      <button v-for="(slide, index) in slides" :key="index"
+        class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300"
+        :class="{ 'bg-blue-500 scale-125': index === currentIndex }" @click="goToSlide(index)"></button>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import LineAnimationSVG from '@/components/icons/LineAnimationSVG.vue'
 
 const currentIndex = ref(0)
 let intervalId = null
 
 const slides = [
   {
-    bg: new URL('@/assets/static/carousel/1.jpg', import.meta.url).href,
+    useComponent: true,
+    component: LineAnimationSVG,
     centerImg: new URL('@/assets/static/carousel/mdi.png', import.meta.url).href,
     centerImgWidth: 500,
     centerImgHeight: 250,
@@ -194,20 +206,21 @@ onUnmounted(() => {
 }
 
 .animate-fadeInLeft {
-  animation: fadeInLeft 0.8s ease-in-out;
+  animation: fadeInLeft 2s ease-in-out;
 }
 
 .animate-fadeInRight {
-  animation: fadeInRight 0.8s ease-in-out;
+  animation: fadeInRight 2s ease-in-out;
 }
 
 .animate-fadeInUp {
-  animation: fadeInUp 0.8s ease-in-out;
+  animation: fadeInUp 2s ease-in-out;
 }
 
 .animate-fadeInDown {
-  animation: fadeInDown 0.8s ease-in-out;
+  animation: fadeInDown 2s ease-in-out;
 }
+
 
 .emboss {
   background: whitesmoke;

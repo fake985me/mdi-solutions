@@ -2,7 +2,7 @@
   <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Tombol Back -->
     <div
-      class="flex flex-col sm:flex-row items-center justify-between border-b border-black pb-4 pt-4 bg-gradient-to-r bg-slate-400 bg-slate-100 fixed left-0 w-full z-10 px-4">
+      class="flex flex-col sm:flex-row items-center justify-between border-b border-black pb-4 pt-4 bg-gradient-to-r bg-slate-400 fixed left-0 w-full z-10 px-4">
       <button @click="goBack"
         class="text-base sm:text-lg text-sky-800 tracking-tight hover:underline self-start sm:self-auto">
         ← Back
@@ -80,10 +80,12 @@
     </div>
 
     <!-- Diagram Jaringan -->
-    <div class="w-full text-center mt-16 px-4" v-if="product.networkdiagram">
-      <h2 class="text-xl md:text-2xl font-semibold mb-4">{{ product.category }} Network Configuration Diagram</h2>
-      <img :src="product.networkdiagram" :alt="product.title" class="mx-auto w-full max-w-xl rounded-lg" />
-    </div>
+    <NetworkDiagram
+  v-if="product.networkdiagram"
+  :networkDiagram="product.networkdiagram"
+  :title="product.title"
+  :category="product.category"
+/>
 
     <!-- Related Products -->
     <section class="mt-16 w-full max-w-7xl px-4" v-if="relatedProducts.length">
@@ -126,6 +128,7 @@
 import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import products from '@/composable/useProducts'
+import NetworkDiagram from './components/NetworkDiagram.vue'
 
 const router = useRouter()
 const route = useRoute()
