@@ -7,7 +7,7 @@
       class="absolute inset-0 transition-opacity duration-1000"
       :style="{ backgroundImage: `url(${slide.bg})` }"
     >
-      <div class="bg-black/50 absolute inset-0"></div>
+      <div class="bg-black/20 absolute inset-0"></div>
       <div
         class="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 m-4"
       >

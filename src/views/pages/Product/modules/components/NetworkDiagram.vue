@@ -6,11 +6,11 @@
         <Networkdiagram />
         <!-- Teks di atas gambar -->
         <div
-            class="absolute lg:top-[355px] top-[150px] lg:left-[350px] left-[80px] transform transition-transform duration-1000 ease-in-out scale-100 group-hover:scale-150">
-            <span class="bg-white text-sm px-2 py-1 rounded shadow">{{ category }} {{ subCategory }}</span>
+            class="absolute top-[185px] sm:top-[375px] left-[102px] sm:left-[350px] transform transition-transform duration-1000 ease-in-out scale-100 group-hover:scale-150 sm:text-[14px] text-[6px]">
+            {{ category }} {{ subCategory }}
         </div>
         <img :src="networkDiagram" :alt="title"
-            class="absolute lg:top-[428px] max-top-[212px] top-[205px] lg:left-[355px] left-[110px] lg:w-[55px] w-[15px] h-auto pointer-events-none transition-transform duration-1000 ease-in-out scale-125 group-hover:scale-[2.5]" />
+            class="absolute top-[208px] sm:top-[425px] left-[105px] sm:left-[360px] w-[25px] sm:w-[55px] h-auto pointer-events-none transition-transform duration-1000 ease-in-out scale-125 group-hover:scale-[2.5]" />
 
     </div>
 </template>
