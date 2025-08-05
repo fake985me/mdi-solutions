@@ -27,13 +27,12 @@
 
       <!-- Card 1 -->
       <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-        <img src="../../assets/static/solutions/training.jpg"
+        <img src="../../assets/static/solutions/managed.png"
           class="w-full h-[240px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5" alt="Training">
         <div class="text-center md:text-left">
-          <h2 class="text-2xl font-bold text-gray-700">Training</h2>
+          <h2 class="text-2xl font-bold text-gray-700 italic text-shadow-2xl text-shadow-blue-500">Managed Services</h2>
           <p class="mt-2 text-gray-600 text-base">
-            This training provides a comprehensive understanding of GPON technology, from basic theory to hands-on
-            configuration.
+            We offer managed services with clear SLAs to help your business operate efficiently and scale effectively.
           </p>
         </div>
       </div>
@@ -46,7 +45,7 @@
             alt="Maintenance">
         </div>
         <div class="text-center md:text-left">
-          <h2 class="text-2xl font-bold text-gray-700">Maintenance and Support</h2>
+          <h2 class="text-2xl font-bold text-gray-700 italic text-shadow-2xl text-shadow-blue-500">Maintenance and Support</h2>
           <p class="mt-2 text-gray-600 text-base">
             Regular maintenance and audits ensure smooth operations, minimize downtime, and protect your systems from
             threats.
@@ -56,13 +55,14 @@
 
       <!-- Card 3 -->
       <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-        <img src="../../assets/static/solutions/managed.png"
+        <img src="../../assets/static/solutions/cable.jpg"
           class="w-full h-[240px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5"
           alt="Managed Services">
         <div class="text-center md:text-left">
-          <h2 class="text-2xl font-bold text-gray-700">Managed Services</h2>
+          <h2 class="text-2xl font-bold text-gray-700 italic text-shadow-2xl text-shadow-blue-500">Design and Build</h2>
           <p class="mt-2 text-gray-600 text-base">
-            We offer managed services with clear SLAs to help your business operate efficiently and scale effectively.
+            From network design to deployment, our team handles consultation, planning, and installation to meet your
+            needs.
           </p>
         </div>
       </div>
@@ -70,15 +70,15 @@
       <!-- Card 4 -->
       <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
         <div class="md:order-last">
-          <img src="../../assets/static/solutions/cable.jpg"
+          <img src="../../assets/static/solutions/training.jpg"
             class="w-full h-[240px] object-cover rounded-xl shadow-xl ring-1 ring-black ring-opacity-5"
             alt="Design and Build">
         </div>
         <div class="text-center md:text-left">
-          <h2 class="text-2xl font-bold text-gray-700">Design and Build</h2>
+          <h2 class="text-2xl font-bold text-gray-700 italic text-shadow-2xl text-shadow-blue-500"><span>Training </span><span class="text-blue-700 font-extrabold">DASAN </span><span>Product</span></h2>
           <p class="mt-2 text-gray-600 text-base">
-            From network design to deployment, our team handles consultation, planning, and installation to meet your
-            needs.
+            This training provides a comprehensive understanding of GPON technology, from basic theory to hands-on
+            configuration.
           </p>
         </div>
       </div>

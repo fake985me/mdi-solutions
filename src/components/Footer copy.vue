@@ -11,7 +11,8 @@
           </svg>
           <span class="text-xl font-semibold">Moimstone Dasan Indonesia</span>
         </a>
-        <a aria-label="Moimstone Dasan Indonesia" class="flex items-center space-x-3">
+
+        <a href="/" aria-label="Moimstone Dasan Indonesia" class="flex items-center space-x-3">
           <svg xmlns="http://www.w3.org/2000/svg" fill="#3636e0" class="w-24 h-16" viewBox="0 0 172.85 26.63">
             <g>
               <path class="cls-1"
@@ -31,102 +32,60 @@
       </div>
 
       <!-- Links Section -->
-      <div
-        class="justify-items-betweem place-self-start grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 text-sm md:w-full gap-4">
-        <div>
-          <h3
-            class="text-gray-900 dark:text-gray-100 font-semibold uppercase tracking-tight mb-2 border-b-2 border-gray-300 dark:border-gray-700 pb-2">
-            Home
-          </h3>
-        </div>
-        <div>
-          <h3
-            class="text-gray-900 dark:text-gray-100 font-semibold uppercase tracking-tight mb-2 border-b-2 border-gray-300 dark:border-gray-700 pb-2">
-            Product
-          </h3>
-          <ul class="space-y-1">
-            <li>
-              <a href="/product" class="hover:underline">OLT</a>
-            </li>
-            <li><a href="/product" class="hover:underline">ONU</a></li>
-            <li>
-              <a href="/product" class="hover:underline">ONU PoE</a>
-            </li>
-            <li>
-              <a href="/product" class="hover:underline">ONT</a>
-            </li>
-            <li>
-              <a href="/product" class="hover:underline">SWITCH</a>
-            </li>
-            <li>
-              <a href="/product" class="hover:underline">PoE Switch</a>
-            </li>
-            <li>
-              <a href="/product" class="hover:underline">WIFI</a>
-            </li>
-          </ul>
-        </div>
 
-        <div>
-          <h3
-            class="text-gray-900 dark:text-gray-100 font-semibold uppercase tracking-wide mb-2 border-b-2 border-gray-300 dark:border-gray-700 pb-2">
-            Service & Solutions
-          </h3>
-          <ul class="space-y-1">
-            <li>
-              <a href="/solutions" class="hover:underline">GPON Training</a>
-            </li>
-            <li><a href="/solutions" class="hover:underline">Maintenance and Support</a></li>
-            <li>
-              <a href="/solutions" class="hover:underline">Managed Services</a>
-            </li>
-            <li>
-              <a href="/solutions" class="hover:underline">Design and Build</a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h3
-            class="text-gray-900 dark:text-gray-100 font-semibold uppercase tracking-wide mb-2 border-b-2 border-gray-300 dark:border-gray-700 pb-2">
-            Our Projects
-          </h3>
-          <ul class="space-y-1">
-            <li>
-              <a href="/project" class="hover:underline">ISP Patner</a>
-            </li>
-            <li>
-              <a href="/project" class="hover:underline">managed Service</a>
-            </li>
-            <li>
-              <a href="/project" class="hover:underline">FTTx</a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h3
-            class="text-gray-900 dark:text-gray-100 font-semibold uppercase tracking-wide mb-2 border-b-2 border-gray-300 dark:border-gray-700 pb-2">
-            Contact Us :
-          </h3>
-          <li>
-            Address :
-            <ul class="ps-5 mt-2 space-y-1 list-inside">
-              <li>Gedung Tifa Arum Realty 3th Floor Suite 301</li>
-            </ul>
-          </li>
-          <li>
-            Contact :
-            <ul class="ps-5 mt-2 space-y-1 list-inside">
-              <li>Phone : +62 21 2930-6714</li>
-              <li>
-                Email : info@mdi-solutions.com <br> support@mdi-solutions.com
-              </li>
-            </ul>
-          </li>
-        </div>
+      <div class="max-w-screen-xl mx-auto px-4 sm:px-6  text-gray-600 dark:text-gray-400 flex flex-wrap grid-cols-4 md:justify-center justify-between">
+        <div class="p-5">
+        <div class="text-xs uppercase underline text-gray-600 dark:text-gray-400 font-medium" href="/">Home</div>
+        
+      </div>
+      <div class="p-5">
+        <div class="text-xs uppercase underline text-gray-600 dark:text-gray-400 font-medium">Product</div>
+        <a class="my-1 block" href="/product">OLT<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+        <a class="my-1 block" href="/product">ONU<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+        <a class="my-1 block" href="/product">ONU PoE<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+        <a class="my-1 block" href="/product">ONT<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+        <a class="my-1 block" href="/product">XGSPON<span class="text-sky-500 text-xs p-1">New</span>
+        </a>
+        <a class="my-1 block" href="/product">Switch<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+        <a class="my-1 block" href="/product">Wireless<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+      </div>
+      <div class="p-5">
+        <div class="text-xs uppercase underline text-gray-600 dark:text-gray-400 font-medium">Service & Solutions</div>
+        <a class="my-1 block" href="/solutions">Managed Service<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+        <a class="my-1 block" href="/solutions">Maintenance Service<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+        <a class="my-1 block" href="/solutions">Design and Build<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+        <a class="my-1 block" href="/solutions">Training Gpon Dasan Product<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+      </div>
+      <div class="p-5">
+        <div class="text-xs uppercase underline text-gray-600 dark:text-gray-400 font-medium">Contact Us</div>
+        <a class="my-1 block" href="/product">Gedung Tifa Arum Realty 3th Floor Suite 301<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+        <a class="my-1 block" href="/product">Jl. Kuningan Bar. 1 No.26, RT.6/RW.1, Kuningan Bar.,<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+        <a class="my-1 block" href="/product">Kec. Mampang Prpt., Kota Jakarta Selatan,<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+        <a class="my-1 block" href="/product">Daerah Khusus Ibukota Jakarta 12710<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+        <a class="my-1 block" href="/product">Design and Build<span class="text-gray-500 text-xs p-1"></span>
+        </a>
+        <a class="my-1 block" href="/product">Training Gpon Dasan Product<span class="text-gray-500 text-xs p-1"></span>
+        </a>
       </div>
     </div>
+
+    </div>
+
+    
 
     <!-- Bottom Footer -->
     <div
