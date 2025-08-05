@@ -55,8 +55,23 @@
                   <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">Contact
                   </h3>
                   <p class="text-gray-600 dark:text-slate-400">Office : +62 21 2930-6714</p>
-                  <p class="text-gray-600 dark:text-slate-400">Mail: support@mdi-solutions.com <br>
-                    info@mdi-solutions.com</p>
+                  <p class="text-gray-600 dark:text-slate-400">
+                  <ul class="space-y-2 space-x-10 text-sm text-gray-700 dark:text-gray-400">
+                    <li><strong>Mail :</strong></li>
+                    <li>
+                      <a href="mailto:support@mdi-solutions.com" class="text-blue-600 hover:underline">
+                        <span class="hidden md:inline">support@mdi-solutions.com
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="mailto:info@mdi-solutions.com" class="text-blue-600 hover:underline">
+                        <span class="hidden md:inline">info@mdi-solutions.com
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                  </p>
                 </div>
               </li>
               <li class="flex">
