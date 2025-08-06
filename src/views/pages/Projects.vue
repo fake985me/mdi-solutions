@@ -32,7 +32,7 @@
   </section>
   <!-- Managed Services Section -->
   <section id="managedservices" class="bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 space-y-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-16">
       <h1 class="text-center text-3xl font-bold tracking-tight sm:text-4xl text-gray-900">
         Managed Services Project
       </h1>
@@ -44,14 +44,41 @@
         ]">
         <!-- Text -->
         <div class="w-full lg:w-1/2 max-w-xl space-y-4 text-center lg:text-left">
-          <p class="text-xs font-bold tracking-tight text-gray-900">Managed Services Project</p>
-          <h2 class="text-2xl font-bold tracking-tight text-gray-800">{{ project.title }}</h2>
+          <p class="text-2xl font-bold tracking-tight text-sky-900 italic">Managed Services Project</p>
+          <h2 class="text-2xl font-bold tracking-tight text-gray-800 underline underline-offset-auto">{{ project.title }}</h2>
           <p class="text-base text-gray-700">{{ project.address }}</p>
         </div>
 
         <!-- Image -->
         <div class="w-[full] sm:w-auto max-w-md">
           <img :src="project.image" :alt="project.title"
+            class="w-[240px] h-auto max-h-[140px] object-cover rounded-xl shadow-2xl ring-1 ring-black ring-opacity-5" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Fttx Project Section -->
+  <section id="fttxproject" class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-16">
+      <h1 class="text-center text-3xl font-bold tracking-tight sm:text-4xl text-gray-900">
+        FTTx Project
+      </h1>
+
+      <div v-for="(fttx, index) in fttxs" :key="index"
+        class="flex flex-col lg:flex-row items-center justify-between gap-10 pb-12" :class="[
+          index % 2 !== 0 ? 'lg:flex-row-reverse' : '',
+          index < fttxs.length - 1 ? 'border-b border-gray-300' : '',
+        ]">
+        <!-- Text -->
+        <div class="w-full lg:w-1/2 max-w-xl space-y-4 text-center lg:text-left">
+          <p class="text-2xl font-bold tracking-tight text-sky-900 italic">FTTx Project</p>
+          <h2 class="text-2xl font-bold tracking-tight text-gray-800 underline underline-offset-auto">{{ fttx.title }}</h2>
+          <p class="text-base text-gray-700">{{ fttx.address }}</p>
+        </div>
+
+        <!-- Image -->
+        <div class="w-[full] sm:w-auto max-w-md">
+          <img :src="fttx.image" :alt="fttx.title"
             class="w-[240px] h-auto max-h-[140px] object-cover rounded-xl shadow-2xl ring-1 ring-black ring-opacity-5" />
         </div>
       </div>
@@ -139,6 +166,19 @@ const managedProjects = [
     address:
       'Jalan Raya Cikarang - Cibarusah, Exit Toll KM31 Cikarang Barat, Kabupaten Bekasi, Jawa Barat 17530',
     image: chadstone,
+  },
+]
+
+const fttxs = [
+  {
+    title: 'FTTx Project',
+    address: 'Jl. Raya Cikarang - Cibarusah, Exit Toll KM31 Cikarang Barat, Kabupaten Bekasi, Jawa Barat 17530',
+    image: chadstone,
+  },
+  {
+    title: 'FTTx Project',
+    address: 'Jl. Yos Sudarso No.80, Bumi Waras, Kota Bandar Lampung, Lampung 35225',
+    image: lampung,
   },
 ]
 </script>

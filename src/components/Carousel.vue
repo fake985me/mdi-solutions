@@ -8,7 +8,7 @@
         <component
           v-if="slides[currentIndex].component"
           :is="slides[currentIndex].component"
-          class="absolute inset-0 w-full h-full object-cover z-0"
+          class="absolute inset-0 w-full h-full bg-white object-cover z-0"
         />
         <div
           v-else
@@ -16,7 +16,7 @@
           :style="{ backgroundImage: `url(${slides[currentIndex].bg})` }"
         ></div>
 
-        <div class="bg-black/50 absolute inset-0 z-0"></div>
+        <div class="bg-slate-300/20 absolute inset-0 z-0"></div>
 
         <!-- Konten -->
         <div
@@ -131,7 +131,7 @@ const goToSlide = (index) => {
 
 const startAutoSlide = () => {
   if (intervalId) clearInterval(intervalId)
-  intervalId = setInterval(nextSlide, 5000) // ganti interval ke 5 detik agar tidak terlalu cepat
+  intervalId = setInterval(nextSlide, 7500) // ganti interval ke 5 detik agar tidak terlalu cepat
 }
 
 onMounted(() => {
@@ -223,10 +223,10 @@ onUnmounted(() => {
 
 
 .emboss {
-  background: whitesmoke;
+  background: rgb(196, 196, 196);
   color: rgba(0, 0, 0, 0.6);
   text-shadow:
     2px 8px 6px rgba(0, 0, 0, 0.2),
-    0px -5px 16px rgba(255, 255, 255, 0.3);
+    0px -5px 16px rgba(43, 42, 42, 0.3);
 }
 </style>

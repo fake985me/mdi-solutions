@@ -1,15 +1,15 @@
 <template>
   <footer class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 py-10 px-2">
-    <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row md:justify-center justify-between md:gap-46 gap-10">
+    <div class="max-w-screen-xl mx-auto px-2 flex flex-col md:flex-row md:justify-between gap-4">
       <!-- Logo & Description -->
-      <div class="md:w-1/3 place-self-start">
+      <div class="w-full md:w-1/3">
         <a href="/" class="flex items-center space-x-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" class="mb-3 w-16 h-16"
             viewBox="0 0 2 2">
             <path fill="#3636e0"
               d="M.892 1.548H.678v-.296q0-.034-.008-.047t-.027-.013q-.036 0-.036.061v.296H.394v-.296q0-.034-.008-.047t-.027-.014q-.036 0-.036.061v.296H.11V1.21q0-.092.064-.157T.331.988q.095 0 .17.077Q.585.988.669.988q.107 0 .172.075.051.058.051.17zM1.374.8h.214v.458q0 .126-.069.205-.04.046-.1.073t-.125.027q-.128 0-.215-.083t-.088-.202q0-.116.087-.201t.206-.085l.057.003v.227q-.026-.02-.053-.02-.033 0-.057.023t-.024.056q0 .032.024.055t.059.023q.082 0 .082-.11zm.578.199v.549h-.214V.999zM1.926.786q-.032-.03-.075-.03t-.075.03-.032.07q0 .014.003.026l.006.016q.007.016.021.028.03.028.077.028c.047 0 .057-.009.077-.028q.014-.013.021-.029l.002-.005q.006-.017.006-.037 0-.04-.032-.07m.065.016Q1.973.754 1.928.729T1.834.717q-.046.011-.068.048L1.763.77l-.001.002q.02-.036.066-.045.048-.01.092.014t.064.069q.017.042.001.077.021-.04.004-.087m.043-.02Q2.011.722 1.955.692c-.056-.03-.076-.025-.116-.015q-.056.014-.083.058l-.004.006-.001.002Q1.775.7 1.832.689q.058-.012.114.018t.078.085q.021.051.002.094.025-.049.004-.106" />
           </svg>
-          <span class="text-[16px] font-semibold">Moimstone Dasan Indonesia</span>
+          <span class="text-[24px] font-semibold text-nowrap text-pretty-blue">Moimstone Dasan Indonesia</span>
         </a>
         <a class="flex items-center space-x-3">
           <svg xmlns="http://www.w3.org/2000/svg" fill="#3636e0" class="w-24 h-16" viewBox="0 0 172.85 26.63">
@@ -31,7 +31,7 @@
       </div>
 
       <!-- Dynamic 5 Column Section -->
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:w-full text-sm text-nowrap">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 w-full text-sm">
         <div v-for="section in linkSections" :key="section.title">
           <h3
             class="text-gray-900 dark:text-gray-100 font-semibold uppercase tracking-tight mb-2 border-b-2 border-gray-300 dark:border-gray-700 pb-2">
@@ -51,11 +51,11 @@
 
     <!-- Bottom Footer -->
     <div
-      class="max-w-screen-xl mx-auto mt-10 pt-6 border-t border-gray-300 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center text-sm">
-      <p class="text-gray-600 dark:text-gray-400">
+      class="max-w-screen-xl mx-auto mt-10 pt-6 border-t border-gray-300 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4 text-sm px-4">
+      <p class="text-gray-600 dark:text-gray-400 text-center md:text-left">
         &copy; 2025 Moimstone Dasan Indonesia. All rights reserved.
       </p>
-      <div class="flex mt-4 md:mt-0 space-x-4">
+      <div class="flex space-x-4">
         <a v-for="social in socials" :key="social.name" :href="social.url" :aria-label="social.name"
           class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
           <component :is="social.icon" class="w-5 h-5 text-gray-600 dark:text-gray-300" />
@@ -64,6 +64,7 @@
     </div>
   </footer>
 </template>
+
 
 <script setup>
 import { h } from 'vue'
@@ -97,7 +98,7 @@ const linkSections = [
     links: [
       { name: 'Home', url: '/' },
       { name: 'Products', url: '/product' },
-      { name: 'Solutions', url: '/solutions' },
+      { name: 'Service & Solutions', url: '/solutions' },
       { name: 'Projects', url: '/project' },
       { name: 'Contact Us', url: '/contact' },
     ],
@@ -111,7 +112,7 @@ const linkSections = [
       { name: 'ONT', url: '/product' },
       { name: 'SWITCH', url: '/product' },
       { name: 'PoE Switch', url: '/product' },
-      { name: 'WIFI', url: '/product' },
+      { name: 'Wireless', url: '/product' },
     ],
   },
   {
@@ -126,16 +127,16 @@ const linkSections = [
   {
     title: 'Our Projects',
     links: [
-      { name: 'ISP Partner', url: '/project' },
-      { name: 'Managed Service', url: '/project' },
-      { name: 'FTTx', url: '/project' },
+      { name: 'ISP Partner', url: '/projects?id=ispcustomer' },
+      { name: 'Managed Service', url: '/projects?id=managedservices' },
+      { name: 'FTTx Project', url: '/projects?id=fttxproject' },
     ],
   },
   {
     title: 'Contact Us',
     customHtml: `
-      <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-400">
-        <li><strong>Address:</strong><br>Gedung Tifa Arum Realty 3th Floor Suite 301<br>Jl. Kuningan Bar. 1 No.26, RT.6/RW.1, Kuningan Bar.,<br>Kec. Mampang Prpt., Kota Jakarta Selatan,<br> Daerah Khusus Ibukota Jakarta 12710</li>
+      <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-400 text-nowrap">
+        <li><strong>Address:</strong><br>Gedung Tifa Arum Realty 3th Floor Suite 301<br>Jl. Kuningan Bar. 1 No.26, RT.6/RW.1<br>Kec. Mampang Prpt. Kota Jakarta Selatan<br> Daerah Khusus Ibukota Jakarta 12710</li>
         <li><strong>Phone:</strong><br>+62 21 2930-6714</li>
         <li><strong>Email:</strong><br>info@mdi-solutions.com<br>support@mdi-solutions.com</li>
       </ul>`,
