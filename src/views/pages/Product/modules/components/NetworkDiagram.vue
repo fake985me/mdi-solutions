@@ -3,7 +3,7 @@
         <h2 class="text-xl md:text-2xl font-semibold mb-4">
             {{ category }} Network Configuration Diagram
         </h2>
-        <Networkdiagram />
+        <diagram />
         <!-- Teks di atas gambar -->
         <div
             class="absolute top-[185px] sm:top-[375px] left-[102px] sm:left-[350px] transform transition-transform duration-1000 ease-in-out scale-100 group-hover:scale-150 sm:text-[14px] text-[6px]">
@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import Networkdiagram from './XgSponDiagram.vue'
+import diagram from './Diagram.vue'
 const props = defineProps({
     networkDiagram: {
         type: String,
