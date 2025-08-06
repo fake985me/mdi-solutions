@@ -45,7 +45,8 @@
         <!-- Text -->
         <div class="w-full lg:w-1/2 max-w-xl space-y-4 text-center lg:text-left">
           <p class="text-2xl font-bold tracking-tight text-sky-900 italic">Managed Services Project</p>
-          <h2 class="text-2xl font-bold tracking-tight text-gray-800 underline underline-offset-auto">{{ project.title }}</h2>
+          <h2 class="text-2xl font-bold tracking-tight text-gray-800 underline underline-offset-auto">{{ project.title
+          }}</h2>
           <p class="text-base text-gray-700">{{ project.address }}</p>
         </div>
 
@@ -72,7 +73,8 @@
         <!-- Text -->
         <div class="w-full lg:w-1/2 max-w-xl space-y-4 text-center lg:text-left">
           <p class="text-2xl font-bold tracking-tight text-sky-900 italic">FTTx Project</p>
-          <h2 class="text-2xl font-bold tracking-tight text-gray-800 underline underline-offset-auto">{{ fttx.title }}</h2>
+          <h2 class="text-2xl font-bold tracking-tight text-gray-800 underline underline-offset-auto">{{ fttx.title }}
+          </h2>
           <p class="text-base text-gray-700">{{ fttx.address }}</p>
         </div>
 
@@ -90,19 +92,28 @@ import { onMounted, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 
 import a from '@/assets/static/project/moratel.jpg'
-import b from '@/assets/static/project/indonet.jpg'
+import b from '@/assets/static/project/indonet.png'
 import menaradanareksa from '@/assets/static/project/menaradanareksa.jpg'
 import tamanmelatidepok from '@/assets/static/project/tamanmelatidepok.jpg'
 import tamanmelatisurabaya from '@/assets/static/project/tamanmelatisurabaya.jpg'
 import pollux from '@/assets/static/project/pollux.jpg'
 import lampung from '@/assets/static/project/lampung.jpg'
 import chadstone from '@/assets/static/project/chadstone-building-.jpg'
+import pelindo from '@/assets/static/project/pelindo.jpg'
+import sopodel from '@/assets/static/project/sopodel.jpg'
+import capitol from '@/assets/static/project/capitol.jpg'
+import padma from '@/assets/static/project/padma.png'
+import patra from '@/assets/static/project/patracirebon.png'
+import nihi from '@/assets/static/project/nihisumba.jpg'
+import kemenko from '@/assets/static/project/kemenko.jpg'
+import asndua from '@/assets/static/project/asn2.jpg'
+import asntiga from '@/assets/static/project/asn3.jpg'
 
 const route = useRoute()
 
 function scrollToSection(id) {
   nextTick(() => {
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       const el = document.getElementById(id)
       if (el) el.scrollIntoView({ behavior: 'smooth' })
     }, 300)
@@ -171,14 +182,49 @@ const managedProjects = [
 
 const fttxs = [
   {
-    title: 'FTTx Project',
-    address: 'Jl. Raya Cikarang - Cibarusah, Exit Toll KM31 Cikarang Barat, Kabupaten Bekasi, Jawa Barat 17530',
-    image: chadstone,
+    title: 'Pelindo Place Office Tower',
+    address: 'Jl. Perak Timur No.478, Perak Utara, Kec. Pabean Cantikan, Surabaya, Jawa Timur 60165',
+    image: pelindo,
   },
   {
-    title: 'FTTx Project',
-    address: 'Jl. Yos Sudarso No.80, Bumi Waras, Kota Bandar Lampung, Lampung 35225',
-    image: lampung,
+    title: 'Sopo Del Office Tower',
+    address: 'Jl. Mega Kuningan Barat III, Lot 10. 1-6. Kawasan Mega Kuningan. Jakarta 12950.',
+    image: sopodel,
+  },
+  {
+    title: 'Capitol Suites',
+    address: 'Jl.kko usman dan harun kavling 22-24, RT.1/RW.5, Kwitang, Kec. Senen, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10410',
+    image: capitol,
+  },
+  {
+    title: 'Padma Hotel Semarang',
+    address: 'Jl. Sultan Agung No.86, Wonotingal, Kec. Candisari, Kota Semarang, Jawa Tengah 50252',
+    image: padma,
+  },
+  {
+    title: 'Patra Cirebon Hotel & Convention',
+    address: 'Jl. Tuparev No.11, Kedawung, Kec. Kedawung, Kabupaten Cirebon, Jawa Barat 45153',
+    image: patra,
+  },
+  {
+    title: 'Nihi Sumba Island',
+    address: 'Nihi Sumba Island, Desa Hobawawi, Kecamatan Wanukaka, Kabupaten Sumba Barat Daya, Nusa Tenggara Timur 87254',
+    image: nihi,
+  },
+  {
+    title: 'Kemenko 4 IKN',
+    address: 'Jl. Sumbu sisi Barat, Kecamatan Sepaku, Kabupaten Penajam Paser Utara, Kalimantan Timur 76200',
+    image: kemenko,
+  },
+  {
+    title: 'Rusun ASN 2 IKN',
+    address: 'Pemaluan, Sepaku, Penajam North Paser Regency, East Kalimantan 76147',
+    image: asndua,
+  },
+  {
+    title: 'Rusun ASN 3 IKN',
+    address: 'Pemaluan, Sepaku, Penajam North Paser Regency, East Kalimantan 76147',
+    image: asntiga,
   },
 ]
 </script>

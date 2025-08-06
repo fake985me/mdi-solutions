@@ -1,6 +1,6 @@
 <template>
   <footer class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 py-10 px-2">
-    <div class="max-w-screen-xl mx-auto px-2 flex flex-col md:flex-row md:justify-between gap-4">
+    <div class="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row md:justify-between gap-4">
       <!-- Logo & Description -->
       <div class="w-full md:w-1/3">
         <a href="/" class="flex items-center space-x-2">
@@ -11,7 +11,7 @@
           </svg>
           <span class="text-[24px] font-semibold text-nowrap text-pretty-blue">Moimstone Dasan Indonesia</span>
         </a>
-        <a class="flex items-center space-x-3">
+        <a class="flex items-center space-x-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="#3636e0" class="w-24 h-16" viewBox="0 0 172.85 26.63">
             <g>
               <path class="cls-1"
@@ -135,8 +135,8 @@ const linkSections = [
   {
     title: 'Contact Us',
     customHtml: `
-      <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-400 text-nowrap">
-        <li><strong>Address:</strong><br>Gedung Tifa Arum Realty 3th Floor Suite 301<br>Jl. Kuningan Bar. 1 No.26, RT.6/RW.1<br>Kec. Mampang Prpt. Kota Jakarta Selatan<br> Daerah Khusus Ibukota Jakarta 12710</li>
+      <ul class="space-y-2 text-xs text-gray-700 dark:text-gray-400 text-nowrap">
+        <li><strong>Address:</strong><br>Gedung Tifa Arum Realty<br> 3th Floor Suite 301<br>Kuningan Barat<br> Jakarta Selatan 12710</li>
         <li><strong>Phone:</strong><br>+62 21 2930-6714</li>
         <li><strong>Email:</strong><br>info@mdi-solutions.com<br>support@mdi-solutions.com</li>
       </ul>`,
