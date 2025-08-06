@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import Product from '@/views/pages/Product.vue'
 import ProductDetail from '@/views/pages/Product/ProductDetail.vue'
 import Solutions from '@/views/pages/Solutions.vue'
+import test from '@/components/icons/LineAnimationSVG copy.vue'
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
     path: '/contact',
     name: 'contact',
     component: () => import('../views/pages/Contact.vue'),
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: test,
   },
 ]
 

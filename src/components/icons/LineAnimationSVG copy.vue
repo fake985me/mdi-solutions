@@ -12,12 +12,37 @@
       <polyline points="516.5 234.1 448.3 234.1 425.9 310.2 347.5 310.2" class="line yellow" fill="none"
         stroke-miterlimit="10" />
     </svg>
-    <img src="@/assets/static/network_diagram/network_diagram.png" class="absolute h-auto" />
+    <div class="relative w-full">
+      <img src="@/assets/static/network_diagram/network_diagram.png"
+        class="w-full h-auto max-w-full object-contain absolute md:absolute bottom-[1px] md:bottom-[1px] pointer-events-none" />
+    </div>
+    <div v-if="products">
+      <!-- teks products -->
+      <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">{{ category }} {{ subCategory }}</h2>
+      </div>
+      <!-- gambar products -->
+      <img :src="products[0].image" alt="Product Image"
+        class="absolute top-[360px] left-[250px] w-[90px] object-cover pointer-events-none" />
+    </div>
   </div>
 
 </template>
 
 <script setup>
+import products from '@/composable/useProducts';
+
+const props = defineProps({
+  category: {
+    type: String,
+    required: true,
+  },
+  subCategory: {
+    type: String,
+    required: true,
+  },
+})
+
 function
   restartAnimation() {
   svgKey.value += 1
@@ -59,7 +84,6 @@ function
 .blue {
   stroke: #1c75bc;
   stroke-width: 6px;
-  animation: drawLine 3s backwards 1s
 }
 
 .lightblue {
