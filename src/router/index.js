@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import Product from '@/views/pages/Product.vue'
 import ProductDetail from '@/views/pages/Product/ProductDetail.vue'
 import Solutions from '@/views/pages/Solutions.vue'
-import test from '@/components/icons/Diagram.vue'
+import test from '@/views/pages/Product/modules/components/Diagram.vue'
 
 const routes = [
   {
