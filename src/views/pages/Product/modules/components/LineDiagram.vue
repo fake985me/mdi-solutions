@@ -22,13 +22,17 @@
     </svg>
 
     <!-- Responsive Background Image -->
-    <img src="@/assets/static/network_diagram/access.png" alt="Network Diagram Overlay"
-      class="bsolute top-0 left-0 w-full pointer-events-none" />
+     <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+      <AccessSvg/>
+     </div>
+    <!-- <img src="@/assets/static/network_diagram/access.png" alt="Network Diagram Overlay"
+      class="absolute xl:top-[8px] lg:top-[14px] md:top-[13px] sm:top-[13px] xl:left-[9px] lg:left-[14px] md:left-[13px] sm:left-[13px] xl:w-[1202px] lg:w-[1170px] md:w-[945px] sm:w-[685px] pointer-events-none" /> -->
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import AccessSvg from './AccessSvg.vue'
 
 const props = defineProps({
   category: {
