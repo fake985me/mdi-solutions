@@ -10,7 +10,7 @@
       <polyline points="516.5 234.1 448.3 234.1 425.9 310.2 347.5 310.2" class="line yellow" />
     </svg>
     <img :src="dynamicDiagram" :alt="`${category} ${subCategory} Diagram`"
-      :class="['absolute pointer-events-none h-auto', overlayPositionClass]" />
+      :class="['absolute lg:w-[1123px] lg:top-[28px] lg:left-[35px] pointer-events-none', overlayPositionClass]" />
   </div>
 </template>
 
@@ -31,7 +31,7 @@ const props = defineProps({
 
 // Tentukan prioritas key: jika subCategory cocok, pakai itu; jika tidak, pakai category
 const key = computed(() => {
-  const subKeys = ['olt', 'ont', 'onu', 'backbone','controller',  'access point']
+  const subKeys = ['olt', 'ont', 'onu', 'backbone', 'controller', 'access point']
   const catKeys = ['switch l2', 'switch l3', 'poe switch']
 
   const sub = (props.subCategory || '').toLowerCase().replace(/\s+/g, '_')

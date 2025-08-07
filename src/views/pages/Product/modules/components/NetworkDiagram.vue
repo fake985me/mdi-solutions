@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import diagram from './Diagram.vue'
+import diagram from './LineDiagram.vue'
 const props = defineProps({
     networkDiagram: {
         type: String,

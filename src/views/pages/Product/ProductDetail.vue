@@ -3,6 +3,7 @@ import { ref, computed, watchEffect, defineAsyncComponent } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import products from '@/composable/useProducts'
 import NetworkDiagram from '../Product/modules/components/NetworkDiagram.vue'
+import Diagram from '../Product/modules/components/LineDiagram.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -89,17 +90,14 @@ watchEffect(() => {
         Product Detail
       </h2>
     </div>
-  <component :is="detailComponent" v-if="detailComponent && product" :product="product" />
+    <component :is="detailComponent" v-if="detailComponent && product" :product="product" />
 
-  <!-- Diagram Jaringan -->
-  <NetworkDiagram
-  v-if="product.networkdiagram"
-  :networkDiagram="product.image"
-  :title="product.title"
-  :category="product.category"
-  :subCategory="product.subCategory"
-/>
-<!-- Related Products -->
+    <!-- Diagram Jaringan -->
+    <NetworkDiagram v-if="product.networkdiagram" :networkDiagram="product.image" :title="product.title"
+      :category="product.category" :subCategory="product.subCategory" />
+
+    <Diagram />
+    <!-- Related Products -->
     <section class="mt-16 w-full max-w-7xl px-4" v-if="relatedProducts.length">
       <h2 class="text-2xl font-bold mb-6 text-gray-900 text-center">Related Products</h2>
       <div class="flex-grid md:flex lg:grid-cols-3 sm:grid-cols-1 gap-6">
@@ -133,8 +131,8 @@ watchEffect(() => {
         </div>
       </div>
     </section>
-  <div v-else class="p-8 text-center text-gray-500">
-    Produk tidak ditemukan atau tipe tidak dikenali.
-  </div>
+    <div v-else class="p-8 text-center text-gray-500">
+      Produk tidak ditemukan atau tipe tidak dikenali.
+    </div>
   </section>
 </template>
