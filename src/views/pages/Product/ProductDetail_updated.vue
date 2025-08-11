@@ -11,13 +11,10 @@
         Product Detail
       </h2>
     </div>
-
     <component :is="detailComponent" v-if="detailComponent && product" :product="product" />
 
     <!-- Diagram Jaringan -->
-    
     <NetworkDiagram/>
-
     <!-- Related Products -->
     <section class="mt-16 w-full max-w-7xl px-4" v-if="relatedProducts.length">
       <h2 class="text-2xl font-bold mb-6 text-gray-900 text-center">Related Products</h2>
@@ -52,7 +49,6 @@
         </div>
       </div>
     </section>
-
     <div v-else class="p-8 text-center text-gray-500">
       Produk tidak ditemukan atau tipe tidak dikenali.
     </div>
@@ -80,15 +76,6 @@ const relatedProducts = computed(() => {
       p.subCategory === product.value.subCategory
   )
 })
-
-const props = defineProps({
-  productId: { type: [String, Number], required: true },
-  category: { type: String, required: true },
-  subCategory: { type: String, required: true },
-  networkDiagram: { type: String, required: true },
-  title: { type: String, required: true },
-})
-
 const features = computed(() => {
   return Array.from({ length: 15 }, (_, i) => product.value[`fitur${i + 1}`]).filter(
     (f) => f && f !== 'null'
@@ -107,6 +94,8 @@ const goBack = () => {
     },
   })
 }
+
+
 
 watchEffect(() => {
   product.value = products.value.find((p) => p.slug === slug.value)
@@ -143,3 +132,4 @@ watchEffect(() => {
   console.log('found product:', product.value)
 })
 </script>
+

@@ -1,13 +1,11 @@
 <template>
   <div class="relative group w-full bg-white rounded shadow p-4" @click="restartAnimation">
+    <!-- SVG Diagram Lines -->
     <div class="relative w-full" style="aspect-ratio: 815.1 / 578.2;">
-      <!-- Background Image (DINAMIS dari id) -->
-      <img
-        :src="bgSrc"
-        :alt="`Network Diagram - ${product?.title || 'diagram'}`"
-        class="absolute top-0 left-0 w-full h-auto object-contain pointer-events-none"
-      />
 
+      <!-- Background Image -->
+      <img src="@/assets/static/network_diagram/AccessLayoutDiagram.png" alt="Network Diagram"
+        class="absolute top-0 left-0 w-full h-auto object-contain pointer-events-none" />
       <div class="svg">
         <svg :key="svgKey" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 815.1 578.2">
           <polyline points="323.3 305.8 194.7 305.8 164.2 289.8" fill="none" class="line blue" stroke-miterlimit="10"
@@ -50,53 +48,32 @@
         </svg>
       </div>
     </div>
+
+
+
+    <!-- Responsive Background Image -->
+
+    <!-- <img src="@/assets/static/network_diagram/access.png" alt="Network Diagram Overlay"
+      class="absolute xl:top-[8px] lg:top-[14px] md:top-[13px] sm:top-[13px] xl:left-[9px] lg:left-[14px] md:left-[13px] sm:left-[13px] xl:w-[1202px] lg:w-[1170px] md:w-[945px] sm:w-[685px] pointer-events-none" /> -->
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import products from '@/composable/useProducts' // default export: products (ref)
+import { ref } from 'vue'
 
 const props = defineProps({
-  // kirimkan id produk ke komponen ini (string/number)
-  productId: { type: [String, Number], required: true },
-  category: { type: String, required: true },
-  subCategory: { type: String, required: true },
-})
-
-const product = computed(() =>
-  products.value.find(p => String(p.id) === String(props.productId))
-)
-
-// Ambil semua gambar di folder network_diagram (png/jpg/svg)
-const bgModules = import.meta.glob('@/assets/static/network_diagram/*.{png,jpg,svg}', {
-  eager: true,
-  import: 'default',
-})
-
-// Fallback default: cari yang namanya mengandung 'access', kalau tidak ada pakai gambar pertama
-const defaultBg =
-  Object.entries(bgModules).find(([path]) => /access/i.test(path))?.[1] ||
-  Object.values(bgModules)[0] ||
-  ''
-
-// Pilih gambar berdasar product.diagram -> fallback ke category -> default
-const bgSrc = computed(() => {
-  const p = product.value
-  if (!p) return defaultBg
-  const tryKeys = [
-    (p.diagram || '').toLowerCase(),        // contoh: 'access' / 'users' / 'distributions'
-    (p.category || '').toLowerCase(),       // XGSPON / GPON / SWITCH / WIFI, dsb
-  ].filter(Boolean)
-
-  for (const key of tryKeys) {
-    const hit = Object.entries(bgModules).find(([path]) => path.toLowerCase().includes(key))
-    if (hit) return hit[1]
-  }
-  return defaultBg
+  category: {
+    type: String,
+    required: true,
+  },
+  subCategory: {
+    type: String,
+    required: true,
+  },
 })
 
 const svgKey = ref(0)
+
 function restartAnimation() {
   svgKey.value += 1
 }

@@ -1,95 +1,65 @@
-<template>
-  <div
-    class="relative group w-full max-w-5xl mx-auto bg-white rounded shadow p-4"
-    @click="restartAnimation"
-  >
-    <!-- SVG Animated Overlay -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 841.9 595.3"
-      class="w-full h-auto"
-      :key="svgKey"
-    >
-      <line x1="336.75" y1="314.43" x2="197.98" y2="314.37" class="line blue" />
-      <line x1="78.55" y1="234.85" x2="177.65" y2="298.43" class="line lightblue" />
-      <polyline
-        points="486.74 187.71 434.09 187.71 406.81 302.61 347.55 302.66"
-        class="line yellow"
-      />
-      <polyline
-        points="484.72 447.87 443.02 447.87 406.81 325.93 347.55 325.88"
-        class="line yellow"
-      />
-      <line x1="540.25" y1="318.31" x2="347.55" y2="318.31" class="line yellow" />
-      <polyline
-        points="516.52 234.14 448.27 234.14 425.86 310.24 347.55 310.24"
-        class="line yellow"
-      />
-    </svg>
-
-    <!-- Gambar background diagram -->
-    <img
-      src="@/assets/static/network_diagram/network_diagram.png"
-      alt="Network Diagram Overlay"
-      class="absolute top-1 left-1 w-full h-auto pointer-events-none"
-    />   
-  </div>
-</template>
-
 <script setup>
-import { ref } from 'vue'
-
-const svgKey = ref(0)
-
 const props = defineProps({
-  networkDiagram: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-  category: {
-    type: String,
-    required: true,
-  },
-  subCategory: {
-    type: String,
-    required: true,
-  },
+  product: { type: Object, required: true },
+  nodes: { type: Array, default: () => [] },
+  edges: { type: Array, default: () => [] },
+  portInfo: { type: String, default: '' },
+  bandwidth: { type: [String, Number], default: '' },
 })
 
-function restartAnimation() {
-  svgKey.value++
-}
+const defaultNodes = [
+  { id: 'olt', x: 100, y: 200, label: 'OLT 10G' },
+  { id: 'splitter', x: 320, y: 200, label: '1:64' },
+  { id: 'onu1', x: 620, y: 80, label: 'ONU-1 10G' },
+  { id: 'onu2', x: 620, y: 160, label: 'ONU-2 10G' },
+  { id: 'onu3', x: 620, y: 240, label: 'ONU-3 10G' },
+  { id: 'onu4', x: 620, y: 320, label: 'ONU-4 10G' },
+]
+const defaultEdges = [
+  { from: 'olt', to: 'splitter' },
+  { from: 'splitter', to: 'onu1' },
+  { from: 'splitter', to: 'onu2' },
+  { from: 'splitter', to: 'onu3' },
+  { from: 'splitter', to: 'onu4' },
+]
 </script>
 
-<style scoped>
-.line {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  transition: stroke-dashoffset 2.5s ease;
-  fill: none;
-}
+<template>
+  <div class="relative w-full rounded-xl bg-white shadow p-4">
+    <svg viewBox="0 0 800 400" class="w-full h-auto">
+      <defs>
+        <marker id="arrow-xgs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" />
+        </marker>
+      </defs>
 
-.group:hover .line {
-  stroke-dashoffset: 0;
-}
+      <text x="16" y="30" font-size="14">XGS-PON Topology (10G)</text>
 
-.blue {
-  stroke: #1c75bc;
-  stroke-width: 6px;
-}
+      <g v-for="(e, i) in (edges.length ? edges : defaultEdges)" :key="'exg'+i">
+        <line
+          :x1="(nodes.length ? nodes : defaultNodes).find(n => n.id === e.from).x"
+          :y1="(nodes.length ? nodes : defaultNodes).find(n => n.id === e.from).y"
+          :x2="(nodes.length ? nodes : defaultNodes).find(n => n.id === e.to).x"
+          :y2="(nodes.length ? nodes : defaultNodes).find(n => n.id === e.to).y"
+          stroke-width="3"
+          stroke="currentColor"
+          marker-end="url(#arrow-xgs)"
+        />
+      </g>
 
-.lightblue {
-  stroke: #79caf1;
-  stroke-width: 4px;
-  fill: #7ad0f2;
-}
+      <g v-for="(n, i) in (nodes.length ? nodes : defaultNodes)" :key="'nxg'+i">
+        <rect v-if="n.id === 'olt' || n.id === 'splitter'"
+              :x="n.x-28" :y="n.y-18" width="56" height="36" rx="6" ry="6"
+              stroke="currentColor" fill="none" stroke-width="3" />
+        <circle v-else :cx="n.x" :cy="n.y" r="14" stroke="currentColor" fill="none" stroke-width="3" />
+        <text :x="n.x" :y="n.y - 24" text-anchor="middle" font-size="12">{{ n.label || n.id }}</text>
+      </g>
+    </svg>
 
-.yellow {
-  stroke: #f4cd15;
-  stroke-width: 3px;
-}
-</style>
+    <div class="mt-3 grid gap-1 text-sm text-gray-600">
+      <div><span class="font-medium">OLT:</span> {{ product?.title || product?.name }}</div>
+      <div v-if="portInfo"><span class="font-medium">XGS-PON Port:</span> {{ portInfo }}</div>
+      <div v-if="bandwidth"><span class="font-medium">Capacity:</span> {{ bandwidth }}</div>
+    </div>
+  </div>
+</template>

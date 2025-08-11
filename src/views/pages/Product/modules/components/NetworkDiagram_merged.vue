@@ -1,5 +1,10 @@
 <template>
-  <div class="relative group w-full bg-white rounded shadow p-4" @click="restartAnimation">
+
+    <div class="relative group w-full text-center mt-16 px-4" v-if="networkDiagram">
+        <h2 class="text-xl md:text-2xl font-semibold mb-4">
+            {{ category }} Network Configuration Diagram
+        </h2>
+        <div class="relative group w-full bg-white rounded shadow p-4" @click="restartAnimation">
     <div class="relative w-full" style="aspect-ratio: 815.1 / 578.2;">
       <!-- Background Image (DINAMIS dari id) -->
       <img
@@ -51,56 +56,22 @@
       </div>
     </div>
   </div>
+        <!-- Teks di atas gambar -->
+        <div
+            class="absolute top-[185px] sm:top-[375px] left-[102px] sm:left-[350px] transform transition-transform duration-1000 ease-in-out scale-100 group-hover:scale-150 sm:text-[14px] text-[6px]">
+            {{ category }} {{ subCategory }}
+        </div>
+        <img :src="networkDiagram" :alt="title"
+            class="absolute top-[208px] sm:top-[425px] left-[105px] sm:left-[360px] w-[25px] sm:w-[55px] h-auto pointer-events-none transition-transform duration-1000 ease-in-out scale-125 group-hover:scale-[2.5]" />
+
+    </div>
+
 </template>
 
-<script setup>
-import { ref, computed } from 'vue'
-import products from '@/composable/useProducts' // default export: products (ref)
+<script>
 
-const props = defineProps({
-  // kirimkan id produk ke komponen ini (string/number)
-  productId: { type: [String, Number], required: true },
-  category: { type: String, required: true },
-  subCategory: { type: String, required: true },
-})
-
-const product = computed(() =>
-  products.value.find(p => String(p.id) === String(props.productId))
-)
-
-// Ambil semua gambar di folder network_diagram (png/jpg/svg)
-const bgModules = import.meta.glob('@/assets/static/network_diagram/*.{png,jpg,svg}', {
-  eager: true,
-  import: 'default',
-})
-
-// Fallback default: cari yang namanya mengandung 'access', kalau tidak ada pakai gambar pertama
-const defaultBg =
-  Object.entries(bgModules).find(([path]) => /access/i.test(path))?.[1] ||
-  Object.values(bgModules)[0] ||
-  ''
-
-// Pilih gambar berdasar product.diagram -> fallback ke category -> default
-const bgSrc = computed(() => {
-  const p = product.value
-  if (!p) return defaultBg
-  const tryKeys = [
-    (p.diagram || '').toLowerCase(),        // contoh: 'access' / 'users' / 'distributions'
-    (p.category || '').toLowerCase(),       // XGSPON / GPON / SWITCH / WIFI, dsb
-  ].filter(Boolean)
-
-  for (const key of tryKeys) {
-    const hit = Object.entries(bgModules).find(([path]) => path.toLowerCase().includes(key))
-    if (hit) return hit[1]
-  }
-  return defaultBg
-})
-
-const svgKey = ref(0)
-function restartAnimation() {
-  svgKey.value += 1
-}
 </script>
+
 
 <style>
 @keyframes drawLine {
