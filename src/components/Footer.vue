@@ -1,29 +1,17 @@
-<!-- Footer.vue -->
 <template>
   <footer class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 py-10 px-2">
-    <!-- Top -->
-    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row lg:justify-between gap-8">
+    <div class="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row md:justify-between gap-4">
       <!-- Logo & Description -->
-      <div class="w-full lg:w-1/3">
-        <a href="/" class="flex flex-wrap items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            class="w-16 h-16 flex-shrink-0"
-            viewBox="0 0 2 2"
-            role="img"
-          >
-            <path
-              fill="#3636e0"
-              d="M.892 1.548H.678v-.296q0-.034-.008-.047t-.027-.013q-.036 0-.036.061v.296H.394v-.296q0-.034-.008-.047t-.027-.014q-.036 0-.036.061v.296H.11V1.21q0-.092.064-.157T.331.988q.095 0 .17.077Q.585.988.669.988q.107 0 .172.075.051.058.051.17zM1.374.8h.214v.458q0 .126-.069.205-.04.046-.1.073t-.125.027q-.128 0-.215-.083t-.088-.202q0-.116.087-.201t.206-.085l.057.003v.227q-.026-.02-.053-.02-.033 0-.057.023t-.024.056q0 .032.024.055t.059.023q.082 0 .082-.11zm.578.199v.549h-.214V.999zM1.926.786q-.032-.03-.075-.03t-.075.03-.032.07q0 .014.003.026l.006.016q.007.016.021.028.03.028.077.028c.047 0 .057-.009.077-.028q.014-.013.021-.029l.002-.005q.006-.017.006-.037 0-.04-.032-.07m.065.016Q1.973.754 1.928.729T1.834.717q-.046.011-.068.048L1.763.77l-.001.002q.02-.036.066-.045.048-.01.092.014t.064.069q.017.042.001.077.021-.04.004-.087m.043-.02Q2.011.722 1.955.692c-.056-.03-.076-.025-.116-.015q-.056.014-.083.058l-.004.006-.001.002Q1.775.7 1.832.689q.058-.012.114.018t.078.085q.021.051.002.094.025-.049.004-.106"
-            />
+      <div class="w-full md:w-1/3">
+        <a href="/" class="flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" class="mb-3 w-16 h-16"
+            viewBox="0 0 2 2">
+            <path fill="#3636e0"
+              d="M.892 1.548H.678v-.296q0-.034-.008-.047t-.027-.013q-.036 0-.036.061v.296H.394v-.296q0-.034-.008-.047t-.027-.014q-.036 0-.036.061v.296H.11V1.21q0-.092.064-.157T.331.988q.095 0 .17.077Q.585.988.669.988q.107 0 .172.075.051.058.051.17zM1.374.8h.214v.458q0 .126-.069.205-.04.046-.1.073t-.125.027q-.128 0-.215-.083t-.088-.202q0-.116.087-.201t.206-.085l.057.003v.227q-.026-.02-.053-.02-.033 0-.057.023t-.024.056q0 .032.024.055t.059.023q.082 0 .082-.11zm.578.199v.549h-.214V.999zM1.926.786q-.032-.03-.075-.03t-.075.03-.032.07q0 .014.003.026l.006.016q.007.016.021.028.03.028.077.028c.047 0 .057-.009.077-.028q.014-.013.021-.029l.002-.005q.006-.017.006-.037 0-.04-.032-.07m.065.016Q1.973.754 1.928.729T1.834.717q-.046.011-.068.048L1.763.77l-.001.002q.02-.036.066-.045.048-.01.092.014t.064.069q.017.042.001.077.021-.04.004-.087m.043-.02Q2.011.722 1.955.692c-.056-.03-.076-.025-.116-.015q-.056.014-.083.058l-.004.006-.001.002Q1.775.7 1.832.689q.058-.012.114.018t.078.085q.021.051.002.094.025-.049.004-.106" />
           </svg>
-          <span class="text-lg sm:text-xl md:text-2xl font-semibold text-pretty-blue leading-snug">
-            Moimstone Dasan Indonesia
-          </span>
+          <span class="text-[24px] font-semibold text-nowrap text-pretty-blue">Moimstone Dasan Indonesia</span>
         </a>
-
-        <a class="flex flex-wrap items-center gap-2 mt-4">
+        <a class="flex items-center space-x-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="#3636e0" class="w-24 h-16" viewBox="0 0 172.85 26.63">
             <g>
               <path class="cls-1"
@@ -34,9 +22,8 @@
                 d="m138.75 25.67-.63.46c-1.03.76-2.49.54-3.25-.5l-6.48-8.82-3.87-5.26-1.86-2.53c-.42-.57-1.27-.56-1.69.01l-1.88 2.59-3.76 5.19-6.41 8.86a2.333 2.333 0 0 1-3.25.52l-.63-.46a2.333 2.333 0 0 1-.52-3.25l4.13-5.7 7.47-10.32 3.33-4.59h.01c.41-.63 1.13-1.05 1.95-1.05h.79c.83 0 1.56.44 1.97 1.09l3.35 4.55 5.41 7.36 6.32 8.6c.76 1.03.54 2.49-.5 3.25M27.69 4.76a12.64 12.64 0 0 0-8.96-3.71H3.19C1.43 1.05 0 2.48 0 4.24v18.97c0 1.76 1.43 3.19 3.19 3.19h15.54c7 0 12.67-5.67 12.67-12.67 0-3.5-1.42-6.67-3.71-8.97M17.68 22.02H5.42V5.43h12.26c2.3 0 4.37.93 5.87 2.43s2.43 3.58 2.43 5.87c0 4.58-3.71 8.29-8.3 8.29" />
             </g>
           </svg>
-          <span class="text-lg sm:text-xl font-semibold">Networks</span>
+          <span class="text-xl font-semibold">Networks</span>
         </a>
-
         <p class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
           Provide your network connectivity solutions. Trusted distributor and experienced technical
           support for DASAN equipment in Indonesia. Offers something that is beyond your reach.
@@ -45,42 +32,32 @@
 
       <!-- Dynamic 5 Column Section -->
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 w-full text-sm">
-        <div v-for="section in linkSections" :key="section.title" class="min-w-0">
+        <div v-for="section in linkSections" :key="section.title">
           <h3
-            class="text-gray-900 dark:text-gray-100 font-semibold uppercase tracking-tight mb-2 border-b-2 border-gray-300 dark:border-gray-700 pb-2"
-          >
+            class="text-gray-900 dark:text-gray-100 font-semibold uppercase tracking-tight mb-2 border-b-2 border-gray-300 dark:border-gray-700 pb-2">
             {{ section.title }}
           </h3>
-
           <ul v-if="section.links" class="space-y-1">
             <li v-for="link in section.links" :key="link.name">
-              <a :href="link.url" class="hover:underline break-words">{{ link.name }}</a>
+              <a :href="link.url" class="hover:underline">{{ link.name }}</a>
             </li>
           </ul>
-
-          <div v-else-if="section.customHtml" class="break-words">
+          <div v-else-if="section.customHtml">
             <div v-html="section.customHtml"></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Bottom -->
+    <!-- Bottom Footer -->
     <div
-      class="max-w-screen-xl mx-auto mt-10 pt-6 border-t border-gray-300 dark:border-gray-700 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm px-4"
-    >
-      <p class="text-gray-600 dark:text-gray-400 text-center sm:text-left">
+      class="max-w-screen-xl mx-auto mt-10 pt-6 border-t border-gray-300 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4 text-sm px-4">
+      <p class="text-gray-600 dark:text-gray-400 text-center md:text-left">
         &copy; 2025 Moimstone Dasan Indonesia. All rights reserved.
       </p>
-
-      <div class="flex flex-wrap justify-center gap-3">
-        <a
-          v-for="social in socials"
-          :key="social.name"
-          :href="social.url"
-          :aria-label="social.name"
-          class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition"
-        >
+      <div class="flex space-x-4">
+        <a v-for="social in socials" :key="social.name" :href="social.url" :aria-label="social.name"
+          class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
           <component :is="social.icon" class="w-5 h-5 text-gray-600 dark:text-gray-300" />
         </a>
       </div>
@@ -88,22 +65,16 @@
   </footer>
 </template>
 
+
 <script setup>
 import { h } from 'vue'
 
-/**
- * Ikon sosial: gunakan 'currentColor' agar mengikuti warna teks.
- * InstagramIcon diperbaiki path-nya (sebelumnya pakai "..." yang memicu error).
- */
-
+// Social icons
 const FacebookIcon = {
-  name: 'FacebookIcon',
   render() {
     return h('svg', {
-      xmlns: 'http://www.w3.org/2000/svg',
       fill: 'currentColor',
       viewBox: '0 0 24 24',
-      'aria-hidden': 'true',
       innerHTML:
         '<path d="M22 12A10 10 0 1 0 10 21.9V14.89h-2.5v-3H10V9.75c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.19 2.24.19v2.47h-1.26c-1.25 0-1.64.78-1.64 1.57v1.88h2.78l-.44 3H13.1v7.01A10 10 0 0 0 22 12Z"/>',
     })
@@ -111,25 +82,16 @@ const FacebookIcon = {
 }
 
 const InstagramIcon = {
-  name: 'InstagramIcon',
   render() {
-    // Path logo Instagram valid (simple glyph)
     return h('svg', {
-      xmlns: 'http://www.w3.org/2000/svg',
       fill: 'currentColor',
       viewBox: '0 0 24 24',
-      'aria-hidden': 'true',
-      innerHTML: `
-        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 4a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM18 6.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/>
-      `,
+      innerHTML:
+        '<path d="M12 2.2c3.2 0 3.6 0 4.9.1..."/>',
     })
   },
 }
 
-/**
- * Data sesuai permintaan pengguna (tetap sama),
- * hanya didefinisikan ulang di file ini agar komponen lengkap & mandiri.
- */
 const linkSections = [
   {
     title: 'LINKS',

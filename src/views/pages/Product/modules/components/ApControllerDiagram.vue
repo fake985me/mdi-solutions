@@ -1,5 +1,5 @@
 <template>
-    <LineDiagramBase diagram="access" :productImage="productImage" :productTitle="productTitle" :offsetX="offsetX"
+    <LineDiagramBase diagram="apcontroller" :productImage="productImage" :productTitle="productTitle" :offsetX="offsetX"
         :offsetY="offsetY" />
 </template>
 

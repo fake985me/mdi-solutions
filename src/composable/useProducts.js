@@ -1881,7 +1881,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '442 x 530 x 797.3 mm (18U height, weight Up to 146Kg)',
-    diagram: 'access'
+    diagram: 'accessSwitch'
   },
   {
     id: '25',
@@ -1959,7 +1959,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '442 x 530 x 352.8 mm (8U height, weight Up to 66Kg',
-    diagram: 'access'
+    diagram: 'accessSwitch'
   },
   {
     id: '26',
@@ -2037,7 +2037,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '442 x 530 x 219.5 mm (5U height, weight Up to 42Kg)',
-    diagram: 'access'
+    diagram: 'accessSwitch'
   },
   {
     id: '27',
@@ -2115,7 +2115,7 @@ const products = ref([
     power3: '',
     powercomsumptions: 'Max. 200W (AC), 190W ( DC )',
     dimensions: '444 mm x 44 mm x 250 mm (19"" x 1U)',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '28',
@@ -2193,7 +2193,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '66W (25G LR x 48 + 100G LR x 6) 324W (25G ER-Lite X 48 + 100G ER-Lite x 6)',
     dimensions: '440 x 44 x 415.8 mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '29',
@@ -2271,7 +2271,7 @@ const products = ref([
     power3: '',
     powercomsumptions: 'Max. 270W',
     dimensions: '440 x 44 x 415.8 mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '30',
@@ -2349,7 +2349,7 @@ const products = ref([
     power3: '',
     powercomsumptions: 'Max. 160W',
     dimensions: '440 x 44 x 418 mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '31',
@@ -2427,7 +2427,7 @@ const products = ref([
     power3: 'DC: -36V to -72V',
     powercomsumptions: 'Max.45W',
     dimensions: '440 × 44 × 280 mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '32',
@@ -2505,7 +2505,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '440 x 44 x 280mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '33',
@@ -2583,7 +2583,7 @@ const products = ref([
     power3: '',
     powercomsumptions: 'Max. 61W',
     dimensions: '440 x 44 x 325mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '34',
@@ -2661,7 +2661,7 @@ const products = ref([
     power3: '',
     powercomsumptions: 'Approximately 105W',
     dimensions: '330 x 44 x 200mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '35',
@@ -2739,7 +2739,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '160.7W (PSU DC) 182.2W (PSU AC)',
     dimensions: '444 x 44 x 250 mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '36',
@@ -2817,7 +2817,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '170W (PSU DC) 180W (PSU AC)',
     dimensions: '444 x 44 x 250 mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '37',
@@ -2895,7 +2895,7 @@ const products = ref([
     power3: '',
     powercomsumptions: 'Maximum:20W(220V/50Hz)',
     dimensions: '440 x 44 x 208mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '38',
@@ -2973,7 +2973,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '27W',
     dimensions: '440 x 44 x 240 mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '39',
@@ -3051,7 +3051,7 @@ const products = ref([
     power3: 'Supports up to 1480W (when 1150W power supply is dualized), supports mixed PoE/PoE+ within a single device',
     powercomsumptions: '',
     dimensions: '440x44x260mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '40',
@@ -3129,7 +3129,7 @@ const products = ref([
     power3: '',
     powercomsumptions: 'Less than 460W (including PoE) Less than 40W (excluding PoE)',
     dimensions: '440 × 44 × 260 mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '41',
@@ -3207,7 +3207,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '< 22W (without POE), < 400W (with POE)',
     dimensions: '440mm x 44mm x 208mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '42',
@@ -3285,7 +3285,7 @@ const products = ref([
     power3: '',
     powercomsumptions: 'Less than 140W (at PoE full-load)',
     dimensions: '280 x 44 x 180mm',
-    diagram: 'distributions'
+    diagram: 'distributionsSwitch'
   },
   {
     id: '43',
@@ -3363,7 +3363,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '< 25.4W',
     dimensions: '220mm × 220mm × 48.9mm, weight: 1.3Kg',
-    diagram: 'users'
+    diagram: 'accessPoint'
   },
   {
     id: '44',
@@ -3441,7 +3441,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '< 38W',
     dimensions: '230mm × 230mm × 50mm, weight: 950g',
-    diagram: 'users'
+    diagram: 'accessPoint'
   },
   {
     id: '45',
@@ -3519,7 +3519,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '31cm × 12cm (diameter x depth), wieght: 4kg',
-    diagram: 'users'
+    diagram: 'accessPoint'
   },
   {
     id: '46',
@@ -3597,7 +3597,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '<40W',
     dimensions: '440 × 200 x 43.61 (1RU, 19-inch rack mountable)',
-    diagram: 'distributions'
+    diagram: 'ApController'
   },
   {
     id: '47',
@@ -3675,7 +3675,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '<100W',
     dimensions: '440 × 560 x 86.1 (2RU, 19-inch rack mount)',
-    diagram: 'distributions'
+    diagram: 'ApController'
   },
 ])
 
