@@ -1,17 +1,5 @@
 <template>
   <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <!-- Tombol Back -->
-    <div
-      class="flex flex-col sm:flex-row items-center justify-between border-b border-black pb-4 pt-4 bg-gradient-to-r bg-slate-400 fixed left-0 w-full z-10 px-4">
-      <button @click="goBack"
-        class="text-base sm:text-lg text-sky-800 tracking-tight hover:underline self-start sm:self-auto">
-        ← Back
-      </button>
-      <h2 class="text-3xl lg:mr-[860px] sm:mr-0 font-bold tracking-tight text-gray-900 sm:justify-between">
-        Product Detail
-      </h2>
-    </div>
-
     <!-- Detail Produk (Gambar - Fitur - Spesifikasi) -->
     <div class="w-full max-w-7xl flex flex-col lg:flex-row gap-6 mt-32 md:mt-20 lg:mt-20">
       <!-- Gambar dan Deskripsi -->
@@ -20,10 +8,8 @@
         <img :src="product.image" :alt="product.title"
           class="w-full max-w-xs md:max-w-sm object-contain rounded-lg mb-4" />
       </div>
-
       <!-- Vertical Divider -->
       <div class="hidden lg:block w-px bg-gray-950"></div>
-
       <!-- Fitur -->
       <div class="flex-1 px-4 border-t lg:border-t-0 lg:border-l border-gray-300 pt-4 lg:pt-0" v-if="features.length">
         <h2 class="text-xl font-semibold mb-2">Features</h2>
@@ -31,10 +17,8 @@
           <li v-for="(fitur, index) in features" :key="index">{{ fitur }}</li>
         </ul>
       </div>
-
       <!-- Vertical Divider -->
       <div class="hidden lg:block w-px bg-gray-950"></div>
-
       <!-- Spesifikasi -->
       <div class="flex-1 px-4 border-t lg:border-t-0 lg:border-l border-gray-300 pt-4 lg:pt-0">
         <h2 class="text-xl font-semibold mb-2">Specification</h2>
@@ -60,81 +44,44 @@
         </ul>
       </div>
     </div>
-
     <!-- Overview -->
     <div class="w-full max-w-7xl px-4 mt-8">
       <h2 class="text-xl font-semibold mb-2">Overview</h2>
       <p class="text-gray-800 text-sm">{{ product.descriptions }}</p>
     </div>
-
-    <!-- Diagram Jaringan -->
-    <NetworkDiagram
-  v-if="product.networkdiagram"
-  :networkDiagram="product.networkdiagram"
-  :title="product.title"
-  :category="product.category"
-/>
-
-    <!-- Related Products -->
-    <section class="mt-16 w-full max-w-7xl px-4" v-if="relatedProducts.length">
-      <h2 class="text-2xl font-bold mb-6 text-gray-900 text-center">Related Products</h2>
-      <div class="flex-grid md:flex lg:grid-cols-3 sm:grid-cols-1 gap-6">
-        <div v-for="item in relatedProducts" :key="item.id"
-          class="w-full bg-white border border-slate-900 shadow-md rounded-xl hover:scale-105 duration-300 hover:shadow-xl">
-          <RouterLink :to="{
-            name: 'product-detail',
-            params: { slug: item.slug },
-            query: {
-              category: item.category,
-              sub: item.subCategory
-            }
-          }">
-            <img :src="item.image" :alt="item.title" class="w-full h-44 object-contain rounded-t-lg p-4" />
-          </RouterLink>
-          <div class="px-4 py-3 text-center">
-            <h3 class="text-md font-semibold text-gray-900 truncate">
-              <RouterLink :to="{
-                name: 'product-detail',
-                params: { slug: item.slug },
-                query: {
-                  category: item.category,
-                  sub: item.subCategory
-                }
-              }" class="hover:underline">
-                {{ item.title }}
-              </RouterLink>
-            </h3>
-            <p class="text-sm text-gray-500" v-if="item.port">{{ item.port }}</p>
-          </div>
-        </div>
+    <!-- Diagram Section -->
+    <div v-if="selectedProduct && DiagramComponent" class="w-full max-w-7xl px-4 mt-8">
+      <h2 class="text-xl font-semibold mb-2 justify-center text-center">
+        {{ selectedProduct.title || product.title }}<br>
+        {{ selectedProduct.category }} {{ selectedProduct.subCategory }} Network Diagram
+      </h2>
+      <!-- Komponen diagram dinamis -->
+      <component :is="DiagramComponent" />
+    </div>
+    <!-- State kosong/jika diagram tidak ditemukan -->
+    <div v-else-if="selectedProduct && !DiagramComponent" class="w-full max-w-7xl px-4 mt-8">
+      <div class="text-sm text-gray-500">
+        Diagram belum tersedia untuk produk ini.
       </div>
-    </section>
+    </div>
   </section>
 </template>
 
 <script setup>
 import { computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import products from '@/composable/useProducts'
-import NetworkDiagram from './components/NetworkDiagram.vue'
+import { useRoute } from 'vue-router'
+import { useProducts } from '@/composable/useProducts'
 
-const router = useRouter()
+// Diagram components
+import AccessDiagram from './components/AccessDiagram.vue'
+import AccessSwitchDiagram from './components/AccessSwitchDiagram.vue'
+import ApControllerDiagram from './components/ApControllerDiagram.vue'
+import DistributionsDiagram from './components/DistributionsDiagram.vue'
+import DistributionsSwitchDiagram from './components/DistributionsSwitchDiagram.vue'
+import UsersDiagram from './components/UsersDiagram.vue'
+import AccessPointDiagram from './components/AccessPointDiagram.vue'
+
 const route = useRoute()
-
-const goBack = () => {
-  const category = route.query.category
-  const subCategory = route.query.sub
-
-  router.push({
-    name: 'product',
-    query: {
-      ...(category ? { category } : {}),
-      ...(subCategory ? { sub: subCategory } : {}),
-    },
-  })
-}
-
-
 
 const props = defineProps({
   product: {
@@ -143,22 +90,40 @@ const props = defineProps({
   },
 })
 
-// Ambil fitur dari product.fitur1 - fitur15
-const features = computed(() => {
-  return Array.from({ length: 15 }, (_, i) => props.product[`fitur${i + 1}`]).filter(
-    (f) => f && f !== 'null',
-  )
+const { products } = useProducts()
+
+// Fitur dari props.product (sesuai data yang kamu kirim dari parent)
+const features = computed(() =>
+  Array.from({ length: 15 }, (_, i) => props.product?.[`fitur${i + 1}`]).filter((f) => f && f !== 'null'),
+)
+
+// --- Pilih produk berdasar slug di URL; fallback ke props.product jika list belum siap ---
+const selectedProduct = computed(() => {
+  const slug = route.params.slug
+  if (!slug) return props.product || null
+  const list = products?.value || []
+  return list.find((p) => p.slug === slug) || props.product || null
 })
 
-// Related Products: limit 4 & cocok subcategory
-const relatedProducts = computed(() => {
-  return products.value
-    .filter(
-      (p) =>
-        p.category === props.product.category &&
-        p.subCategory === props.product.subCategory &&
-        p.slug !== props.product.slug,
-    )
-    .slice(0, 4)
+// Pemetaan nama diagram -> komponen
+const diagramMap = {
+  access: AccessDiagram,
+  accessswitch: AccessSwitchDiagram,
+  accesspoint: AccessPointDiagram,
+  distributions: DistributionsDiagram,
+  distributionsswitch: DistributionsSwitchDiagram,
+  apcontroller: ApControllerDiagram,
+  users: UsersDiagram,
+}
+
+// Komponen diagram yang dipilih (case-insensitive + optional chaining aman)
+const DiagramComponent = computed(() => {
+  const key = selectedProduct.value?.diagram?.toString()?.trim()?.toLowerCase()
+  return key ? diagramMap[key] || null : null
 })
 </script>
+
+<style scoped>
+/* Opsional: garis pemisah untuk layar besar sudah pakai border/tailwind.
+   Tambahan styling kecil jika diperlukan. */
+</style>

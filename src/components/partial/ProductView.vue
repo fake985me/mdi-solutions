@@ -13,11 +13,11 @@
           mobileIndex = 0
         }
       " :class="[
-          'cursor-pointer py-2 px-2 border-b-2',
-          i === activeTab
-            ? 'border-blue-600 text-blue-600 font-bold'
-            : 'border-transparent border-b-slate-900 text-gray-800 hover:text-blue-800',
-        ]">
+        'cursor-pointer py-2 px-2 border-b-2',
+        i === activeTab
+          ? 'border-blue-600 text-blue-600 font-bold'
+          : 'border-transparent border-b-slate-900 text-gray-800 hover:text-blue-800',
+      ]">
         {{ tab.title }}
       </div>
     </div>
@@ -31,11 +31,11 @@
           mobileIndex = 0
         }
       " :class="[
-          'cursor-pointer text-sm py-1 px-3 border-2',
-          j === activeSubTab
-            ? 'bg-black border-blue-500 rounded-md text-white font-medium'
-            : 'bg-white border-slate-900 rounded-md text-gray-900 hover:text-blue-800',
-        ]">
+        'cursor-pointer text-sm py-1 px-3 border-2',
+        j === activeSubTab
+          ? 'bg-black border-blue-500 rounded-md text-white font-medium'
+          : 'bg-white border-slate-900 rounded-md text-gray-900 hover:text-blue-800',
+      ]">
         {{ sub }}
       </div>
     </div>

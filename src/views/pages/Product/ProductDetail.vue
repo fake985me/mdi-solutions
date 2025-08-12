@@ -14,30 +14,6 @@
     <component :is="detailComponent" v-if="detailComponent && product" :product="product" />
 
     <!-- Diagram Jaringan -->
-    <section v-if="product" class="mt-8 w-full max-w-7xl mx-auto px-4">
-      <AccessDiagram :productImage="product.image" :productTitle="product.title" />
-      <AccessSwitchDiagram :productImage="product.image" :productTitle="product.title" />
-      <ApControllerDiagram :productImage="product.image" :productTitle="product.title" />
-
-      <!-- horizontal line -->
-      <!-- polyline kuning -->
-      <DistributionsDiagram :productImage="product.image" :productTitle="product.title" :sizeLinePx="110"
-        :sizePolylinePct="9" :offsetYLine="-16" :offsetYPolyline="-20" />
-      <DistributionsSwitchDiagram :productImage="product.image" :productTitle="product.title" :sizeLinePx="110"
-        :sizePolylinePct="9" :offsetYLine="-16" :offsetYPolyline="-20" />
-
-      <!-- polyline atas -->
-      <!-- polyline bawah -->
-      <UsersDiagram :productImage="product.image" :productTitle="product.title" :sizeTopPct="12" :sizeBottomPct="8"
-        :offsetYTop="-18" :offsetYBottom="-22" />
-
-      <AccessPointDiagram :productImage="product.image" :productTitle="product.title" />
-    </section>
-
-
-
-
-
 
     <!-- Related Products -->
     <section class="mt-16 w-full max-w-7xl px-4" v-if="relatedProducts.length">
@@ -80,22 +56,17 @@
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent } from 'vue'
+import { computed, watchEffect, defineAsyncComponent } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import products from '@/composable/useProducts'
 
-import AccessDiagram from '../Product/modules/components/AccessDiagram.vue'
-import AccessSwitchDiagram from '../Product/modules/components/AccessSwitchDiagram.vue'
-import ApControllerDiagram from '../Product/modules/components/ApControllerDiagram.vue'
-import DistributionsDiagram from '../Product/modules/components/DistributionsDiagram.vue'
-import DistributionsSwitchDiagram from '../Product/modules/components/DistributionsSwitchDiagram.vue'
-import UsersDiagram from '../Product/modules/components/UsersDiagram.vue'
-import AccessPointDiagram from './modules/components/AccessPointDiagram.vue'
 
 const route = useRoute()
 const router = useRouter()
 const slug = computed(() => route.params.slug)
-
+watchEffect(() => {
+  // No need to set product.value here, handled by computed below
+})
 const product = computed(() => {
   const list = Array.isArray(products?.value) ? products.value : []
   return list.find(p => p.slug === slug.value) ||
@@ -121,24 +92,28 @@ const features = computed(() => {
 })
 
 const detailComponent = computed(() => {
-  const mod = product.value?.module
-  if (!mod) return null
-
-  const loaders = {
-    A: () => import('./modules/ProductModuleA.vue'),
-    B: () => import('./modules/ProductModuleB.vue'),
-    C: () => import('./modules/ProductModuleC.vue'),
-    D: () => import('./modules/ProductModuleD.vue'),
-    E: () => import('./modules/ProductModuleE.vue'),
-    F: () => import('./modules/ProductModuleF.vue'),
-    G: () => import('./modules/ProductModuleG.vue'),
-    H: () => import('./modules/ProductModuleH.vue'),
+  if (!product.value) return null
+  switch (product.value.module) {
+    case 'A':
+      return defineAsyncComponent(() => import('./modules/ProductModuleA.vue'))
+    case 'B':
+      return defineAsyncComponent(() => import('./modules/ProductModuleB.vue'))
+    case 'C':
+      return defineAsyncComponent(() => import('./modules/ProductModuleC.vue'))
+    case 'D':
+      return defineAsyncComponent(() => import('./modules/ProductModuleD.vue'))
+    case 'E':
+      return defineAsyncComponent(() => import('./modules/ProductModuleE.vue'))
+    case 'F':
+      return defineAsyncComponent(() => import('./modules/ProductModuleF.vue'))
+    case 'G':
+      return defineAsyncComponent(() => import('./modules/ProductModuleG.vue'))
+    case 'H':
+      return defineAsyncComponent(() => import('./modules/ProductModuleH.vue'))
+    default:
+      return null
   }
-
-  const loader = loaders[mod]
-  return loader ? defineAsyncComponent(loader) : null
 })
-
 
 const goBack = () => {
   const category = route.query.category
