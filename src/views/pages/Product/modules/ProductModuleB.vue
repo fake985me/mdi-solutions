@@ -49,18 +49,21 @@
       <p class="text-gray-800 text-sm">{{ product.descriptions }}</p>
     </div>
     <!-- Diagram Section -->
-    <div v-if="selectedProduct && DiagramComponent" class="w-full max-w-7xl px-4 mt-8">
-      <h2 class="text-xl font-semibold mb-2 justify-center text-center">
-        {{ selectedProduct.title || product.title }}<br>
-        {{ selectedProduct.category }} {{ selectedProduct.subCategory }} Network Diagram
-      </h2>
-      <!-- Komponen diagram dinamis -->
-      <component :is="DiagramComponent" :diagram="selectedProduct?.diagram || 'access'"
-        :productImage="selectedProduct?.image || product.image" :productTitle="selectedProduct?.title || product.title"
-        :markers="moduleMarkers" />
-    </div>
+    <h2 class="text-xl font-semibold mb-2 justify-center text-center">
+      {{ selectedProduct.title || product.title }}<br>
+      {{ selectedProduct.category }} {{ selectedProduct.subCategory }} Network Diagram
+    </h2>
+    <template v-if="effectiveProduct">
+      <OpticLine v-if="diagramType === 'opticalline'" :product="effectiveProduct" :diagram="effectiveProduct.diagram" />
+      <SwitchLine v-else-if="diagramType === 'switchline'" :product="effectiveProduct" :diagram="effectiveProduct.diagram" />
+      <Wireless v-else-if="diagramType === 'wireless'" :product="effectiveProduct" :diagram="effectiveProduct.diagram"/>
+      <!-- fallback kalau type tidak dikenali -->
+      <div v-else class="w-full max-w-7xl px-4 mt-8 text-sm text-gray-500">
+        Diagram belum tersedia untuk produk ini.
+      </div>
+    </template>
     <!-- State kosong/jika diagram tidak ditemukan -->
-    <div v-else-if="selectedProduct && !DiagramComponent" class="w-full max-w-7xl px-4 mt-8">
+    <div v-else class="w-full max-w-7xl px-4 mt-8">
       <div class="text-sm text-gray-500">
         Diagram belum tersedia untuk produk ini.
       </div>
@@ -72,15 +75,10 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useProducts } from '@/composable/useProducts'
+import OpticLine from './components/OpticLine.vue'
+import SwitchLine from './components/SwitchLine.vue'
+import Wireless from './components/WifiLine.vue'
 
-// Diagram components
-import AccessDiagram from './components/AccessDiagram.vue'
-import AccessSwitchDiagram from './components/AccessSwitchDiagram.vue'
-import ApControllerDiagram from './components/ApControllerDiagram.vue'
-import DistributionsDiagram from './components/DistributionsDiagram.vue'
-import DistributionsSwitchDiagram from './components/DistributionsSwitchDiagram.vue'
-import UsersDiagram from './components/UsersDiagram.vue'
-import AccessPointDiagram from './components/AccessPointDiagram.vue'
 
 const route = useRoute()
 
@@ -90,6 +88,14 @@ const props = defineProps({
     required: true,
   },
 })
+
+const effectiveProduct = computed(() => selectedProduct.value || props.product || null)
+
+// Normalisasi "opticalLine" -> "opticalline", dsb.
+const diagramType = computed(() =>
+  (effectiveProduct.value?.networkDIagram || '').toString().trim().toLowerCase()
+)
+
 
 const { products } = useProducts()
 
@@ -104,75 +110,6 @@ const selectedProduct = computed(() => {
   if (!slug) return props.product || null
   const list = products?.value || []
   return list.find((p) => p.slug === slug) || props.product || null
-})
-
-// Pemetaan nama diagram -> komponen
-const diagramMap = {
-  access: AccessDiagram,
-  accessswitch: AccessSwitchDiagram,
-  accesspoint: AccessPointDiagram,
-  distributions: DistributionsDiagram,
-  distributionsswitch: DistributionsSwitchDiagram,
-  apcontroller: ApControllerDiagram,
-  users: UsersDiagram,
-}
-
-// Komponen diagram yang dipilih (case-insensitive + optional chaining aman)
-const DiagramComponent = computed(() => {
-  const key = selectedProduct.value?.diagram?.toString()?.trim()?.toLowerCase()
-  return key ? diagramMap[key] || null : null
-})
-
-// Ambil module dari route (path param / query) → fallback ke product.module
-const activeModule = computed(() =>
-  (route.params.module || route.query.module || selectedProduct.value?.module || 'A')
-    .toString()
-    .toUpperCase()
-)
-
-// Registry markers per module (contoh sederhana; silakan sesuaikan)
-const markersRegistry = {
-  A: (p) => [
-    {
-      image: p?.image,
-      title: p?.title,
-      diagramKey: p?.diagram || 'access', // anchor default
-      index: 0,
-      widthPct: 10,
-      offsetY: 26,
-      offsetX: 40,
-    },
-    // contoh marker tambahan (jika ada gambar lain di data produk)
-    ...(p?.extraImages?.map((img, i) => ({
-      image: img,
-      title: `${p?.title} ${i + 1}`,
-      diagramKey: 'users',
-      index: i,
-      widthPct: 8,
-      offsetY: -16,
-    })) || []),
-  ],
-
-  B: (p) => [
-    {
-      image: p?.image,
-      title: p?.title,
-      diagramKey: p?.diagram || 'distributions',
-      index: 2,
-      widthPct: 10,
-      offsetY: 26,
-    },
-  ],
-}
-
-// Final markers yang dipakai diagram
-const moduleMarkers = computed(() => {
-  const p = selectedProduct.value || props.product
-  // Jika produk sudah punya field markers sendiri, pakai itu
-  if (Array.isArray(p?.markers) && p.markers.length) return p.markers
-  // Jika tidak, generate dari registry berdasarkan module aktif
-  const fn = markersRegistry[activeModule.value] || markersRegistry.A
-  return fn(p || {})
 })
 
 </script>

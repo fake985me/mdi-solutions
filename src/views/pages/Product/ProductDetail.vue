@@ -12,9 +12,6 @@
       </h2>
     </div>
     <component :is="detailComponent" v-if="detailComponent && product" :product="product" />
-
-    <!-- Diagram Jaringan -->
-
     <!-- Related Products -->
     <section class="mt-16 w-full max-w-7xl px-4" v-if="relatedProducts.length">
       <h2 class="text-2xl font-bold mb-6 text-gray-900 text-center">Related Products</h2>

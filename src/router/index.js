@@ -3,7 +3,6 @@ import HomeView from '../views/HomeView.vue'
 import Product from '@/views/pages/Product.vue'
 import ProductDetail from '@/views/pages/Product/ProductDetail.vue'
 import Solutions from '@/views/pages/Solutions.vue'
-import test from '@/views/pages/Product/modules/components/LineDiagram.vue'
 
 const routes = [
   {
@@ -36,11 +35,6 @@ const routes = [
     path: '/contact',
     name: 'contact',
     component: () => import('../views/pages/Contact.vue'),
-  },
-  {
-    path: '/test',
-    name: 'test',
-    component: test,
   },
 ]
 
