@@ -53,7 +53,7 @@
     <div
       class="max-w-screen-xl mx-auto mt-10 pt-6 border-t border-gray-300 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4 text-sm px-4">
       <p class="text-gray-600 dark:text-gray-400 text-center md:text-left">
-        &copy; 2025 Moimstone Dasan Indonesia. All rights reserved.
+        &copy; {{ new Date().getFullYear() }} Moimstone Dasan Indonesia. All rights reserved.
       </p>
       <div class="flex space-x-4">
         <a v-for="social in socials" :key="social.name" :href="social.url" :aria-label="social.name"

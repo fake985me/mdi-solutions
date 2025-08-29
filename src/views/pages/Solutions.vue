@@ -19,12 +19,15 @@
       </div>
     </div>
   </div>
-
+  <!-- ====== -->
+    <FirmwareModification />
   <!-- ====== -->
 
-  <div class="py-4">
+  <div class="py-4 mt-12">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl font-bold text-gray-900">Our Service</h2>
+    </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-
       <!-- Card 1 -->
       <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
         <img src="../../assets/static/solutions/managed.png"
@@ -45,7 +48,8 @@
             alt="Maintenance">
         </div>
         <div class="text-center md:text-left">
-          <h2 class="text-2xl font-bold text-gray-700 italic text-shadow-2xl text-shadow-blue-500">Maintenance and Support</h2>
+          <h2 class="text-2xl font-bold text-gray-700 italic text-shadow-2xl text-shadow-blue-500">Maintenance and
+            Support</h2>
           <p class="mt-2 text-gray-600 text-base">
             Regular maintenance and audits ensure smooth operations, minimize downtime, and protect your systems from
             threats.
@@ -75,7 +79,8 @@
             alt="Design and Build">
         </div>
         <div class="text-center md:text-left">
-          <h2 class="text-2xl font-bold text-gray-700 italic text-shadow-2xl text-shadow-blue-500"><span>Training </span><span class="text-blue-700 font-extrabold">DASAN </span><span>Product</span></h2>
+          <h2 class="text-2xl font-bold text-gray-700 italic text-shadow-2xl text-shadow-blue-500"><span>Training
+            </span><span class="text-blue-700 font-extrabold">DASAN </span><span>Product</span></h2>
           <p class="mt-2 text-gray-600 text-base">
             This training provides a comprehensive understanding of GPON technology, from basic theory to hands-on
             configuration.
@@ -96,6 +101,7 @@ import xgspon from '@/assets/static/solutions/xgspon.png'
 import gpon from '@/assets/static/solutions/gpon.png'
 import lswitch from '@/assets/static/solutions/switch.png'
 import wireless from '@/assets/static/solutions/wireless.png'
+import FirmwareModification from '@/components/partial/Firmware Modification.vue'
 
 // Contoh gambar placeholder
 const placeholder = 'https://via.placeholder.com/300x180?text=Solution'
