@@ -44,15 +44,5 @@ const features = [
         'Our team of experts will help handle the process from design, consultation and installation, according to what you want.',
     },
   },
-  {
-    id: 5,
-    name: 'Modify ONT Firmware Requirement',
-    details: {
-      imageUrl: e,
-      title: 'Modify Firmware Based on Requirement',
-      description:
-        'We can modify our GPON Firmware based on customer requirements',
-    },
-  }
 ]
 export default features

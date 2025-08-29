@@ -13,7 +13,7 @@
       <!-- Vertical Divider -->
       <div class="hidden lg:block w-px bg-gray-950"></div>
       <!-- Fitur -->
-      <div class="flex-1 px-4 border-t lg:border-t-0 lg:border-l border-gray-300 pt-4 lg:pt-0" v-if="features.length">
+      <div class="flex-1 px-4 pt-4 lg:pt-0" v-if="features.length">
         <h2 class="text-xl font-semibold mb-2">Features</h2>
         <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
           <li v-for="(fitur, index) in features" :key="index">{{ fitur }}</li>
@@ -22,7 +22,7 @@
       <!-- Vertical Divider -->
       <div class="hidden lg:block w-px bg-gray-950"></div>
       <!-- Spesifikasi -->
-      <div class="flex-1 px-4 border-t lg:border-t-0 lg:border-l border-gray-300 pt-4 lg:pt-0">
+      <div class="flex-1 px-4 pt-4 lg:pt-0">
         <h2 class="text-xl font-semibold mb-2">Specification</h2>
         <ul class="list-disc pl-5 space-y-1 text-sm text-gray-800">
           <li><strong>Flash Memory:</strong> {{ selectedProduct?.flashmemory || product.flashmemory }}</li>

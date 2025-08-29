@@ -34,7 +34,22 @@
             </thead>
             <tbody>
               <tr>
-                <td>TR-069 Status Page</td>
+                <td>Added page to view TR-069 Status</td>
+                <td><span class="chip danger">Not Available</span></td>
+                <td><span class="chip success">Available</span></td>
+              </tr>
+              <tr>
+                <td>Function to view Connection Status of TR-069</td>
+                <td><span class="chip danger">Not Available</span></td>
+                <td><span class="chip success">Available</span></td>
+              </tr>
+              <tr>
+                <td>Function to view IP Address of TR-069 Interface</td>
+                <td><span class="chip danger">Not Available</span></td>
+                <td><span class="chip success">Available</span></td>
+              </tr>
+              <tr>
+                <td>Function to Refresh Connection Status of TR-069 and IP Address of TR-069 Interface</td>
                 <td><span class="chip danger">Not Available</span></td>
                 <td><span class="chip success">Available</span></td>
               </tr>
