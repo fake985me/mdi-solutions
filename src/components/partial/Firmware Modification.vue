@@ -7,14 +7,14 @@
       </p>
 
     <main>
-      <section class="cards text-gray-300">
-        <article class="card bg-gray-900">
+      <section class="cards text-gray-300 p-2">
+        <article class="card bg-gray-900 transform transition duration-500 hover:scale-125 hidden-none z-10">
           <h2>Original Firmware</h2>
           <p>No dedicated TR-069 status page on ONT Web GUI</p>
           <img src="../../assets/static/solutions/firmware-ori.png" alt=""/>
         </article>
 
-        <article class="card bg-gray-900">
+        <article class="card bg-gray-900 transform transition duration-500 hover:scale-125 hidden-none z-5">
           <h2>Modified Firmware</h2>
           <p>Added page to view TR-069 status page on ONT Web GUI</p>
           <img src="../../assets/static/solutions/firmware-custom.png" alt=""/>
@@ -68,7 +68,7 @@ main { width: 100%; max-width: 1100px; margin: 0 auto; padding: 1rem; }
 .cards {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 56px;
 }
 @media (min-width: 900px) {
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -115,15 +115,4 @@ main { width: 100%; max-width: 1100px; margin: 0 auto; padding: 1rem; }
 }
 .chip.success { color: var(--success); background: rgba(52,211,153,0.08); }
 .chip.danger { color: var(--danger); background: rgba(251,113,133,0.08); }
-
-.cta { display: flex; justify-content: center; margin: 1.25rem 0 2rem; }
-.btn {
-  appearance: none; border: none; cursor: pointer; font-weight: 600;
-  padding: 0.75rem 1rem; border-radius: 12px; color: #0b1220; background: linear-gradient(90deg, var(--accent), var(--success));
-  box-shadow: 0 6px 20px var(--ring);
-}
-.btn:hover { filter: brightness(1.05); }
-.btn:active { transform: translateY(1px); }
-
-.footer { text-align: center; color: var(--muted); padding: 1rem; }
 </style>
