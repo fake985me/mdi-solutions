@@ -11,7 +11,7 @@
       <!-- Vertical Divider -->
       <div class="hidden lg:block w-px bg-gray-950"></div>
       <!-- Fitur -->
-      <div class="flex-1 px-4 border-t lg:border-t-0 lg:border-l border-gray-300 pt-4 lg:pt-0" v-if="features.length">
+      <div class="flex-1 px-4 pt-4 lg:pt-0" v-if="features.length">
         <h2 class="text-xl font-semibold mb-2">Features</h2>
         <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
           <li v-for="(fitur, index) in features" :key="index">{{ fitur }}</li>
@@ -20,24 +20,51 @@
       <!-- Vertical Divider -->
       <div class="hidden lg:block w-px bg-gray-950"></div>
       <!-- Spesifikasi -->
-      <div class="flex-1 px-4 border-t lg:border-t-0 lg:border-l border-gray-300 pt-4 lg:pt-0">
+      <div class="flex-1 pt-4 lg:pt-0">
         <h2 class="text-xl font-semibold mb-2">Specification</h2>
         <ul class="list-disc pl-5 space-y-1 text-sm text-gray-800">
-          <li><strong>Flash Memory :</strong> {{ product.flashmemory }}</li>
-          <li><strong>SDRAM Memory :</strong> {{ product.sdrammemory }}</li>
-          <li><strong>Interface :</strong></li>
-          <ul class="list-disc pl-5">
-            <li v-if="product.Interface1">{{ product.Interface1 }}</li>
-            <li v-if="product.Interface2">{{ product.Interface2 }}</li>
-            <li v-if="product.Interface3">{{ product.Interface3 }}</li>
-            <li v-if="product.Interface4">{{ product.Interface4 }}</li>
-          </ul>
-          <li><strong>Operating Temp :</strong> {{ product.operatingtemperature }}</li>
-          <li><strong>Power :</strong></li>
-          <ul class="list-disc pl-5">
-            <li v-if="product.power1">{{ product.power1 }}</li>
-            <li v-if="product.power2">{{ product.power2 }}</li>
-          </ul>
+          <li  ><strong>Flash Memory :</strong> {{ selectedProduct?.flashmemory || product.flashmemory }}</li>
+          <li><strong>SDRAM Memory :</strong> {{ selectedProduct?.sdrammemory || product.sdrammemory }}</li>
+
+          <!-- Interface -->
+          <template
+            v-if="(selectedProduct?.Interface2 || product.Interface2) || (selectedProduct?.Interface3 || product.Interface3) || (selectedProduct?.Interface4 || product.Interface4)">
+            <li><strong>Interface :</strong></li>
+            <ul class="list-disc pl-5">
+              <li v-if="(selectedProduct?.Interface1 || product.Interface1)">{{ selectedProduct?.Interface1 ||
+                product.Interface1 }}</li>
+              <li v-if="(selectedProduct?.Interface2 || product.Interface2)">{{ selectedProduct?.Interface2 ||
+                product.Interface2 }}</li>
+              <li v-if="(selectedProduct?.Interface3 || product.Interface3)">{{ selectedProduct?.Interface3 ||
+                product.Interface3 }}</li>
+              <li v-if="(selectedProduct?.Interface4 || product.Interface4)">{{ selectedProduct?.Interface4 ||
+                product.Interface4 }}</li>
+            </ul>
+          </template>
+          <template v-else>
+            <li v-if="(selectedProduct?.Interface1 || product.Interface1)">
+              <strong>Interface :</strong> {{ selectedProduct?.Interface1 || product.Interface1 }}
+            </li>
+          </template>
+
+          <li><strong>Operating Temp :</strong> {{ selectedProduct?.operatingtemperature || product.operatingtemperature
+            }}</li>
+
+          <!-- Power -->
+          <template v-if="(selectedProduct?.power2 || product.power2)">
+            <li><strong>Power :</strong></li>
+            <ul class="list-disc pl-5">
+              <li v-if="(selectedProduct?.power1 || product.power1)">{{ selectedProduct?.power1 || product.power1 }}
+              </li>
+              <li v-if="(selectedProduct?.power2 || product.power2)">{{ selectedProduct?.power2 || product.power2 }}
+              </li>
+            </ul>
+          </template>
+          <template v-else>
+            <li v-if="(selectedProduct?.power1 || product.power1)">
+              <strong>Power :</strong> {{ selectedProduct?.power1 || product.power1 }}
+            </li>
+          </template>
         </ul>
       </div>
     </div>

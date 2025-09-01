@@ -9,7 +9,7 @@ function generateSlug(text) {
     .replace(/^-+|-+$/g, '')
 }
 
-// Data dummy produk
+// Data produk
 const products = ref([
   {
     id: '1',
@@ -88,8 +88,7 @@ const products = ref([
     powercomsumptions: '875W (SFU x 2 + FAN x 2 + PSU_DC x 2 + IU_XGSPON8 x 6 + IU_10GE8 x 2)',
     dimensions: '443.8 x 265.9 x 280 mm (Wing Bracket excluded)',
     diagram: 'optic_olt',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '2',
@@ -168,8 +167,7 @@ const products = ref([
     powercomsumptions: '265W (PSU DC) 310W (PSU AC)',
     dimensions: '482.6 x 133 x 280 mm (3RU, Wing Bracket included)',
     diagram: 'optic_olt',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '3',
@@ -248,8 +246,7 @@ const products = ref([
     powercomsumptions: 'Max. 230W (PSU DC) Max. 245W (PSU AC)',
     dimensions: '420 x 44 x 280 mm (1RU)',
     diagram: 'optic_olt',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '4',
@@ -328,8 +325,7 @@ const products = ref([
     powercomsumptions: 'Max. 155W (PSU DC) Max. 170W (PSU AC)',
     dimensions: '440 x 44 x 280 mm (1RU)',
     diagram: 'optic_olt',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '5',
@@ -408,8 +404,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '160 x 39.5 x 150 mm',
     diagram: 'optic_ont',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '6',
@@ -488,27 +483,26 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '160 × 40 x 140 mm',
     diagram: 'optic_ont',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '7',
     module: 'A',
     image: 'https://ik.imagekit.io/iamfake/products/ont%20zaram.png?updatedAt=1753866204414',
     category: 'XGSPON',
-    subCategory: 'ONT',
-    title: 'ZX-ONT',
-    subtitle: 'XGSPON ONT',
-    spec1: 'ZX-ONT-2.5G: Up to 2.5GbE',
-    spec2: 'ZX-ONT-10G: Up to 10GbE',
+    subCategory: 'ONU',
+    title: 'ZX-ONU-PoE 1-port',
+    subtitle: 'XGSPON ONU',
+    spec1: 'ZX-ONU-2.5G: Up to 2.5GbE',
+    spec2: 'ZX-ONU-10G: Up to 10GbE',
     spec3: '',
     spec4: '',
     spec5: '',
     spec6: '',
     spec7: '',
     descriptions: 'XGSPON On-board BOSA Compliant with ITU-T G.9807.1 XGS-PON (N1/N2) Support 10Gbps bi-directional traffic capability 1270nm Burst-Mode Transmitter with DFB Laser 1577nm Continuous-Mode Receiver with APD-TIA',
-    fitur1: 'ZX-ONT-2.5G : 100M/1G/2.5GbE UTP Support',
-    fitur2: 'ZX-ONT-10G : 100M/1G/2.5G/5G/10G UTP Support',
+    fitur1: 'ZX-ONU-2.5G : 100M/1G/2.5GbE UTP Support',
+    fitur2: 'ZX-ONU-10G : 100M/1G/2.5G/5G/10G UTP Support',
     fitur3: 'POE Powered or Optional 12V Power Adaptor',
     fitur4: '',
     fitur5: '',
@@ -568,8 +562,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '',
     diagram: 'optic_ont',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '8',
@@ -648,8 +641,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '20 x 210 x 44 mm',
     diagram: 'optic_onu',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '9',
@@ -728,8 +720,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '',
     diagram: '',
-    networkDIagram: 'optic_sfp',
-    '': ''
+    networkDIagram: 'optic_sfp'
   },
   {
     id: '10',
@@ -808,8 +799,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '482.6mm x 265.9mm x 280mm',
     diagram: 'optic_olt',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '11',
@@ -888,8 +878,7 @@ const products = ref([
     powercomsumptions: 'Approximately 206 W',
     dimensions: '297 mm x 20.5 mm x 252.5 mm',
     diagram: 'optic_olt',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '12',
@@ -968,8 +957,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '440 x 44 x 300mm',
     diagram: 'optic_olt',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '13',
@@ -1048,8 +1036,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '440 x 44 x 300mm',
     diagram: 'optic_olt',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '14',
@@ -1128,8 +1115,7 @@ const products = ref([
     powercomsumptions: '< 22W (without POE), < 400W (with POE)',
     dimensions: '440mm x 44mm x 208mm',
     diagram: 'optic_onu',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '15',
@@ -1208,8 +1194,7 @@ const products = ref([
     powercomsumptions: 'Less than 140W (at PoE full-load)',
     dimensions: '280 x 44 x 180mm',
     diagram: 'optic_onu',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '16',
@@ -1288,8 +1273,7 @@ const products = ref([
     powercomsumptions: 'Maximum:20W(220V/50Hz)',
     dimensions: '440 x 44 x 208mm',
     diagram: 'optic_onu',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '17',
@@ -1368,8 +1352,7 @@ const products = ref([
     powercomsumptions: 'Max. 40W',
     dimensions: '17.32 x 1.73 x 10.47 in (440 x 44 x 266 mm)',
     diagram: 'optic_onu',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '18',
@@ -1448,8 +1431,7 @@ const products = ref([
     powercomsumptions: '27W',
     dimensions: '440 x 44 x 240 mm',
     diagram: 'optic_onu',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '19',
@@ -1528,8 +1510,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '212 × 40 x 140 mm',
     diagram: 'optic_ont',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '20',
@@ -1608,8 +1589,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '160 x 40 x 140 mm (Antenna excluded) 212.6 x 186.5 x 140 mm (Antenna included)',
     diagram: 'optic_ont',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '21',
@@ -1688,8 +1668,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '180 x 131 x 28 mm (Foot exluded)',
     diagram: 'optic_ont',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '22',
@@ -1768,8 +1747,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '28 x 66 x 108 mm',
     diagram: 'optic_ont',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '23',
@@ -1848,8 +1826,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '',
     diagram: 'optic_onu',
-    networkDIagram: 'opticalLine',
-    '': ''
+    networkDIagram: 'opticalLine'
   },
   {
     id: '24',
@@ -1928,8 +1905,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '442 x 530 x 797.3 mm (18U height, weight Up to 146Kg)',
     diagram: 'core',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '25',
@@ -2008,8 +1984,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '442 x 530 x 352.8 mm (8U height, weight Up to 66Kg',
     diagram: 'core',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '26',
@@ -2088,8 +2063,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '442 x 530 x 219.5 mm (5U height, weight Up to 42Kg)',
     diagram: 'core',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '27',
@@ -2168,8 +2142,7 @@ const products = ref([
     powercomsumptions: 'Max. 200W (AC), 190W ( DC )',
     dimensions: '444 mm x 44 mm x 250 mm (19"" x 1U)',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '28',
@@ -2248,8 +2221,7 @@ const products = ref([
     powercomsumptions: '66W (25G LR x 48 + 100G LR x 6) 324W (25G ER-Lite X 48 + 100G ER-Lite x 6)',
     dimensions: '440 x 44 x 415.8 mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '29',
@@ -2328,8 +2300,7 @@ const products = ref([
     powercomsumptions: 'Max. 270W',
     dimensions: '440 x 44 x 415.8 mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '30',
@@ -2408,8 +2379,7 @@ const products = ref([
     powercomsumptions: 'Max. 160W',
     dimensions: '440 x 44 x 418 mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '31',
@@ -2488,8 +2458,7 @@ const products = ref([
     powercomsumptions: 'Max.45W',
     dimensions: '440 × 44 × 280 mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '32',
@@ -2568,8 +2537,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '440 x 44 x 280mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '33',
@@ -2648,8 +2616,7 @@ const products = ref([
     powercomsumptions: 'Max. 61W',
     dimensions: '440 x 44 x 325mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '34',
@@ -2728,8 +2695,7 @@ const products = ref([
     powercomsumptions: 'Approximately 105W',
     dimensions: '330 x 44 x 200mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '35',
@@ -2808,8 +2774,7 @@ const products = ref([
     powercomsumptions: '160.7W (PSU DC) 182.2W (PSU AC)',
     dimensions: '444 x 44 x 250 mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '36',
@@ -2888,8 +2853,7 @@ const products = ref([
     powercomsumptions: '170W (PSU DC) 180W (PSU AC)',
     dimensions: '444 x 44 x 250 mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '37',
@@ -2968,8 +2932,7 @@ const products = ref([
     powercomsumptions: 'Maximum:20W(220V/50Hz)',
     dimensions: '440 x 44 x 208mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '38',
@@ -3048,8 +3011,7 @@ const products = ref([
     powercomsumptions: '27W',
     dimensions: '440 x 44 x 240 mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '39',
@@ -3128,8 +3090,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '440x44x260mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '40',
@@ -3208,8 +3169,7 @@ const products = ref([
     powercomsumptions: 'Less than 460W (including PoE) Less than 40W (excluding PoE)',
     dimensions: '440 × 44 × 260 mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '41',
@@ -3288,8 +3248,7 @@ const products = ref([
     powercomsumptions: '< 22W (without POE), < 400W (with POE)',
     dimensions: '440mm x 44mm x 208mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '42',
@@ -3368,8 +3327,7 @@ const products = ref([
     powercomsumptions: 'Less than 140W (at PoE full-load)',
     dimensions: '280 x 44 x 180mm',
     diagram: 'access',
-    networkDIagram: 'switchLine',
-    '': ''
+    networkDIagram: 'switchLine'
   },
   {
     id: '43',
@@ -3448,8 +3406,7 @@ const products = ref([
     powercomsumptions: '< 25.4W',
     dimensions: '220mm × 220mm × 48.9mm, weight: 1.3Kg',
     diagram: 'wifi',
-    networkDIagram: 'wireless',
-    '': ''
+    networkDIagram: 'wireless'
   },
   {
     id: '44',
@@ -3528,8 +3485,7 @@ const products = ref([
     powercomsumptions: '< 38W',
     dimensions: '230mm × 230mm × 50mm, weight: 950g',
     diagram: 'wifi',
-    networkDIagram: 'wireless',
-    '': ''
+    networkDIagram: 'wireless'
   },
   {
     id: '45',
@@ -3608,8 +3564,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '31cm × 12cm (diameter x depth), wieght: 4kg',
     diagram: 'wifi',
-    networkDIagram: 'wireless',
-    '': ''
+    networkDIagram: 'wireless'
   },
   {
     id: '46',
@@ -3688,8 +3643,7 @@ const products = ref([
     powercomsumptions: '<40W',
     dimensions: '440 × 200 x 43.61 (1RU, 19-inch rack mountable)',
     diagram: 'controller',
-    networkDIagram: 'wireless',
-    '': ''
+    networkDIagram: 'wireless'
   },
   {
     id: '47',
@@ -3768,8 +3722,7 @@ const products = ref([
     powercomsumptions: '<100W',
     dimensions: '440 × 560 x 86.1 (2RU, 19-inch rack mount)',
     diagram: 'controller',
-    networkDIagram: 'wireless',
-    '': ''
+    networkDIagram: 'wireless'
   },
 ])
 

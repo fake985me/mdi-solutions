@@ -43,30 +43,32 @@
         <!-- Grid Produk -->
         <div class="flex-1 flex flex-col sm:flex-row flex-wrap -mb-4 -mx-2 pt-4">
           <div class="lg:col-span-3">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div v-for="product in paginatedProducts" :key="product.id"
-                class="bg-white shadow-md rounded-xl hover:scale-105 duration-300 hover:shadow-xl">
-                <RouterLink :to="{
-                  name: 'product-detail',
-                  params: { slug: product.slug },
-                  query: { category: product.category, sub: product.subCategory }
-                }">
-                  <img :src="product.image" :alt="product.title" class="w-full h-48 object-contain rounded-t-lg p-4" />
-                </RouterLink>
-                <div class="px-4 py-3">
-                  <h3 class="text-lg font-semibold text-gray-900 truncate">
-                    <RouterLink :to="{
-                      name: 'product-detail',
-                      params: { slug: product.slug },
-                      query: { category: product.category, sub: product.subCategory }
-                    }" class="hover:underline">
-                      {{ product.title }}
-                    </RouterLink>
-                  </h3>
-                  <p class="text-sm text-gray-500" v-if="product.port">{{ product.port }}</p>
-                </div>
-              </div>
-            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  <div v-for="product in paginatedProducts" :key="product.id"
+    class="bg-white shadow-md rounded-xl hover:scale-105 duration-300 hover:shadow-xl">
+    <RouterLink :to="{
+      name: 'product-detail',
+      params: { slug: product.slug },
+      query: { category: product.category, sub: product.subCategory }
+    }">
+      <img :src="product.image" :alt="product.title" class="w-full h-48 object-contain rounded-t-lg p-4" />
+    </RouterLink>
+    <div class="px-4 py-3">
+      <h3 class="text-lg font-semibold text-gray-900 truncate">
+        <RouterLink :to="{
+          name: 'product-detail',
+          params: { slug: product.slug },
+          query: { category: product.category, sub: product.subCategory }
+        }" class="hover:underline">
+          {{ product.title }}
+        </RouterLink>
+      </h3>
+      <p class="text-sm text-gray-500" v-if="product.spec1">{{ product.spec1 }}</p>
+      <p class="text-sm text-gray-500" v-if="product.spec2">{{ product.spec2 }}</p>
+    </div>
+  </div>
+</div>
+
 
             <!-- Pagination -->
             <div v-if="totalPages > 1" class="mt-6 flex justify-center space-x-2">

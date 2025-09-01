@@ -11,7 +11,7 @@
       <!-- Vertical Divider -->
       <div class="hidden lg:block w-px bg-gray-950"></div>
       <!-- Fitur -->
-      <div class="flex-1 px-4 border-t lg:border-t-0 lg:border-l border-gray-300 pt-4 lg:pt-0" v-if="features.length">
+      <div class="flex-1 px-4 pt-4 lg:pt-0" v-if="features.length">
         <h2 class="text-xl font-semibold mb-2">Features</h2>
         <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
           <li v-for="(fitur, index) in features" :key="index">{{ fitur }}</li>
@@ -20,44 +20,86 @@
       <!-- Vertical Divider -->
       <div class="hidden lg:block w-px bg-gray-950"></div>
       <!-- Spesifikasi -->
-      <div class="flex-1 px-4 border-t lg:border-t-0 lg:border-l border-gray-300 pt-4 lg:pt-0">
+      <div class="flex-1 pt-4 lg:pt-0">
         <h2 class="text-xl font-semibold mb-2">Specification</h2>
         <ul class="list-disc pl-5 space-y-1 text-sm text-gray-800">
-          <li><strong>Wireless Standard :</strong> {{ product.wirelessStandard }}</li>
-          <li><strong>Wireless Stream :</strong> {{ product.wirelessStream }}</li>
-          <ul class="list-disc pl-5">
-            <li v-if="product.wirelessStream1">{{ product.wirelessStream1 }}</li>
-            <li v-if="product.wirelessStream2">{{ product.wirelessStream2 }}</li>
-            <li v-if="product.wirelessStream3">{{ product.wirelessStream3 }}</li>
-            <li v-if="product.wirelessStream4">{{ product.wirelessStream4 }}</li>
+          <li  ><strong>Wireless Standard :</strong> {{ product.wirelessStandard }}</li>
+          <!-- Wireless Stream -->
+          <template
+            v-if="(selectedProduct?.wirelessStream2 || product.wirelessStream2) || (selectedProduct?.wirelessStream3 || product.wirelessStream3) || (selectedProduct?.wirelessStream4 || product.wirelessStream4) || (selectedProduct?.wirelessStream5 || product.wirelessStream5)">
+            <li><strong>Wireless Stream :</strong> {{ product.wirelessStream }}</li>
+            <ul class="list-disc pl-5">
+              <li v-if="(selectedProduct?.wirelessStream1 || product.wirelessStream1)">{{ selectedProduct?.wirelessStream1 ||
+                product.wirelessStream1 }}</li>
+              <li v-if="(selectedProduct?.wirelessStream2 || product.wirelessStream2)">{{ selectedProduct?.wirelessStream2 ||
+                product.wirelessStream2 }}</li>
+              <li v-if="(selectedProduct?.wirelessStream3 || product.wirelessStream3)">{{ selectedProduct?.wirelessStream3 ||
+                product.wirelessStream3 }}</li>
+              <li v-if="(selectedProduct?.wirelessStream4 || product.wirelessStream4)">{{ selectedProduct?.wirelessStream4 ||
+                product.wirelessStream4 }}</li>
+              <li v-if="(selectedProduct?.wirelessStream5 || product.wirelessStream5)">{{ selectedProduct?.wirelessStream5 ||
+                product.wirelessStream5 }}</li>
+            </ul>
+          </template>
+          <template v-else>
+            <li v-if="(selectedProduct?.wirelessStream1 || product.wirelessStream1)">
+              <strong>Wireless Stream :</strong> {{ selectedProduct?.wirelessStream1 || product.wirelessStream1 }}
+            </li>
+          </template>
+
+          <li  ><strong>Client Capacity :</strong> {{ product.capacity }}</li>
+          <li  ><strong>Antenna :</strong> {{ product.antena }}</li>
+
+          <!-- Interface -->
+          <template
+            v-if="(selectedProduct?.Interface2 || product.Interface2) || (selectedProduct?.Interface3 || product.Interface3) || (selectedProduct?.Interface4 || product.Interface4)">
+            <li><strong>Interface :</strong></li>
+            <ul class="list-disc pl-5">
+              <li v-if="(selectedProduct?.Interface1 || product.Interface1)">{{ selectedProduct?.Interface1 ||
+                product.Interface1 }}</li>
+              <li v-if="(selectedProduct?.Interface2 || product.Interface2)">{{ selectedProduct?.Interface2 ||
+                product.Interface2 }}</li>
+              <li v-if="(selectedProduct?.Interface3 || product.Interface3)">{{ selectedProduct?.Interface3 ||
+                product.Interface3 }}</li>
+              <li v-if="(selectedProduct?.Interface4 || product.Interface4)">{{ selectedProduct?.Interface4 ||
+                product.Interface4 }}</li>
+            </ul>
+          </template>
+          <template v-else>
+            <li v-if="(selectedProduct?.Interface1 || product.Interface1)">
+              <strong>Interface :</strong> {{ selectedProduct?.Interface1 || product.Interface1 }}
+            </li>
+          </template>
+
+          <li  ><strong>IP Rating :</strong> {{ product.iprating }}</li>
+
+          <li><strong>Operating Temp :</strong> {{ selectedProduct?.operatingtemperature || product.operatingtemperature
+            }}</li>
+          <li><strong>Storage Temp :</strong> {{ selectedProduct?.storagetemperature || product.storagetemperature }}
+          </li>
+          <li><strong>Humidity :</strong> {{ selectedProduct?.operatinghumidity || product.operatinghumidity }}</li>
+
+          <!-- Power -->
+          <template v-if="(selectedProduct?.power2 || product.power2)">
+            <li><strong>Power:</strong></li>
+            <ul class="list-disc pl-5">
+              <li v-if="(selectedProduct?.power1 || product.power1)">{{ selectedProduct?.power1 || product.power1 }}
+              </li>
+              <li v-if="(selectedProduct?.power2 || product.power2)">{{ selectedProduct?.power2 || product.power2 }}
+              </li>
+            </ul>
+          </template>
+          <template v-else>
+            <li v-if="(selectedProduct?.power1 || product.power1)">
+              <strong>Power:</strong> {{ selectedProduct?.power1 || product.power1 }}
+            </li>
+          </template>
+
+          <ul><strong>Power Consumption : </strong>
+          <li>{{ selectedProduct?.powercomsumptions || product.powercomsumptions }}
+          </li>
           </ul>
-          <li><strong>Client Capacity :</strong> {{ product.capacity }}</li>
-          <li><strong>Antenna :</strong> {{ product.antena }}</li>
-          <li><strong>Interface :</strong> {{ product.Interface }}</li>
-          <ul class="list-disc pl-5">
-            <li v-if="product.Interface1">{{ product.Interface1 }}</li>
-            <li v-if="product.Interface2">{{ product.Interface2 }}</li>
-            <li v-if="product.Interface3">{{ product.Interface3 }}</li>
-            <li v-if="product.Interface4">{{ product.Interface4 }}</li>
-          </ul>
-          <li><strong>Additional Interface :</strong></li>
-          <ul class="list-disc pl-5">
-            <li v-if="product.aditionalinterface1">{{ product.aditionalinterface1 }}</li>
-            <li v-if="product.aditionalinterface2">{{ product.aditionalinterface2 }}</li>
-            <li v-if="product.aditionalinterface3">{{ product.aditionalinterface3 }}</li>
-            <li v-if="product.aditionalinterface4">{{ product.aditionalinterface4 }}</li>
-          </ul>
-          <li><strong>IP Rating :</strong> {{ product.iprating }}</li>
-          <li><strong>Operating Temp :</strong> {{ product.operatingtemperature }}</li>
-          <li><strong>Storage Temp :</strong> {{ product.storagetemperature }}</li>
-          <li><strong>Humidity :</strong> {{ product.operatinghumidity }}</li>
-          <li><strong>Power :</strong></li>
-          <ul class="list-disc pl-5">
-            <li v-if="product.power1">{{ product.power1 }}</li>
-            <li v-if="product.power2">{{ product.power2 }}</li>
-          </ul>
-          <li><strong>Power Consumption :</strong> {{ product.powercomsumptions }}</li>
-          <li><strong>Dimensions :</strong> {{ product.dimensions }}</li>
+          <li  ><strong>Dimensions :</strong> {{ selectedProduct?.dimensions || product.dimensions }}</li>
         </ul>
       </div>
     </div>
