@@ -1,6 +1,137 @@
 <template>
   <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Detail Produk (Gambar - Fitur - Spesifikasi) -->
+    <div class="max-w-screen-xl mx-auto py-8 px-4 lg:py-16 lg:px-6">
+      <div class="flex flex-col lg:flex-row gap-8 pt-8">
+
+        <!-- Bagian Gambar & Fitur -->
+        <div class="flex-1 flex flex-col">
+          <h3 class="text-2xl font-bold mb-4 text-gray-900">{{ selectedProduct?.title || product.title }}</h3>
+          <div class="w-full h-64 flex justify-center mb-6">
+            <img :src="(selectedProduct?.image || product.image)" :alt="(selectedProduct?.title || product.title)"
+              class="w-[65%] max-w-xs md:max-w-sm object-contain " />
+          </div>
+
+          <!-- Features -->
+          <div v-if="features.length" class="border-t border-gray-800 pt-4 mt-4">
+            <h3 class="text-xl font-semibold mb-3 text-gray-900">Features</h3>
+            <table class="table-auto w-full text-sm text-gray-700">
+              <tbody>
+                <tr v-for="(fitur, index) in features" :key="index">
+                  <td class="border-b border-gray-800 px-3 py-1">{{ fitur }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Divider untuk layar besar -->
+        <div class="hidden lg:block w-px bg-gray-800"></div>
+
+        <!-- Bagian Spesifikasi -->
+        <div class="flex-1">
+          <h2 class="text-2xl font-bold mb-4 text-gray-900">Specification</h2>
+          <div class="overflow-x-auto">
+            <table class="table-auto w-full text-sm text-gray-700 border-collapse">
+              <tbody>
+                <tr>
+                  <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Flash Memory</td>
+                  <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.flashmemory || product.flashmemory
+                    }}</td>
+                </tr>
+                <tr>
+                  <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">SDRAM Memory</td>
+                  <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.sdrammemory || product.sdrammemory
+                    }}</td>
+                </tr>
+
+                <!-- Interface -->
+                <tr
+                  v-if="(selectedProduct?.Interface1 || product.Interface1) && !(selectedProduct?.Interface2 || product.Interface2 || selectedProduct?.Interface3 || product.Interface3 || selectedProduct?.Interface4 || product.Interface4)">
+                  <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Interface</td>
+                  <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.Interface1 || product.Interface1 }}
+                  </td>
+                </tr>
+                <tr
+                  v-else-if="(selectedProduct?.Interface2 || product.Interface2 || selectedProduct?.Interface3 || product.Interface3 || selectedProduct?.Interface4 || product.Interface4)">
+                  <td class="font-semibold border-b border-r border-gray-800 px-2 py-1 align-top">Interface</td>
+                  <td class="border-b border-gray-800 px-2 py-1">
+                    <ul class="list-disc pl-4 space-y-1">
+                      <li v-if="(selectedProduct?.Interface1 || product.Interface1)">{{ selectedProduct?.Interface1 ||
+                        product.Interface1 }}</li>
+                      <li v-if="(selectedProduct?.Interface2 || product.Interface2)">{{ selectedProduct?.Interface2 ||
+                        product.Interface2 }}</li>
+                      <li v-if="(selectedProduct?.Interface3 || product.Interface3)">{{ selectedProduct?.Interface3 ||
+                        product.Interface3 }}</li>
+                      <li v-if="(selectedProduct?.Interface4 || product.Interface4)">{{ selectedProduct?.Interface4 ||
+                        product.Interface4 }}</li>
+                    </ul>
+                  </td>
+                </tr>
+
+                <!-- Temperature -->
+                <tr>
+                  <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Operating Temp</td>
+                  <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.operatingtemperature ||
+                    product.operatingtemperature }}</td>
+                </tr>
+                <tr>
+                  <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Storage Temp</td>
+                  <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.storagetemperature ||
+                    product.storagetemperature }}</td>
+                </tr>
+                <tr>
+                  <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Humidity</td>
+                  <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.operatinghumidity ||
+                    product.operatinghumidity }}</td>
+                </tr>
+
+                <!-- Power -->
+                <tr v-if="(selectedProduct?.power2 || product.power2)">
+                  <td class="font-semibold border-b border-r border-gray-800 px-2 py-1 align-top">Power</td>
+                  <td class="border-b border-gray-800 px-2 py-1">
+                    <ul class="list-disc pl-4 space-y-1">
+                      <li v-if="(selectedProduct?.power1 || product.power1)">{{ selectedProduct?.power1 ||
+                        product.power1 }}</li>
+                      <li v-if="(selectedProduct?.power2 || product.power2)">{{ selectedProduct?.power2 ||
+                        product.power2 }}</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr v-else-if="(selectedProduct?.power1 || product.power1)">
+                  <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Power</td>
+                  <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.power1 || product.power1 }}</td>
+                </tr>
+
+                <tr>
+                  <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Power Consumption</td>
+                  <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.powercomsumptions ||
+                    product.powercomsumptions }}</td>
+                </tr>
+
+                <tr>
+                  <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Dimensions</td>
+                  <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.dimensions || product.dimensions }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="w-full max-w-7xl px-4 mt-8">
+      <h2 class="text-xl font-semibold mb-2">Overview</h2>
+      <p class="text-gray-800 text-sm">
+        {{ selectedProduct?.descriptions || product.descriptions }}
+      </p>
+    </div>
+        </div>
+        
+
+      </div>
+    </div>
+
+
+
+
     <div class="w-full max-w-7xl flex flex-col lg:flex-row gap-6 mt-32 md:mt-20 lg:mt-20">
       <!-- Gambar dan Deskripsi -->
       <div class="flex-1 flex flex-col items-center justify-center text-center lg:text-left px-4">
@@ -13,94 +144,107 @@
       <!-- Vertical Divider -->
       <div class="hidden lg:block w-px bg-gray-950"></div>
       <!-- Fitur -->
-
       <div class="flex-1 pt-4 lg:pt-0" v-if="features.length">
-  <h2 class="text-xl font-semibold mb-2">Features</h2>
-  <table class="table-auto w-full text-sm text-gray-800 ">
-    
-    <tbody>
-      <tr v-for="(fitur, index) in features" :key="index">
-        <td class="border-b border-gray-800 px-3 py-1">{{ fitur }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+        <h2 class="text-xl font-semibold mb-2">Features</h2>
+        <table class="table-auto w-full text-sm text-gray-800 ">
+          <tbody>
+            <tr v-for="(fitur, index) in features" :key="index">
+              <td class="border-b border-gray-800 px-3 py-1">{{ fitur }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <!-- Vertical Divider -->
       <div class="hidden lg:block w-px bg-gray-950"></div>
       <!-- Spesifikasi -->
       <div class="flex-1 pt-4 lg:pt-0">
-  <h2 class="text-xl font-semibold mb-2">Specification</h2>
-  <table class="table-auto w-full text-sm text-gray-800">
-    <tbody>
-      <tr>
-        <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Flash Memory</td>
-        <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.flashmemory || product.flashmemory }}</td>
-      </tr>
-      <tr>
-        <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">SDRAM Memory</td>
-        <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.sdrammemory || product.sdrammemory }}</td>
-      </tr>
+        <h2 class="text-xl font-semibold mb-2">Specification</h2>
+        <table class="table-auto w-full text-sm text-gray-800">
+          <tbody>
+            <tr>
+              <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Flash Memory</td>
+              <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.flashmemory || product.flashmemory }}
+              </td>
+            </tr>
+            <tr>
+              <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">SDRAM Memory</td>
+              <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.sdrammemory || product.sdrammemory }}
+              </td>
+            </tr>
 
-      <!-- Interface -->
-      <tr v-if="(selectedProduct?.Interface1 || product.Interface1) && !(selectedProduct?.Interface2 || product.Interface2 || selectedProduct?.Interface3 || product.Interface3 || selectedProduct?.Interface4 || product.Interface4)">
-        <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Interface</td>
-        <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.Interface1 || product.Interface1 }}</td>
-      </tr>
+            <!-- Interface -->
+            <tr
+              v-if="(selectedProduct?.Interface1 || product.Interface1) && !(selectedProduct?.Interface2 || product.Interface2 || selectedProduct?.Interface3 || product.Interface3 || selectedProduct?.Interface4 || product.Interface4)">
+              <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Interface</td>
+              <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.Interface1 || product.Interface1 }}
+              </td>
+            </tr>
 
-      <tr v-else-if="(selectedProduct?.Interface2 || product.Interface2 || selectedProduct?.Interface3 || product.Interface3 || selectedProduct?.Interface4 || product.Interface4)">
-        <td class="font-semibold border-b border-r border-gray-800 px-2 py-1 align-top">Interface</td>
-        <td class="border-b border-gray-800 px-2 py-1">
-          <ul class="list-disc pl-4 space-y-1">
-            <li v-if="(selectedProduct?.Interface1 || product.Interface1)">{{ selectedProduct?.Interface1 || product.Interface1 }}</li>
-            <li v-if="(selectedProduct?.Interface2 || product.Interface2)">{{ selectedProduct?.Interface2 || product.Interface2 }}</li>
-            <li v-if="(selectedProduct?.Interface3 || product.Interface3)">{{ selectedProduct?.Interface3 || product.Interface3 }}</li>
-            <li v-if="(selectedProduct?.Interface4 || product.Interface4)">{{ selectedProduct?.Interface4 || product.Interface4 }}</li>
-          </ul>
-        </td>
-      </tr>
+            <tr
+              v-else-if="(selectedProduct?.Interface2 || product.Interface2 || selectedProduct?.Interface3 || product.Interface3 || selectedProduct?.Interface4 || product.Interface4)">
+              <td class="font-semibold border-b border-r border-gray-800 px-2 py-1 align-top">Interface</td>
+              <td class="border-b border-gray-800 px-2 py-1">
+                <ul class="list-disc pl-4 space-y-1">
+                  <li v-if="(selectedProduct?.Interface1 || product.Interface1)">{{ selectedProduct?.Interface1 ||
+                    product.Interface1 }}</li>
+                  <li v-if="(selectedProduct?.Interface2 || product.Interface2)">{{ selectedProduct?.Interface2 ||
+                    product.Interface2 }}</li>
+                  <li v-if="(selectedProduct?.Interface3 || product.Interface3)">{{ selectedProduct?.Interface3 ||
+                    product.Interface3 }}</li>
+                  <li v-if="(selectedProduct?.Interface4 || product.Interface4)">{{ selectedProduct?.Interface4 ||
+                    product.Interface4 }}</li>
+                </ul>
+              </td>
+            </tr>
 
-      <tr>
-        <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Operating Temp</td>
-        <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.operatingtemperature || product.operatingtemperature }}</td>
-      </tr>
-      <tr>
-        <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Storage Temp</td>
-        <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.storagetemperature || product.storagetemperature }}</td>
-      </tr>
-      <tr>
-        <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Humidity</td>
-        <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.operatinghumidity || product.operatinghumidity }}</td>
-      </tr>
+            <tr>
+              <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Operating Temp</td>
+              <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.operatingtemperature ||
+                product.operatingtemperature }}</td>
+            </tr>
+            <tr>
+              <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Storage Temp</td>
+              <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.storagetemperature ||
+                product.storagetemperature }}</td>
+            </tr>
+            <tr>
+              <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Humidity</td>
+              <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.operatinghumidity ||
+                product.operatinghumidity }}</td>
+            </tr>
 
-      <!-- Power -->
-      <tr v-if="(selectedProduct?.power2 || product.power2)">
-        <td class="font-semibold border-b border-r border-gray-800 px-2 py-1 align-top">Power</td>
-        <td class="border-b border-gray-800 px-2 py-1">
-          <ul class="list-disc pl-4 space-y-1">
-            <li v-if="(selectedProduct?.power1 || product.power1)">{{ selectedProduct?.power1 || product.power1 }}</li>
-            <li v-if="(selectedProduct?.power2 || product.power2)">{{ selectedProduct?.power2 || product.power2 }}</li>
-          </ul>
-        </td>
-      </tr>
-      <tr v-else-if="(selectedProduct?.power1 || product.power1)">
-        <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Power</td>
-        <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.power1 || product.power1 }}</td>
-      </tr>
+            <!-- Power -->
+            <tr v-if="(selectedProduct?.power2 || product.power2)">
+              <td class="font-semibold border-b border-r border-gray-800 px-2 py-1 align-top">Power</td>
+              <td class="border-b border-gray-800 px-2 py-1">
+                <ul class="list-disc pl-4 space-y-1">
+                  <li v-if="(selectedProduct?.power1 || product.power1)">{{ selectedProduct?.power1 || product.power1 }}
+                  </li>
+                  <li v-if="(selectedProduct?.power2 || product.power2)">{{ selectedProduct?.power2 || product.power2 }}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr v-else-if="(selectedProduct?.power1 || product.power1)">
+              <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Power</td>
+              <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.power1 || product.power1 }}</td>
+            </tr>
 
-      <tr>
-        <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Power Consumption</td>
-        <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.powercomsumptions || product.powercomsumptions }}</td>
-      </tr>
+            <tr>
+              <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Power Consumption</td>
+              <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.powercomsumptions ||
+                product.powercomsumptions }}</td>
+            </tr>
 
-      <tr>
-        <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Dimensions</td>
-        <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.dimensions || product.dimensions }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
+            <tr>
+              <td class="font-semibold border-b border-r border-gray-800 px-2 py-1">Dimensions</td>
+              <td class="border-b border-gray-800 px-2 py-1">{{ selectedProduct?.dimensions || product.dimensions }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <!-- Overview -->
     <div class="w-full max-w-7xl px-4 mt-8">
