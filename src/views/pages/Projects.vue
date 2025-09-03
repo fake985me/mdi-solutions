@@ -11,7 +11,7 @@
           :class="index < articles.length - 1 ? 'border-b border-gray-200' : ''">
           <!-- Image -->
           <div class="w-full sm:w-48 flex-shrink-0">
-            <img :src="item.img" :alt="item.title" class="w-full h-auto max-h-[180px] object-cover rounded-md shadow" />
+            <img :src="item.img" :alt="item.title" class="w-32 sm:w-full h-auto max-h-[180px] p-2 sm:p-6 object-cover rounded-md shadow" />
           </div>
 
           <!-- Text -->

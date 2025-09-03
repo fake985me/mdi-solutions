@@ -1,144 +1,112 @@
 <template>
   <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <!-- Detail Produk (Gambar - Fitur - Spesifikasi) -->
-    <div class="w-full max-w-7xl flex flex-col lg:flex-row gap-6 mt-32 md:mt-20 lg:mt-20">
-      <!-- Gambar dan Deskripsi -->
-      <div class="flex-1 flex flex-col items-center justify-center text-center lg:text-left px-4">
-        <h1 class="text-2xl font-bold text-violet-800 mb-4">
+    <div class="w-full mx-auto py-8 lg:py-16">
+      <div class="max-w-6xl mx-auto">
+        <!-- Judul Produk -->
+        <h3 class="text-2xl text-center font-bold mb-4 text-gray-900 pt-20 sm:pt-10">
           {{ selectedProduct?.title || product.title }}
-        </h1>
-        <img :src="(selectedProduct?.image || product.image)" :alt="(selectedProduct?.title || product.title)"
-          class="w-full max-w-xs md:max-w-sm object-contain rounded-lg mb-4" />
-      </div>
-      <!-- Vertical Divider -->
-      <div class="hidden lg:block w-px bg-gray-950"></div>
-      <!-- Fitur -->
-      <div class="flex-1 pt-4 lg:pt-0" v-if="features.length">
-        <h2 class="text-xl font-semibold mb-2">Features</h2>
-        <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
-          <li v-for="(fitur, index) in features" :key="index">{{ fitur }}</li>
-        </ul>
-      </div>
-      <!-- Vertical Divider -->
-      <div class="hidden lg:block w-px bg-gray-950"></div>
-      <!-- Spesifikasi -->
-      
+        </h3>
 
+        <!-- Gambar Produk -->
+        <Transition name="fade-scale">
+          <div v-if="selectedProduct?.image || product.image" class="w-full flex justify-center">
+            <img
+              :src="selectedProduct?.image || product.image"
+              :alt="selectedProduct?.title || product.title"
+              class="w-full max-w-xs sm:max-w-sm md:max-w-md object-contain"
+            />
+          </div>
+        </Transition>
 
+        <!-- Overview -->
+        <Transition name="fade-slide-up">
+          <div class="w-full mt-8 px-2 sm:px-4">
+            <h2 class="text-lg sm:text-xl text-center font-semibold mb-2">Overview</h2>
+            <p class="text-gray-800 text-sm sm:text-base text-justify leading-relaxed">
+              {{ selectedProduct?.descriptions || product.descriptions }}
+            </p>
+          </div>
+        </Transition>
 
+        <!-- Features & Specification -->
+        <div class="flex flex-col lg:flex-row gap-8 pt-8">
+          <!-- Features -->
+          <Transition name="fade-slide-left">
+            <div class="flex-1">
+              <div v-if="features.length">
+                <h3 class="text-lg sm:text-2xl font-bold mb-4 text-gray-900">Features</h3>
+                <div class="overflow-x-auto">
+                  <table class="table-auto w-full text-sm text-gray-700 border-collapse">
+                    <tbody>
+                      <tr v-for="(fitur, index) in features" :key="index">
+                        <td class="border-b border-gray-800 px-3 py-2">{{ fitur }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </Transition>
 
-      <div class="flex-1 pt-4 lg:pt-0">
-        <h2 class="text-xl font-semibold mb-2">Specification</h2>
-        <tbody class="list-disc">
-          <tr>
-            <td class="px-2 whitespace-nowrap"><strong>Flash Memory</strong></td>
-            <td class="px-2 whitespace-nowrap text-sm"><strong>: </strong>{{ selectedProduct?.flashmemory || product.flashmemory }}</td>
-          </tr>
-          <tr>
-            <td class="px-2 whitespace-nowrap"><strong>SDRAM Memory</strong></td>
-            <td class="px-2 whitespace-nowrap text-sm"><strong>: </strong>{{ selectedProduct?.sdrammemory || product.sdrammemory }}</td>
-          </tr>
-          <!-- Interface -->
-          <tr v-if="(selectedProduct?.Interface2 || product.Interface2) || (selectedProduct?.Interface3 || product.Interface3) || (selectedProduct?.Interface4 || product.Interface4)">
-            <td class="px-2 whitespace-nowrap"><strong>Interface</strong></td>
-            <td v-if="(selectedProduct?.Interface1 || product.Interface1)" class="px-2 whitespace-nowrap text-sm"><strong>: </strong>{{ selectedProduct?.Interface1 ||
-                product.Interface1 }}</td>
-            <td v-if="(selectedProduct?.Interface2 || product.Interface2)" class="px-2 whitespace-nowrap text-sm"><strong>: </strong>{{ selectedProduct?.Interface2 ||
-                product.Interface2 }}</td>
-            <td v-if="(selectedProduct?.Interface3 || product.Interface3)" class="px-2 whitespace-nowrap text-sm"><strong>: </strong>{{ selectedProduct?.Interface3 ||
-                product.Interface3 }}</td>
-            <td v-if="(selectedProduct?.Interface4 || product.Interface4)" class="px-2 whitespace-nowrap text-sm"><strong>: </strong>{{ selectedProduct?.Interface4 ||
-                product.Interface4 }}</td>
-          </tr>
-          <tr v-else-if="(selectedProduct?.Interface1 || product.Interface1)">
-            <td class="px-2 whitespace-nowrap"><strong>Interface</strong></td>
-            <td class="px-2 whitespace-nowrap text-sm"><strong>: </strong>{{ selectedProduct?.Interface1 || product.Interface1 }}</td>
-          </tr>
+          <!-- Divider -->
+          <div class="hidden lg:block w-px bg-gray-800"></div>
 
-
-          <li  ><strong>Flash Memory :</strong> {{ selectedProduct?.flashmemory || product.flashmemory }}</li>
-          <li><strong>SDRAM Memory :</strong> {{ selectedProduct?.sdrammemory || product.sdrammemory }}</li>
-
-          <!-- Interface -->
-          <template
-            v-if="(selectedProduct?.Interface2 || product.Interface2) || (selectedProduct?.Interface3 || product.Interface3) || (selectedProduct?.Interface4 || product.Interface4)">
-            <li><strong>Interface :</strong></li>
-            <ul class="list-disc pl-5">
-              <li v-if="(selectedProduct?.Interface1 || product.Interface1)">{{ selectedProduct?.Interface1 ||
-                product.Interface1 }}</li>
-              <li v-if="(selectedProduct?.Interface2 || product.Interface2)">{{ selectedProduct?.Interface2 ||
-                product.Interface2 }}</li>
-              <li v-if="(selectedProduct?.Interface3 || product.Interface3)">{{ selectedProduct?.Interface3 ||
-                product.Interface3 }}</li>
-              <li v-if="(selectedProduct?.Interface4 || product.Interface4)">{{ selectedProduct?.Interface4 ||
-                product.Interface4 }}</li>
-            </ul>
-          </template>
-          <template v-else>
-            <li v-if="(selectedProduct?.Interface1 || product.Interface1)">
-              <strong>Interface :</strong> {{ selectedProduct?.Interface1 || product.Interface1 }}
-            </li>
-          </template>
-
-          <li><strong>Operating Temp :</strong> {{ selectedProduct?.operatingtemperature || product.operatingtemperature
-            }}</li>
-          <li><strong>Storage Temp :</strong> {{ selectedProduct?.storagetemperature || product.storagetemperature }}
-          </li>
-          <li><strong>Humidity :</strong> {{ selectedProduct?.operatinghumidity || product.operatinghumidity }}</li>
-
-          <!-- Power -->
-          <template v-if="(selectedProduct?.power2 || product.power2)">
-            <li><strong>Power:</strong></li>
-            <ul class="list-disc pl-5">
-              <li v-if="(selectedProduct?.power1 || product.power1)">{{ selectedProduct?.power1 || product.power1 }}
-              </li>
-              <li v-if="(selectedProduct?.power2 || product.power2)">{{ selectedProduct?.power2 || product.power2 }}
-              </li>
-            </ul>
-          </template>
-          <template v-else>
-            <li v-if="(selectedProduct?.power1 || product.power1)">
-              <strong>Power:</strong> {{ selectedProduct?.power1 || product.power1 }}
-            </li>
-          </template>
-
-          <ul><strong>Power Consumption : </strong>
-          <li>{{ selectedProduct?.powercomsumptions || product.powercomsumptions }}
-          </li>
-          </ul>
-          <li  ><strong>Dimensions :</strong> {{ selectedProduct?.dimensions || product.dimensions }}</li>
-        </tbody>
-      </div>
-    </div>
-    <!-- Overview -->
-    <div class="w-full max-w-7xl px-4 mt-8">
-      <h2 class="text-xl font-semibold mb-2">Overview</h2>
-      <p class="text-gray-800 text-sm">
-        {{ selectedProduct?.descriptions || product.descriptions }}
-      </p>
-    </div>
-    <!-- Diagram Section -->
-    <div class="w-full max-w-7xl px-4 mt-8">
-      <h2 class="text-xl font-semibold mb-2 justify-center text-center">
-        {{ selectedProduct.title || product.title }}<br>
-        {{ selectedProduct.category }} {{ selectedProduct.subCategory }} Network Diagram
-      </h2>
-      <template v-if="effectiveProduct">
-        <OpticLine v-if="diagramType === 'opticalline'" :product="effectiveProduct"
-          :diagram="effectiveProduct.diagram" />
-        <SwitchLine v-else-if="diagramType === 'switchline'" :product="effectiveProduct"
-          :diagram="effectiveProduct.diagram" />
-        <Wireless v-else-if="diagramType === 'wireless'" :product="effectiveProduct"
-          :diagram="effectiveProduct.diagram" />
-        <!-- fallback kalau type tidak dikenali -->
-        <div v-else class="w-full max-w-7xl px-4 mt-8 text-sm text-gray-500">
-          Diagram belum tersedia untuk produk ini.
+          <!-- Specification -->
+          <Transition name="fade-slide-right">
+            <div class="flex-1">
+              <h2 class="text-lg sm:text-2xl font-bold mb-4 text-gray-900">Specification</h2>
+              <div class="overflow-x-auto">
+                <table class="table-auto w-full text-sm text-gray-700 border-collapse">
+                  <tbody>
+                    <tr v-for="(spec, idx) in specificationList" :key="idx">
+                      <td class="font-semibold border-b border-r border-gray-800 px-2 py-2">{{ spec.label }}</td>
+                      <td class="border-b border-gray-800 px-2 py-2">
+                        <div v-if="Array.isArray(spec.value)">
+                          <ul class="list-disc pl-4 space-y-1">
+                            <li v-for="(val, i) in spec.value" :key="i">{{ val }}</li>
+                          </ul>
+                        </div>
+                        <span v-else>{{ spec.value }}</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </Transition>
         </div>
-      </template>
-      <!-- State kosong/jika diagram tidak ditemukan -->
-      <div v-else class="w-full max-w-7xl px-4 mt-8">
-        <div class="text-sm text-gray-500">
-          Diagram belum tersedia untuk produk ini.
+
+        <!-- Diagram Section -->
+        <div class="w-full mt-10 px-2 sm:px-4">
+          <h2 class="text-lg sm:text-xl font-semibold text-center mb-2">
+            {{ selectedProduct.title || product.title }}<br />
+            {{ selectedProduct.category }} {{ selectedProduct.subCategory }} Network Diagram
+          </h2>
+          <Transition name="fade-scale">
+            <template v-if="effectiveProduct">
+              <OpticLine
+                v-if="diagramType === 'opticalline'"
+                :product="effectiveProduct"
+                :diagram="effectiveProduct.diagram"
+              />
+              <SwitchLine
+                v-else-if="diagramType === 'switchline'"
+                :product="effectiveProduct"
+                :diagram="effectiveProduct.diagram"
+              />
+              <Wireless
+                v-else-if="diagramType === 'wireless'"
+                :product="effectiveProduct"
+                :diagram="effectiveProduct.diagram"
+              />
+              <div v-else class="text-center text-gray-500 mt-4">
+                Diagram belum tersedia untuk produk ini.
+              </div>
+            </template>
+            <div v-else class="text-center text-gray-500 mt-4">
+              Diagram belum tersedia untuk produk ini.
+            </div>
+          </Transition>
         </div>
       </div>
     </div>
@@ -153,7 +121,6 @@ import OpticLine from './components/OpticLine.vue'
 import SwitchLine from './components/SwitchLine.vue'
 import Wireless from './components/WifiLine.vue'
 
-
 const route = useRoute()
 
 const props = defineProps({
@@ -163,22 +130,8 @@ const props = defineProps({
   },
 })
 
-const effectiveProduct = computed(() => selectedProduct.value || props.product || null)
-
-// Normalisasi "opticalLine" -> "opticalline", dsb.
-const diagramType = computed(() =>
-  (effectiveProduct.value?.networkDIagram || '').toString().trim().toLowerCase()
-)
-
-
 const { products } = useProducts()
 
-// Fitur dari props.product (sesuai data yang kamu kirim dari parent)
-const features = computed(() =>
-  Array.from({ length: 15 }, (_, i) => props.product?.[`fitur${i + 1}`]).filter((f) => f && f !== 'null'),
-)
-
-// --- Pilih produk berdasar slug di URL; fallback ke props.product jika list belum siap ---
 const selectedProduct = computed(() => {
   const slug = route.params.slug
   if (!slug) return props.product || null
@@ -186,9 +139,73 @@ const selectedProduct = computed(() => {
   return list.find((p) => p.slug === slug) || props.product || null
 })
 
+const effectiveProduct = computed(() => selectedProduct.value || props.product || null)
+
+const diagramType = computed(() =>
+  (effectiveProduct.value?.networkDIagram || '').toString().trim().toLowerCase()
+)
+
+const features = computed(() =>
+  Array.from({ length: 15 }, (_, i) => props.product?.[`fitur${i + 1}`]).filter((f) => f && f !== 'null')
+)
+
+const specificationList = computed(() => {
+  const p = selectedProduct.value || props.product || {}
+  return [
+    { label: 'Switching Capacity', value: p.switching },
+    { label: 'Throughput', value: p.throughput },
+    { label: 'Interface', value: [p.Interface1, p.Interface2, p.Interface3, p.Interface4].filter((i) => i) },
+    { label: 'Control Unit', value: [p.cu1, p.cu2, p.cu3, p.cu4].filter((i) => i)},
+    { label: 'Additional Interface', value: [p.aditionalinterface1, p.aditionalinterface2, p.aditionalinterface3, p.aditionalinterface4].filter((i) => i)},
+    { label: 'MAC Address', value: p.macaddress},
+    { label: 'Routing table', value: p.routingtable},
+    { label: 'Dustproof and Waterproof', value: p.dustproofwaterproof},
+    { label: 'Noise', value: p.noise},
+    { label: 'Operating Temp', value: p.operatingtemperature },
+    { label: 'Storage Temp', value: p.storagetemperature },
+    { label: 'Humidity', value: p.operatinghumidity },
+    { label: 'Power', value: [p.power1, p.power2].filter((i) => i) },
+    { label: 'Dimensions', value: p.dimensions },
+  ]
+})
 </script>
 
 <style scoped>
-/* Opsional: garis pemisah untuk layar besar sudah pakai border/tailwind.
-   Tambahan styling kecil jika diperlukan. */
+/* Animasi Fade + Scale */
+.fade-scale-enter-active,
+.fade-scale-leave-active {
+  transition: all 0.4s ease;
+}
+.fade-scale-enter-from,
+.fade-scale-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* Slide Up */
+.fade-slide-up-enter-active {
+  transition: all 0.5s ease;
+}
+.fade-slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Slide Left */
+.fade-slide-left-enter-active {
+  transition: all 0.5s ease;
+}
+.fade-slide-left-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+/* Slide Right */
+.fade-slide-right-enter-active {
+  transition: all 0.5s ease;
+}
+.fade-slide-right-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
 </style>
