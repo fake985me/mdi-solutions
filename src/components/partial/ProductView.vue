@@ -5,112 +5,212 @@
 
     <!-- Tabs -->
     <div class="flex flex-wrap gap-3 border-b mb-4 justify-center">
-      <div v-for="(tab, i) in tabs" :key="i" @click="
-        () => {
-          activeTab = i
-          activeSubTab = 0
-          desktopIndex = 0
-          mobileIndex = 0
-        }
-      " :class="[
-        'cursor-pointer py-2 px-2 border-b-2',
-        i === activeTab
-          ? 'border-blue-600 text-blue-600 font-bold'
-          : 'border-transparent border-b-slate-900 text-gray-800 hover:text-blue-800',
-      ]">
+      <div
+        v-for="(tab, i) in tabs"
+        :key="i"
+        @click="
+          () => {
+            activeTab = i
+            activeSubTab = 0
+            desktopIndex = 0
+            mobileIndex = 0
+          }
+        "
+        :class="[
+          'cursor-pointer py-2 px-2 border-b-2',
+          i === activeTab
+            ? 'border-blue-600 text-blue-600 font-bold'
+            : 'border-transparent border-b-slate-900 text-gray-800 hover:text-blue-800',
+        ]"
+      >
         {{ tab.title }}
       </div>
     </div>
 
     <!-- Sub Tabs -->
-    <div v-if="tabs[activeTab].subCategories" class="flex flex-wrap gap-2 -mt-2 mb-8 justify-center">
-      <div v-for="(sub, j) in tabs[activeTab].subCategories" :key="j" @click="
-        () => {
-          activeSubTab = j
-          desktopIndex = 0
-          mobileIndex = 0
-        }
-      " :class="[
-        'cursor-pointer text-sm py-1 px-3 border-2',
-        j === activeSubTab
-          ? 'bg-black border-blue-500 rounded-md text-white font-medium'
-          : 'bg-white border-slate-900 rounded-md text-gray-900 hover:text-blue-800',
-      ]">
+    <div
+      v-if="tabs[activeTab].subCategories"
+      class="flex flex-wrap gap-2 -mt-2 mb-8 justify-center"
+    >
+      <div
+        v-for="(sub, j) in tabs[activeTab].subCategories"
+        :key="j"
+        @click="
+          () => {
+            activeSubTab = j
+            desktopIndex = 0
+            mobileIndex = 0
+          }
+        "
+        :class="[
+          'cursor-pointer text-sm py-1 px-3 border-2',
+          j === activeSubTab
+            ? 'bg-black border-blue-500 rounded-md text-white font-medium'
+            : 'bg-white border-slate-900 rounded-md text-gray-900 hover:text-blue-800',
+        ]"
+      >
         {{ sub }}
       </div>
     </div>
 
     <!-- Desktop Grid (4 per page) -->
     <div class="hidden md:flex justify-center items-center relative">
-      <button v-if="pagedDesktop.length > 1" @click="prevDesktop"
-        class="block absolute left-4 top-1/2 -translate-y-1/2 px-2 py-1 z-10">
+      <button
+        v-if="pagedDesktop.length > 1"
+        @click="prevDesktop"
+        class="block absolute left-4 top-1/2 -translate-y-1/2 px-2 py-1 z-10"
+      >
         ❮
       </button>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto max-w-7xl px-16">
-        <div v-for="(product, i) in pagedDesktop[desktopIndex]" :key="i"
-          class="h-[450px] bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 transform hover:-translate-y-1">
-          <RouterLink :to="`/product/${product.slug}`" class="block flex-1 flex-col justify-between">
-            <img :src="getLogo(product)" alt="logo" class="h-6 mb-2 mx-auto" />
-            <div class="aspect-w-16 aspect-h-16 bg-gradient-to-br from-primary-50 to-primary-100">
-              <div class="w-50 h-48 flex object-contain justify-center item-center mx-auto p-4">
-                <div class="w-80% h-80% bg-primary-200 rounded-full flex items-center justify-center">
-                  <img :src="product.image" alt="" class="w-64 h-32 object-contain mb-2 mx-auto" />
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto max-w-7xl px-6 lg:px-16"
+      >
+        <div
+          v-for="(product, i) in pagedDesktop[desktopIndex]"
+          :key="i"
+          class="relative h-[450px] bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 transform hover:-translate-y-1"
+        >
+          <RouterLink
+            :to="`/product/${product.slug}`"
+            class="block flex-1 flex-col justify-between"
+          >
+            <!-- Default logo (kiri) -->
+            <img
+              :src="defaultLogo"
+              alt="default logo"
+              class="flex w-full h-8 top-0 left-0 ml-2"
+            />
+
+            <!-- Brand logo dinamis (kanan) -->
+            <img
+              v-if="getBrandLogo(product.Brand)"
+              :src="getBrandLogo(product.Brand)"
+              :alt="product.Brand"
+              class="absolute w-full h-8 top-0 right-0 mr-3"
+            />
+
+            <div
+              class="aspect-w-16 aspect-h-16 bg-gradient-to-br from-primary-50 to-primary-100"
+            >
+              <div
+                class="w-50 h-48 flex object-contain justify-center items-center mx-auto p-4"
+              >
+                <div
+                  class="w-[80%] h-[80%] bg-primary-200 rounded-full flex items-center justify-center"
+                >
+                  <img
+                    :src="product.image"
+                    alt=""
+                    class="w-64 h-32 object-contain mb-2 mx-auto"
+                  />
                 </div>
               </div>
             </div>
             <div class="p-6">
               <div class="flex items-start justify-between mb-1">
-                <h3 class="text-lg font-mono font-semibold mb-1 line-clamp-2">
+                <h3
+                  class="text-lg font-mono font-semibold mb-1 line-clamp-2"
+                >
                   {{ product.title }}
                 </h3>
               </div>
-              <ul class="text-xs text-shadow-2xl/30 shadow-slate-300 font-semibold italic text-black -mt-2">
+              <ul
+                class="text-xs shadow-slate-300 font-semibold italic text-black -mt-2"
+              >
                 <li class="text-sm overline">
                   {{ product.subtitle }}
                 </li>
-                <ul class="list-disc pl-5 text-justify text-xs text-gray-950 mt-1" v-if="getSpecs(product).length">
-                  <li v-for="(spec, index) in getSpecs(product)" :key="index">{{ spec }}</li>
+                <ul
+                  class="list-disc pl-5 text-justify text-xs text-gray-950 mt-1"
+                  v-if="getSpecs(product).length"
+                >
+                  <li
+                    v-for="(spec, index) in getSpecs(product)"
+                    :key="index"
+                  >
+                    {{ spec }}
+                  </li>
                 </ul>
               </ul>
             </div>
           </RouterLink>
         </div>
       </div>
-      <button v-if="pagedDesktop.length > 1" @click="nextDesktop"
-        class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 z-10">
+      <button
+        v-if="pagedDesktop.length > 1"
+        @click="nextDesktop"
+        class="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 z-10"
+      >
         ❯
       </button>
     </div>
 
     <!-- Mobile (1 per page + navigation) -->
     <div class="md:hidden text-center relative mt-4">
-      <div v-if="pagedMobile.length" class="mx-auto w-[280px] min-h-[130px] flex flex-col items-center relative">
+      <div
+        v-if="pagedMobile.length"
+        class="mx-auto w-[280px] min-h-[130px] flex flex-col items-center relative"
+      >
         <div
-          class="w-[280px] h-[500px] bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 transform hover:-translate-y-1">
+          class="relative w-[280px] h-[500px] bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 transform hover:-translate-y-1"
+        >
           <RouterLink :to="`/product/${pagedMobile[mobileIndex].slug}`">
-            <img :src="getLogo(pagedMobile[mobileIndex])" alt="logo" class="h-6 mb-2 mx-auto" />
-            <div class="aspect-w-92 aspect-h-24 bg-gradient-to-br from-primary-50 to-primary-100">
-              <div class="w-full h-48 flex object-contain justify-center item-center mx-auto p-4">
-                <div class="w-42 h-80% bg-primary-200 rounded-full flex items-center justify-center">
-                  <img :src="pagedMobile[mobileIndex].image" alt="" class="w-32 h-28 object-contain mb-2 mx-auto" />
+            <!-- Default logo (kiri) -->
+            <img
+              :src="defaultLogo"
+              alt="default logo"
+              class="flex w-full h-8 top-0 left-0 ml-2"
+            />
+
+            <!-- Brand logo dinamis (kanan) -->
+            <img
+              v-if="getBrandLogo(pagedMobile[mobileIndex].Brand)"
+              :src="getBrandLogo(pagedMobile[mobileIndex].Brand)"
+              :alt="pagedMobile[mobileIndex].Brand"
+              class="absolute w-full h-8 top-0 right-0 mr-3"
+            />
+
+            <div
+              class="aspect-w-92 aspect-h-24 bg-gradient-to-br from-primary-50 to-primary-100"
+            >
+              <div
+                class="w-full h-48 flex object-contain justify-center items-center mx-auto p-4"
+              >
+                <div
+                  class="w-[42] h-[80%] bg-primary-200 rounded-full flex items-center justify-center"
+                >
+                  <img
+                    :src="pagedMobile[mobileIndex].image"
+                    alt=""
+                    class="w-32 h-28 object-contain mb-2 mx-auto"
+                  />
                 </div>
               </div>
             </div>
 
             <div class="p-6">
               <div class="flex items-center justify-center mb-1">
-                <h3 class="text-lg font-mono font-semibold mt-1 line-clamp-2">
+                <h3
+                  class="text-lg font-mono font-semibold mt-1 line-clamp-2"
+                >
                   {{ pagedMobile[mobileIndex].title }}
                 </h3>
               </div>
-              <ul class="text-xs text-shadow-2xl/30 shadow-slate-300 font-semibold italic text-black -mt-2">
+              <ul
+                class="text-xs shadow-slate-300 font-semibold italic text-black -mt-2"
+              >
                 <li class="text-sm overline">
                   {{ pagedMobile[mobileIndex].subtitle }}
                 </li>
-                <ul class="list-disc pl-5 text-justify text-sm whitespace-normal text-gray-950"
-                  v-if="getSpecs(pagedMobile[mobileIndex]).length">
-                  <li v-for="(spec, index) in getSpecs(pagedMobile[mobileIndex])" :key="index">
+                <ul
+                  class="list-disc pl-5 text-justify text-sm whitespace-normal text-gray-950"
+                  v-if="getSpecs(pagedMobile[mobileIndex]).length"
+                >
+                  <li
+                    v-for="(spec, index) in getSpecs(pagedMobile[mobileIndex])"
+                    :key="index"
+                  >
                     {{ spec }}
                   </li>
                 </ul>
@@ -121,10 +221,18 @@
 
         <!-- Mobile Navigation -->
         <div class="flex justify-center gap-6 mt-4">
-          <button v-if="pagedMobile.length > 1" @click="prevMobile" class="text-2xl px-3 py-1">
+          <button
+            v-if="pagedMobile.length > 1"
+            @click="prevMobile"
+            class="text-2xl px-3 py-1"
+          >
             ❮
           </button>
-          <button v-if="pagedMobile.length > 1" @click="nextMobile" class="text-2xl px-3 py-1">
+          <button
+            v-if="pagedMobile.length > 1"
+            @click="nextMobile"
+            class="text-2xl px-3 py-1"
+          >
             ❯
           </button>
         </div>
@@ -132,7 +240,10 @@
     </div>
 
     <!-- Kosong -->
-    <div v-if="filteredProducts.length === 0" class="text-center text-gray-500 py-8">
+    <div
+      v-if="filteredProducts.length === 0"
+      class="text-center text-gray-500 py-8"
+    >
       No products found in this category.
     </div>
   </section>
@@ -142,11 +253,19 @@
 import { ref, computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import products from '@/composable/useProducts'
-import defaultLogo from '@/assets/static/logo_card.png'
+import defaultLogo from '@/assets/static/logo_mdi.png'
+import ldasan from '@/assets/static/logo_dasan.png'
+import lzaram from '@/assets/static/logo_zaram.png'
 
-const getLogo = (product) => {
-  return product?.logo && product.logo !== 'null' ? product.logo : defaultLogo
+const brandLogos = {
+  dasan: ldasan,
+  zaram: lzaram,
 }
+
+const getBrandLogo = (brand) => {
+  return brandLogos[brand?.toLowerCase()] || null
+}
+
 const activeTab = ref(0)
 const activeSubTab = ref(0)
 const desktopIndex = ref(0)
@@ -182,7 +301,7 @@ const pagedDesktop = computed(() => {
   return pages
 })
 
-// Daftar spec yang valid (tidak kosong dan bukan string 'null')
+// Daftar spec yang valid
 const getSpecs = (product) => {
   return Array.from({ length: 7 }, (_, i) => product[`spec${i + 1}`]).filter(
     (s) => s && s !== 'null',
@@ -195,20 +314,21 @@ const pagedMobile = computed(() => {
 
 const prevDesktop = () => {
   desktopIndex.value =
-    (desktopIndex.value - 1 + pagedDesktop.value.length) % pagedDesktop.value.length
+    (desktopIndex.value - 1 + pagedDesktop.value.length) %
+    pagedDesktop.value.length
 }
 const nextDesktop = () => {
   desktopIndex.value = (desktopIndex.value + 1) % pagedDesktop.value.length
 }
 
 const prevMobile = () => {
-  mobileIndex.value = (mobileIndex.value - 1 + pagedMobile.value.length) % pagedMobile.value.length
+  mobileIndex.value =
+    (mobileIndex.value - 1 + pagedMobile.value.length) %
+    pagedMobile.value.length
 }
 const nextMobile = () => {
   mobileIndex.value = (mobileIndex.value + 1) % pagedMobile.value.length
 }
-
-console.log(getSpecs(products.value[0]))
 </script>
 
 <style scoped>

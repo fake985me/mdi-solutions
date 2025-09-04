@@ -36,41 +36,42 @@
       <!-- SVG Overlay -->
       <div class="svg">
         <svg :key="svgKey" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 815.1 578.2">
-          <!-- Biru (OLT) -->
-          <polyline points="323.3 305.8 194.7 305.8 164.2 289.8" fill="none" class="line blue step-2" stroke-miterlimit="10"
-            stroke-width="6" />
-          <!-- Light blue -->
-          <line x1="65.1" y1="226.2" x2="164.2" y2="289.8" fill="none" class="line lightblue step-1" stroke-miterlimit="10"
+          <!-- Light blue omni-->
+           <line x1="65.1" y1="226.2" x2="164.2" y2="289.8" fill="none" class="line lightblue step-1" stroke-miterlimit="10"
             stroke-width="4" />
-          <!-- Kuning (ONT/ONU) -->
-          <polyline points="473.3 179.1 420.7 179.1 393.4 294 334.1 294.1" fill="none" class="line yellow step-3"
-            stroke-miterlimit="10" stroke-width="3" />
-          <polyline points="503.1 225.5 434.9 225.5 412.5 301.6 334.1 301.6" fill="none" class="line yellow step-3"
-            stroke-miterlimit="10" stroke-width="3" />
-          <!-- Hijau (ONU/ONT branches) -->
-          <polyline points="566.7 309.7 597.2 302 634.3 302 634.3 253.5 665.2 253.5" fill="none" class="line green step-4"
-            stroke-miterlimit="10" />
-          <polyline points="566.7 309.7 597 296.9 627.7 296.9 627.7 243.7 663.9 243.7" fill="none" class="line green step-4"
-            stroke-miterlimit="10" />
-          <polyline points="566.7 309.7 597.8 317.3 634 317.3 634 340.9 658.3 340.9 658.3 349.3 710.2 349.3" fill="none"
-            class="line green step-4" stroke-miterlimit="10" />
-          <polyline points="566.7 309.7 597.5 312.4 641.8 312.4 641.8 322.2 702.1 322.2" fill="none" class="line green step-4"
-            stroke-miterlimit="10" />
-          <polyline points="566.7 309.7 597.2 307.1 641.8 307.1 641.8 288.1 702.1 288.1" fill="none" class="line green step-4"
-            stroke-miterlimit="10" />
-          <polyline points="566.7 309.7 597.7 322.4 627.6 322.4 627.6 356 643.7 356 643.7 394.7 695.5 394.7" fill="none"
-            class="line green step-4" stroke-miterlimit="10" />
-          <line x1="566.7" y1="309.7" x2="334.1" y2="309.7" fill="none" class="line yellow step-3" stroke-miterlimit="10"
+          <!-- Biru (OLT) -->
+           <polyline points="210.09 305.8 194.7 305.8 164.2 289.8" fill="none" class="line blue step-2" stroke-miterlimit="10"
+            stroke-width="6" />
+           <line x1="224.43" y1="305.8" x2="321.99" y2="305.8" fill="none" class="line blue step-2" stroke-miterlimit="10"
+            stroke-width="6" />
+          <!-- Biru (distribusi) -->
+           <polyline points="473.3 179.1 420.7 179.1 393.4 294 334.1 294.1" fill="none" class="line blue step-2" stroke-miterlimit="10"
             stroke-width="3" />
-
-          <!-- Kuning (ONT bawah) + hijau ujung-ujung -->
-          <polyline points="471.3 439.3 429.6 439.3 393.4 317.3 334.1 317.3" fill="none" class="line yellow step-3"
-            stroke-miterlimit="10" stroke-width="3" />
-          <polyline points="471.3 439.3 492.7 442.9 492.7 491.2 532.9 491.2" fill="none" class="line green step-4"
+           <polyline points="503.1 225.5 434.9 225.5 412.5 301.6 334.1 301.6" fill="none" class="line blue step-2" stroke-miterlimit="10"
+            stroke-width="3" />
+           <line x1="566.7" y1="309.7" x2="334.1" y2="309.7" fill="none" class="line blue step-2" stroke-miterlimit="10"
+            stroke-width="3" />
+           <polyline points="471.3 439.3 429.6 439.3 393.4 317.3 334.1 317.3" fill="none" class="line blue step-2" stroke-miterlimit="10"
+            stroke-width="3" />
+          <!-- Hijau (ONU/ONT branches) -->
+           <polyline points="566.7 309.7 597 296.9 627.7 296.9 627.7 243.7 663.9 243.7" fill="none" class="line green step-4"
+            stroke-miterlimit="10" />   
+           <polyline points="566.7 309.7 597.2 302 634.3 302 634.3 253.5 665.2 253.5" fill="none" class="line green step-4"
+            stroke-miterlimit="10" />   
+           <polyline points="566.7 309.7 597.2 307.1 641.8 307.1 641.8 288.1 702.1 288.1" fill="none" class="line green step-4"
+            stroke-miterlimit="10" />   
+           <polyline points="566.7 309.7 597.5 312.4 641.8 312.4 641.8 322.2 702.1 322.2" fill="none" class="line green step-4"
+            stroke-miterlimit="10" />   
+           <polyline points="566.7 309.7 597.8 317.3 634 317.3 634 340.9 658.3 340.9 658.3 349.3 710.2 349.3" fill="none" class="line green step-4"
+            stroke-miterlimit="10" />   
+           <polyline points="566.7 309.7 597.7 322.4 627.6 322.4 627.6 356 643.7 356 643.7 394.7 695.5 394.7" fill="none" class="line green step-4"
             stroke-miterlimit="10" />
-          <polyline points="471.3 439.3 504.3 439.3 504.3 457.5 521.9 457.5" fill="none" class="line green step-4"
-            stroke-miterlimit="10" />
-          <polyline points="471.3 439.3 511 434.8 511 423.9 528.6 423.9" fill="none" class="line green step-4"
+            
+           <polyline points="471.3 439.3 511 434.7 511 423.8 528.6 423.8" fill="none" class="line green step-4"
+            stroke-miterlimit="10" /> 
+           <polyline points="471.3 439.3 492.7 442.9 492.7 491.2 532.9 491.2" fill="none" class="line green step-4"
+            stroke-miterlimit="10" /> 
+           <polyline points="471.3 439.3 504.3 439.3 504.3 457.5 521.9 457.5" fill="none" class="line green step-4"
             stroke-miterlimit="10" />
 
           <g isolation="isolate">
@@ -121,7 +122,7 @@ const VIEW_H = 578.2
 const ANCHORS = {
   // OLT: 1 titik di ujung polyline biru
   OLT: [
-    { x: 250.7, y: 330.8, sizePct: 8 },
+    { x: 250.7, y: 325.8, sizePct: 6 },
   ],
 
   // ONU & ONU PoE:
@@ -142,8 +143,8 @@ const ANCHORS = {
   // - Ujung polyline kuning bawah (334.1, 317.3)
   // - Ujung 3 cabang hijau bawah (532.9,491.2), (521.9,457.5), (528.6,423.9)
   ONT: [
-    { x: 495.1, y: 200.1, sizePct: 5.5 },
-    { x: 485, y: 460.3, sizePct: 5.5 },
+    { x: 495.1, y: 190.1, sizePct: 5.5 },
+    { x: 485, y: 450.3, sizePct: 5.5 },
   ],
 }
 
@@ -157,7 +158,7 @@ function toStyle(pt, extra = {}) {
     top: `${(pt.y / VIEW_H) * 100}%`,
     left: `${(pt.x / VIEW_W) * 100}%`,
     width: `${pt.sizePct ?? 6}%`,
-    transform: 'translate(-50%, -50%)',
+    transform: 'translate(-25%, -25%)',
     ...extra,
   }
 }
@@ -173,7 +174,7 @@ const resolvedMarkers = computed(() => {
 
   // Kamu bisa tambahkan offset kecil per sub kategori jika perlu:
   // contoh: untuk OLT geser ke atas 1% agar tidak menimpa garis.
-  const offset = (sub === 'OLT') ? { transform: 'translate(-50%, calc(-50% - 2px))' } : {}
+  const offset = (sub === 'OLT') ? { transform: 'translate(-60%, calc(-30% - 2px))' } : {}
 
   return points.map((pt) => ({
     image: p.image,
