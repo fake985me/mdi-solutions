@@ -6,80 +6,107 @@
         class="absolute top-0 left-0 w-full h-auto object-contain pointer-events-none" alt="Network Diagram" />
 
       <!-- Marker + Text -->
-<div
-  v-for="(m, i) in resolvedMarkers"
-  :key="`marker-${i}-${svgKey}`"
-  class="absolute"
-  :style="m.style"
->
-  <!-- Layer posisi (translate) -->
-  <div class="marker-pos">
-    <!-- Layer scale -->
-    <div class="marker-scale">
-      <!-- Marker -->
-      <img
-        :src="m.image"
-        :alt="m.title || 'Marker'"
-        class="marker-img cursor-pointer"
-      />
-    </div>
+      <div v-for="(m, i) in resolvedMarkers" :key="`marker-${i}-${svgKey}`" class="absolute" :style="m.style">
+        <!-- Layer posisi (translate) -->
+        <div class="marker-pos">
+          <!-- Layer scale -->
+          <div class="marker-scale">
+            <!-- Marker -->
+            <img :src="m.image" :alt="m.title || 'Marker'" class="marker-img cursor-pointer" />
+          </div>
 
-    <!-- Text (muncul saat hover marker) -->
-    <span
-      class="marker-text absolute left-1/2 top-full mt-1 px-2 py-1 text-xs font-semibold bg-black/70 text-white rounded opacity-0 scale-0 transition-all duration-300"
-    >
-      {{ m.title }}
-    </span>
-  </div>
-</div>
+          <!-- Text (muncul saat hover marker) -->
+          <span
+            class="marker-text absolute left-1/2 top-full mt-1 px-2 py-1 text-xs font-semibold bg-black/70 text-white rounded opacity-0 scale-0 transition-all duration-300">
+            {{ m.title }}
+          </span>
+        </div>
+      </div>
 
       <!-- SVG Overlay -->
       <div class="svg">
         <svg :key="svgKey" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 815.1 578.2">
-          <!-- Light blue omni-->
-           <line x1="65.1" y1="226.2" x2="164.2" y2="289.8" fill="none" class="line lightblue step-1" stroke-miterlimit="10"
-            stroke-width="4" />
+          <!-- Light Green omni-->
+          <line x1="53.3" y1="335.3" x2="90" y2="391.7" fill="none" class="line green" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="3" />
+          <line x1="110.2" y1="417.9" x2="164.7" y2="456.1" fill="none" class="line green" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="3" />
           <!-- Biru (OLT) -->
-           <polyline points="210.09 305.8 194.7 305.8 164.2 289.8" fill="none" class="line blue step-2" stroke-miterlimit="10"
-            stroke-width="6" />
-           <line x1="224.43" y1="305.8" x2="321.99" y2="305.8" fill="none" class="line blue step-2" stroke-miterlimit="10"
-            stroke-width="6" />
-          <!-- Biru (distribusi) -->
-           <polyline points="473.3 179.1 420.7 179.1 393.4 294 334.1 294.1" fill="none" class="line blue step-2" stroke-miterlimit="10"
-            stroke-width="3" />
-           <polyline points="503.1 225.5 434.9 225.5 412.5 301.6 334.1 301.6" fill="none" class="line blue step-2" stroke-miterlimit="10"
-            stroke-width="3" />
-           <line x1="566.7" y1="309.7" x2="334.1" y2="309.7" fill="none" class="line blue step-2" stroke-miterlimit="10"
-            stroke-width="3" />
-           <polyline points="471.3 439.3 429.6 439.3 393.4 317.3 334.1 317.3" fill="none" class="line blue step-2" stroke-miterlimit="10"
-            stroke-width="3" />
-          <!-- Hijau (ONU/ONT branches) -->
-           <polyline points="566.7 309.7 597 296.9 627.7 296.9 627.7 243.7 663.9 243.7" fill="none" class="line green step-4"
-            stroke-miterlimit="10" />   
-           <polyline points="566.7 309.7 597.2 302 634.3 302 634.3 253.5 665.2 253.5" fill="none" class="line green step-4"
-            stroke-miterlimit="10" />   
-           <polyline points="566.7 309.7 597.2 307.1 641.8 307.1 641.8 288.1 702.1 288.1" fill="none" class="line green step-4"
-            stroke-miterlimit="10" />   
-           <polyline points="566.7 309.7 597.5 312.4 641.8 312.4 641.8 322.2 702.1 322.2" fill="none" class="line green step-4"
-            stroke-miterlimit="10" />   
-           <polyline points="566.7 309.7 597.8 317.3 634 317.3 634 340.9 658.3 340.9 658.3 349.3 710.2 349.3" fill="none" class="line green step-4"
-            stroke-miterlimit="10" />   
-           <polyline points="566.7 309.7 597.7 322.4 627.6 322.4 627.6 356 643.7 356 643.7 394.7 695.5 394.7" fill="none" class="line green step-4"
-            stroke-miterlimit="10" />
-            
-           <polyline points="471.3 439.3 511 434.7 511 423.8 528.6 423.8" fill="none" class="line green step-4"
-            stroke-miterlimit="10" /> 
-           <polyline points="471.3 439.3 492.7 442.9 492.7 491.2 532.9 491.2" fill="none" class="line green step-4"
-            stroke-miterlimit="10" /> 
-           <polyline points="471.3 439.3 504.3 439.3 504.3 457.5 521.9 457.5" fill="none" class="line green step-4"
-            stroke-miterlimit="10" />
+          <line x1="172.1" y1="453.7" x2="226.8" y2="427.8" fill="none" class="line blue" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="3" />
 
-          <g isolation="isolate">
-            <text transform="translate(310.1 333.3)" font-family="ArialNarrow, Arial" font-size="9" isolation="isolate">
-              <tspan x="0" y="0">Optical Splitter</tspan>
-            </text>
-          </g>
-          <polygon points="314.7 306 335.1 323.3 335.1 288.7 314.7 306" fill="#404041" />
+          <!-- Biru (distribusi) -->
+          <polyline points="248.1 421.1 453.1 324.2 486 341" fill="none" class="line blue" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="2" />
+          <polyline points="250.5 428.4 366.8 372.1 393.5 391.3" fill="none" class="line blue" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="2" />
+          <polyline points="241.7 416.2 478.3 304.8 430.7 280.4" fill="none" class="line blue" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="2" />
+          <polyline points="235.2 411.7 376.1 346.2 332.4 319" fill="none" class="line blue" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="2" />
+
+
+          <!-- Hijau (ONU/ONT branches) -->
+          <polyline points="495.2 460.2 560.2 421.4 590.5 421.4" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="495.2 460.2 563.8 438.6 586.4 438.6" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="495.2" y1="460.2" x2="585.7" y2="459.5" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="495.2 460.2 558.8 477.2 584 477.2" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="495.2 460.2 560.3 500.5 585.1 500.5" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+
+          <polyline points="681.2 158.6 651.6 158.6 611.8 252.7" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="676.3 175.8 655.1 175.8 611.8 252.7" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="677.5 197.1 653.2 197 611.8 252.7" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="611.8 252.7 650.1 214.4 675.3 214.4" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="611.8 252.7 651.8 247.9 676.6 247.9" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+
+          <polyline points="590.8 317.6 612.9 301 628 300.9" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="590.8" y1="317.6" x2="632.4" y2="317.6" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="590.8 317.7 614.3 330.8 636 330.9" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+
+          <polyline points="253.8 52 283.4 52 323.1 146.1" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="258.7 69.2 279.8 69.2 323.1 146.1" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="257.4 90.5 281.8 90.3 323.1 146.1" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="323.1 146.1 284.8 107.8 259.6 107.8" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="323.1 146.1 283.1 141.3 258.3 141.3" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+
+          <polyline points="288.5 189.3 303.5 189.3 325.7 206" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="284.9" y1="205.8" x2="325.7" y2="206" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="280.7 219.1 302.2 219.1 325.7 206" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+
+          <polyline points="216.3 313.7 231.4 313.7 253.5 330.4" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <line x1="212.8" y1="330.2" x2="253.5" y2="330.4" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <polyline points="208.6 343.6 230 343.6 253.5 330.4" fill="none" class="line black" stroke-linecap="round"
+            stroke-linejoin="round" />
+
+
+
+
+          <polygon points="261.8 428.2 261.8 439.8 213.4 439.8 213.4 428.2 227.7 404.9 261.8 428.2" fill="#6b6c6d" />
+          <rect x="213.4" y="428.2" width="48.4" height="11.6" />
+
           <rect x=".5" y=".5" width="814.1" height="577.2" fill="none" opacity="0" stroke="#f5f5f5"
             stroke-miterlimit="10" />
         </svg>
@@ -122,7 +149,7 @@ const VIEW_H = 578.2
 const ANCHORS = {
   // OLT: 1 titik di ujung polyline biru
   OLT: [
-    { x: 250.7, y: 325.8, sizePct: 6 },
+    { x: 200.7, y: 465.8, sizePct: 8 },
   ],
 
   // ONU & ONU PoE:
@@ -261,12 +288,18 @@ svg {
 
 /* Saat hover, baru animasi berjalan */
 .group:hover .line {
-  animation: drawLine 2s ease forwards;
+  animation: drawLine 5s ease forwards;
+}
+
+.black {
+  stroke: #020202;
+  stroke-width: 1.5px;
 }
 
 .blue {
-  stroke: #1c75bc;
-  stroke-width: 4px;
+  stroke: #64abf9;
+  stroke-width: 2px;
+  stroke-dasharray: 35, 10;
 }
 
 .lightblue {
@@ -281,69 +314,68 @@ svg {
 }
 
 .green {
-  stroke: #39b54a;
-  stroke-width: 1px;
+  stroke: #32f93c;
+  stroke-width: 3px;
 }
 
 /* urutan delay (optional, tetap ada) */
-.group:hover
-.step-1 {
+.group:hover .step-1 {
   animation-delay: 0s;
 }
-.group:hover
-.step-2 {
+
+.group:hover .step-2 {
   animation-delay: 0.2s;
 }
-.group:hover
-.step-3 {
+
+.group:hover .step-3 {
   animation-delay: 0.5s;
 }
-.group:hover
-.step-4 {
+
+.group:hover .step-4 {
   animation-delay: 0.7s;
 }
-.group:hover
-.step-5 {
+
+.group:hover .step-5 {
   animation-delay: 4.8s;
 }
-.group:hover
-.step-6 {
+
+.group:hover .step-6 {
   animation-delay: 6.0s;
 }
-.group:hover
-.step-7 {
+
+.group:hover .step-7 {
   animation-delay: 7.2s;
 }
-.group:hover
-.step-8 {
+
+.group:hover .step-8 {
   animation-delay: 8.4s;
 }
-.group:hover
-.step-9 {
+
+.group:hover .step-9 {
   animation-delay: 9.6s;
 }
-.group:hover
-.step-10 {
+
+.group:hover .step-10 {
   animation-delay: 10.8s;
 }
-.group:hover
-.step-11 {
+
+.group:hover .step-11 {
   animation-delay: 12.0s;
 }
-.group:hover
-.step-12 {
+
+.group:hover .step-12 {
   animation-delay: 13.2s;
 }
-.group:hover
-.step-13 {
+
+.group:hover .step-13 {
   animation-delay: 14.4s;
 }
-.group:hover
-.step-14 {
+
+.group:hover .step-14 {
   animation-delay: 15.6s;
 }
-.group:hover
-.step-15 {
+
+.group:hover .step-15 {
   animation-delay: 16.8s;
 }
 </style>

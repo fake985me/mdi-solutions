@@ -255,9 +255,15 @@ svg {
   stroke-dashoffset: 0;
 }
 
+.black {
+  stroke: #020202;
+  stroke-width: 1.5px;
+}
+
 .blue {
-  stroke: #1c75bc;
-  stroke-width: 4px;
+  stroke: #64abf9;
+  stroke-width: 2px;
+  stroke-dasharray: 35, 10;
 }
 
 .lightblue {
@@ -272,8 +278,8 @@ svg {
 }
 
 .green {
-  stroke: #39b54a;
-  stroke-width: 1px;
+  stroke: #32f93c;
+  stroke-width: 3px;
 }
 
 /* urutan delay (optional, tetap ada) */
