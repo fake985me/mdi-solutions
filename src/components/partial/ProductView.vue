@@ -84,8 +84,8 @@
 
             <!-- Brand logo dinamis (kanan) -->
             <img
-              v-if="getBrandLogo(product.Brand)"
-              :src="getBrandLogo(product.Brand)"
+              v-if="getBrandLogo(product.brand)"
+              :src="getBrandLogo(product.brand)"
               :alt="product.Brand"
               class="absolute w-full h-8 top-0 right-0 mr-3"
             />

@@ -10,11 +10,8 @@
         <!-- Gambar Produk -->
         <Transition name="fade-scale">
           <div v-if="selectedProduct?.image || product.image" class="w-full flex justify-center">
-            <img
-              :src="selectedProduct?.image || product.image"
-              :alt="selectedProduct?.title || product.title"
-              class="w-full max-w-xs sm:max-w-sm md:max-w-md object-contain"
-            />
+            <img :src="selectedProduct?.image || product.image" :alt="selectedProduct?.title || product.title"
+              class="w-full max-w-xs sm:max-w-sm md:max-w-md object-contain" />
           </div>
         </Transition>
 
@@ -84,21 +81,14 @@
           </h2>
           <Transition name="fade-scale">
             <template v-if="effectiveProduct">
-              <OpticLine
-                v-if="diagramType === 'opticalline'"
-                :product="effectiveProduct"
-                :diagram="effectiveProduct.diagram"
-              />
-              <SwitchLine
-                v-else-if="diagramType === 'switchline'"
-                :product="effectiveProduct"
-                :diagram="effectiveProduct.diagram"
-              />
-              <Wireless
-                v-else-if="diagramType === 'wireless'"
-                :product="effectiveProduct"
-                :diagram="effectiveProduct.diagram"
-              />
+              <OpticLine v-if="diagramType === 'opticalline'" :product="effectiveProduct"
+                :diagram="effectiveProduct.diagram" />
+              <GponLine v-else-if="diagramType === 'gponline'" :product="effectiveProduct"
+                :diagram="effectiveProduct.diagram" />
+              <SwitchLine v-else-if="diagramType === 'switchline'" :product="effectiveProduct"
+                :diagram="effectiveProduct.diagram" />
+              <Wireless v-else-if="diagramType === 'wireless'" :product="effectiveProduct"
+                :diagram="effectiveProduct.diagram" />
               <div v-else class="text-center text-gray-500 mt-4">
                 Diagram belum tersedia untuk produk ini.
               </div>
@@ -107,6 +97,12 @@
               Diagram belum tersedia untuk produk ini.
             </div>
           </Transition>
+          <!-- Tombol Fullscreen -->
+          <button
+            class="top-2 right-2 bg-white text-sm px-3 py-1 rounded shadow hover:bg-gray-100 border border-gray-300"
+            @click.stop="openFullscreenTab">
+            Lihat Penuh ⤢
+          </button>
         </div>
       </div>
     </div>
@@ -120,6 +116,7 @@ import { useProducts } from '@/composable/useProducts'
 import OpticLine from './components/OpticLine.vue'
 import SwitchLine from './components/SwitchLine.vue'
 import Wireless from './components/WifiLine.vue'
+import GponLine from './components/GponLine.vue'
 
 const route = useRoute()
 
@@ -168,6 +165,15 @@ const specificationList = computed(() => {
     { label: 'Dimensions', value: p.dimensions },
   ]
 })
+
+function openFullscreenTab() {
+  const product = props.product
+  const diagram = props.diagram || product?.diagram || ''
+  const slug = encodeURIComponent(product?.slug || '') // jika kamu pakai slug di route
+  const url = `/diagram-fullscreen?slug=${slug}&diagram=${diagram}`
+  window.open(url, '_blank')
+}
+
 </script>
 
 <style scoped>
@@ -176,6 +182,7 @@ const specificationList = computed(() => {
 .fade-scale-leave-active {
   transition: all 0.4s ease;
 }
+
 .fade-scale-enter-from,
 .fade-scale-leave-to {
   opacity: 0;
@@ -186,6 +193,7 @@ const specificationList = computed(() => {
 .fade-slide-up-enter-active {
   transition: all 0.5s ease;
 }
+
 .fade-slide-up-enter-from {
   opacity: 0;
   transform: translateY(20px);
@@ -195,6 +203,7 @@ const specificationList = computed(() => {
 .fade-slide-left-enter-active {
   transition: all 0.5s ease;
 }
+
 .fade-slide-left-enter-from {
   opacity: 0;
   transform: translateX(-30px);
@@ -204,6 +213,7 @@ const specificationList = computed(() => {
 .fade-slide-right-enter-active {
   transition: all 0.5s ease;
 }
+
 .fade-slide-right-enter-from {
   opacity: 0;
   transform: translateX(30px);

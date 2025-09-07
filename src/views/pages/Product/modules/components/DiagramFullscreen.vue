@@ -1,9 +1,9 @@
 <template>
-  <div class="w-screen flex flex-col items-center justify-center bg-white relative">
-    <!-- Tombol kembali -->
+  <div class="w-screen flex items-center justify-center bg-white relative">
+    <!-- Tombol FAB -->
     <button
       @click="goBack"
-      class="top-4 left-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+      class="fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg px-5 py-3 text-sm sm:text-base transition"
     >
       ← Kembali
     </button>
@@ -33,7 +33,6 @@ import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useProducts } from '@/composable/useProducts'
 
-// Import komponen diagram
 import OpticLine from './OpticLine.vue'
 import SwitchLine from './SwitchLine.vue'
 import Wireless from './WifiLine.vue'
@@ -43,21 +42,18 @@ const route = useRoute()
 const router = useRouter()
 
 const slug = computed(() => route.query.slug || '')
-
 const { products } = useProducts()
+
 const selectedProduct = computed(() => {
   const list = products?.value || []
   return list.find((p) => p.slug === slug.value) || null
 })
 
-// Pakai field diagram dari data product
 const diagramType = computed(() =>
   (selectedProduct.value?.diagram || '').toString().trim().toLowerCase()
 )
 
-// Fungsi tombol kembali
 const goBack = () => {
-  // kembali ke halaman produk jika ada slug
   if (slug.value) {
     router.push(`/product/${slug.value}`)
   } else {

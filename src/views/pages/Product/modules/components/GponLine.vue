@@ -36,13 +36,13 @@
             stroke-linejoin="round" stroke-width="3" />
 
           <!-- Biru (distribusi) -->
-          <polyline points="248.1 421.1 453.1 324.2 486 341" fill="none" class="line blue" stroke-linecap="round"
+          <polyline points="248.1 421.1 453.1 324.2 486 341" fill="none" class="line yellow" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
-          <polyline points="250.5 428.4 366.8 372.1 393.5 391.3" fill="none" class="line blue" stroke-linecap="round"
+          <polyline points="250.5 428.4 366.8 372.1 393.5 391.3" fill="none" class="line yellow" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
-          <polyline points="241.7 416.2 478.3 304.8 430.7 280.4" fill="none" class="line blue" stroke-linecap="round"
+          <polyline points="241.7 416.2 478.3 304.8 430.7 280.4" fill="none" class="line yellow" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
-          <polyline points="235.2 411.7 376.1 346.2 332.4 319" fill="none" class="line blue" stroke-linecap="round"
+          <polyline points="235.2 411.7 376.1 346.2 332.4 319" fill="none" class="line yellow" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
 
 
@@ -225,14 +225,13 @@ watchEffect(() => {
 </script>
 
 <style>
-/* Layer posisi (absolute + translate) */
+/* ======= POSITIONING MARKER ======= */
 .marker-pos {
   position: relative;
   transform: translate(-50%, -50%);
   transform-origin: center center;
 }
 
-/* Layer untuk scaling */
 .marker-scale {
   display: inline-block;
   transform-origin: center center;
@@ -245,61 +244,58 @@ watchEffect(() => {
   height: auto;
 }
 
-/* Zoom hanya scale, posisi tetap */
+/* Marker Zoom saat hover */
 .marker-pos:hover .marker-scale {
   opacity: 1;
   transform: scale(1.4);
 }
 
-/* Text muncul dengan zoom */
+/* Teks marker muncul saat hover */
 .marker-pos:hover .marker-text {
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
 
-/* Default state text */
+/* Default teks marker */
 .marker-text {
   transform-origin: top center;
   transform: translateX(-50%) scale(1);
 }
 
-@keyframes drawLine {
+/* ======= ANIMASI GARIS BERJALAN TERUS ======= */
+
+/* Keyframe animasi garis dash */
+@keyframes dashLoop {
   0% {
-    stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
   }
-
-  to {
-    stroke-dasharray: 1000;
+  100% {
     stroke-dashoffset: 0;
   }
 }
 
+/* SVG full width */
 svg {
   width: 100%;
   height: auto;
 }
 
-/* Default garis: sembunyi */
+/* Semua garis */
 .line {
   fill: none;
   stroke-dasharray: 20, 5;
   stroke-dashoffset: 1000;
-  transition: stroke-dashoffset 0.3s ease;
+  animation: dashLoop 4s linear infinite;
 }
 
-/* Saat hover, baru animasi berjalan */
-.group:hover .line {
-  animation: drawLine 5s ease forwards;
-}
-
+/* Warna dan ketebalan garis */
 .black {
   stroke: #020202;
   stroke-width: 1.5px;
 }
 
 .blue {
-  stroke: #e0f964;
+  stroke: #64abf9;
   stroke-width: 2px;
 }
 
@@ -319,64 +315,34 @@ svg {
   stroke-width: 3px;
 }
 
-/* urutan delay (optional, tetap ada) */
-.group:hover .step-1 {
-  animation-delay: 0s;
+/* (Opsional) Variasi kecepatan animasi per warna */
+.line.blue {
+  animation-duration: 4s;
 }
 
-.group:hover .step-2 {
-  animation-delay: 0.2s;
+.line.green {
+  animation-duration: 6s;
 }
 
-.group:hover .step-3 {
-  animation-delay: 0.5s;
+.line.black {
+  animation-duration: 8s;
 }
 
-.group:hover .step-4 {
-  animation-delay: 0.7s;
-}
+/* (Opsional) Delay berurutan jika pakai class step-X */
+.line.step-1 { animation-delay: 0s; }
+.line.step-2 { animation-delay: 0.2s; }
+.line.step-3 { animation-delay: 0.5s; }
+.line.step-4 { animation-delay: 0.7s; }
+.line.step-5 { animation-delay: 1s; }
+.line.step-6 { animation-delay: 1.3s; }
+.line.step-7 { animation-delay: 1.6s; }
+.line.step-8 { animation-delay: 1.9s; }
+.line.step-9 { animation-delay: 2.2s; }
+.line.step-10 { animation-delay: 2.5s; }
+.line.step-11 { animation-delay: 2.8s; }
+.line.step-12 { animation-delay: 3.1s; }
+.line.step-13 { animation-delay: 3.4s; }
+.line.step-14 { animation-delay: 3.7s; }
+.line.step-15 { animation-delay: 4s; }
 
-.group:hover .step-5 {
-  animation-delay: 4.8s;
-}
-
-.group:hover .step-6 {
-  animation-delay: 6.0s;
-}
-
-.group:hover .step-7 {
-  animation-delay: 7.2s;
-}
-
-.group:hover .step-8 {
-  animation-delay: 8.4s;
-}
-
-.group:hover .step-9 {
-  animation-delay: 9.6s;
-}
-
-.group:hover .step-10 {
-  animation-delay: 10.8s;
-}
-
-.group:hover .step-11 {
-  animation-delay: 12.0s;
-}
-
-.group:hover .step-12 {
-  animation-delay: 13.2s;
-}
-
-.group:hover .step-13 {
-  animation-delay: 14.4s;
-}
-
-.group:hover .step-14 {
-  animation-delay: 15.6s;
-}
-
-.group:hover .step-15 {
-  animation-delay: 16.8s;
-}
 </style>
