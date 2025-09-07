@@ -41,7 +41,8 @@
                 {{ item.title }}
               </RouterLink>
             </h3>
-            <p class="text-sm text-gray-500" v-if="item.port">{{ item.port }}</p>
+            <p class="text-sm text-gray-500" v-if="product.spec1">{{ product.spec1 }}</p>
+            <p class="text-sm text-gray-500" v-if="product.spec2">{{ product.spec2 }}</p>
           </div>
         </div>
       </div>

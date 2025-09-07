@@ -24,6 +24,44 @@ function restartAnimation() {
 </script>
 
 <style>
+/* Layer posisi (absolute + translate) */
+.marker-pos {
+  position: relative;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+/* Layer untuk scaling */
+.marker-scale {
+  display: inline-block;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+
+.marker-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Zoom hanya scale, posisi tetap */
+.marker-pos:hover .marker-scale {
+  opacity: 1;
+  transform: scale(1.4);
+}
+
+/* Text muncul dengan zoom */
+.marker-pos:hover .marker-text {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Default state text */
+.marker-text {
+  transform-origin: top center;
+  transform: translateX(-50%) scale(1);
+}
+
 @keyframes drawLine {
   0% {
     stroke-dasharray: 1000;
@@ -41,15 +79,17 @@ svg {
   height: auto;
 }
 
+/* Default garis: sembunyi */
 .line {
   fill: none;
-  stroke-dasharray: 1000;
+  stroke-dasharray: 20, 5;
   stroke-dashoffset: 1000;
-  animation: drawLine 2s ease forwards;
+  transition: stroke-dashoffset 0.3s ease;
 }
 
+/* Saat hover, baru animasi berjalan */
 .group:hover .line {
-  stroke-dashoffset: 0;
+  animation: drawLine 5s ease forwards;
 }
 
 .black {
@@ -60,7 +100,6 @@ svg {
 .blue {
   stroke: #64abf9;
   stroke-width: 2px;
-  stroke-dasharray: 35, 10;
 }
 
 .lightblue {
@@ -80,63 +119,63 @@ svg {
 }
 
 /* urutan delay (optional, tetap ada) */
-.step-1 {
+.group:hover .step-1 {
   animation-delay: 0s;
 }
 
-.step-2 {
-  animation-delay: 1.2s;
+.group:hover .step-2 {
+  animation-delay: 0.2s;
 }
 
-.step-3 {
-  animation-delay: 2.4s;
+.group:hover .step-3 {
+  animation-delay: 0.5s;
 }
 
-.step-4 {
-  animation-delay: 3.6s;
+.group:hover .step-4 {
+  animation-delay: 0.7s;
 }
 
-.step-5 {
+.group:hover .step-5 {
   animation-delay: 4.8s;
 }
 
-.step-6 {
+.group:hover .step-6 {
   animation-delay: 6.0s;
 }
 
-.step-7 {
+.group:hover .step-7 {
   animation-delay: 7.2s;
 }
 
-.step-8 {
+.group:hover .step-8 {
   animation-delay: 8.4s;
 }
 
-.step-9 {
+.group:hover .step-9 {
   animation-delay: 9.6s;
 }
 
-.step-10 {
+.group:hover .step-10 {
   animation-delay: 10.8s;
 }
 
-.step-11 {
+.group:hover .step-11 {
   animation-delay: 12.0s;
 }
 
-.step-12 {
+.group:hover .step-12 {
   animation-delay: 13.2s;
 }
 
-.step-13 {
+.group:hover .step-13 {
   animation-delay: 14.4s;
 }
 
-.step-14 {
+.group:hover .step-14 {
   animation-delay: 15.6s;
 }
 
-.step-15 {
+.group:hover .step-15 {
   animation-delay: 16.8s;
 }
 </style>

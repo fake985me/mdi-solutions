@@ -36,6 +36,12 @@ const routes = [
     name: 'contact',
     component: () => import('../views/pages/Contact.vue'),
   },
+  {
+  path: '/diagram-fullscreen',
+  name: 'DiagramFullscreen',
+  component: () => import('@/views/pages/Product/modules/components/DiagramFullscreen.vue'),
+  meta: { layout: 'blank' } // ⬅️ ini juga otomatis sembunyikan navbar/footer
+}
 ]
 
 const router = createRouter({

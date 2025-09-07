@@ -299,7 +299,7 @@ svg {
 }
 
 .blue {
-  stroke: #64abf9;
+  stroke: #e0f964;
   stroke-width: 2px;
 }
 
