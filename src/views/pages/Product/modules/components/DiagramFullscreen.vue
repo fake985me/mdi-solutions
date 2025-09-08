@@ -1,8 +1,8 @@
 <template>
-  <div class="w-screen flex items-center justify-center bg-white relative">
+  <div class="w-full flex items-center justify-center bg-white relative">
     <!-- Tombol FAB -->
     <button
-      @click="goBack"
+      @click="closewindow"
       class="fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg px-5 py-3 text-sm sm:text-base transition"
     >
       ← Kembali
@@ -10,7 +10,12 @@
 
     <!-- Tampilkan diagram sesuai tipe -->
     <OpticLine
-      v-if="diagramType.startsWith('optic_')"
+      v-if="diagramType.startsWith('xgspon_')"
+      :product="selectedProduct"
+      :diagram="diagramType"
+    />
+    <GponLine
+      v-else-if="diagramType.startsWith('gpon_')"
       :product="selectedProduct"
       :diagram="diagramType"
     />
@@ -37,6 +42,7 @@ import OpticLine from './OpticLine.vue'
 import SwitchLine from './SwitchLine.vue'
 import Wireless from './WifiLine.vue'
 import DiagramUnavailable from './DiagramUnavailable.vue'
+import GponLine from './GponLine.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -59,6 +65,10 @@ const goBack = () => {
   } else {
     router.back()
   }
+}
+
+function closewindow() {
+  window.close()
 }
 </script>
 

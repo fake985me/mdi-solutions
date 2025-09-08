@@ -1,6 +1,6 @@
 <template>
   <div class="relative group w-full bg-white rounded shadow p-4" @click="restartAnimation">
-    <div class="relative w-full" style="aspect-ratio: 815.1 / 578.2;">
+    <div class="relative w-full" style="aspect-ratio: 815.1 / 538.2;">
       <!-- Background Diagram -->
       <img v-if="imageDiagramSrc" :src="imageDiagramSrc"
         class="absolute top-0 left-0 w-full h-auto object-contain pointer-events-none" alt="Network Diagram" />
@@ -25,7 +25,7 @@
 
       <!-- SVG Overlay -->
       <div class="svg">
-        <svg :key="svgKey" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 815.1 578.2">
+        <svg :key="svgKey" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 815.1 538.2">
           <!-- Light Green omni-->
           <line x1="53.3" y1="335.3" x2="90" y2="391.7" fill="none" class="line green" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="3" />
@@ -36,13 +36,13 @@
             stroke-linejoin="round" stroke-width="3" />
 
           <!-- Biru (distribusi) -->
-          <polyline points="248.1 421.1 453.1 324.2 486 341" fill="none" class="line yellow" stroke-linecap="round"
+          <polyline points="248.1 421.1 453.1 324.2 486 341" fill="none" class="line blue" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
-          <polyline points="250.5 428.4 366.8 372.1 393.5 391.3" fill="none" class="line yellow" stroke-linecap="round"
+          <polyline points="250.5 428.4 366.8 372.1 393.5 391.3" fill="none" class="line blue" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
-          <polyline points="241.7 416.2 478.3 304.8 430.7 280.4" fill="none" class="line yellow" stroke-linecap="round"
+          <polyline points="241.7 416.2 478.3 304.8 430.7 280.4" fill="none" class="line blue" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
-          <polyline points="235.2 411.7 376.1 346.2 332.4 319" fill="none" class="line yellow" stroke-linecap="round"
+          <polyline points="235.2 411.7 376.1 346.2 332.4 319" fill="none" class="line blue" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
 
 
@@ -142,7 +142,7 @@ const imageDiagramSrc = computed(() => {
 
 // ======= Konstanta ukuran viewBox SVG =======
 const VIEW_W = 815.1
-const VIEW_H = 578.2
+const VIEW_H = 538.2
 
 // ======= Titik anchor per subCategory =======
 // Setiap item: { x, y, sizePct } — sizePct dipakai untuk penyesuaian ukuran per titik
@@ -157,13 +157,14 @@ const ANCHORS = {
   // - Ujung 3 cabang hijau (710.2,349.3), (702.1,322.2), (702.1,288.1)
   // - Ujung line kuning lurus ke kiri (334.1,309.7)
   ONU: [
-    { x: 360.1, y: 158.7, sizePct: 8 },
-    { x: 600.1, y: 266.7, sizePct: 8 },
-    { x: 485.1, y: 473.7, sizePct: 8 },
+    { x: 370.1, y: 150.7, sizePct: 8 },
+    { x: 596.1, y: 258.7, sizePct: 8 },
+    { x: 480.1, y: 466.7, sizePct: 8 },
   ],
   'ONU PoE': [
-    { x: 540.1, y: 236.7, sizePct: 9 },
-    { x: 580.1, y: 320.6, sizePct: 9 },
+    { x: 370.1, y: 150.7, sizePct: 8 },
+    { x: 596.1, y: 258.7, sizePct: 8 },
+    { x: 480.1, y: 466.7, sizePct: 8 },
   ],
 
   // ONT:
@@ -171,8 +172,9 @@ const ANCHORS = {
   // - Ujung polyline kuning bawah (334.1, 317.3)
   // - Ujung 3 cabang hijau bawah (532.9,491.2), (521.9,457.5), (528.6,423.9)
   ONT: [
-    { x: 495.1, y: 190.1, sizePct: 5.5 },
-    { x: 485, y: 450.3, sizePct: 5.5 },
+    { x: 350, y: 212.1, sizePct: 6 },
+    { x: 280, y: 340, sizePct: 6 },
+    { x: 590, y: 325, sizePct: 6 },
   ],
 }
 

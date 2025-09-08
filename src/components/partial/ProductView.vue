@@ -86,7 +86,7 @@
             <img
               v-if="getBrandLogo(product.brand)"
               :src="getBrandLogo(product.brand)"
-              :alt="product.Brand"
+              :alt="product.brand"
               class="absolute w-full h-8 top-0 right-0 mr-3"
             />
 
@@ -165,9 +165,9 @@
 
             <!-- Brand logo dinamis (kanan) -->
             <img
-              v-if="getBrandLogo(pagedMobile[mobileIndex].Brand)"
-              :src="getBrandLogo(pagedMobile[mobileIndex].Brand)"
-              :alt="pagedMobile[mobileIndex].Brand"
+              v-if="getBrandLogo(pagedMobile[mobileIndex].brand)"
+              :src="getBrandLogo(pagedMobile[mobileIndex].brand)"
+              :alt="pagedMobile[mobileIndex].brand"
               class="absolute w-full h-8 top-0 right-0 mr-3"
             />
 

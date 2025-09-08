@@ -88,7 +88,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '875W (SFU x 2 + FAN x 2 + PSU_DC x 2 + IU_XGSPON8 x 6 + IU_10GE8 x 2)',
     dimensions: '443.8 x 265.9 x 280 mm (Wing Bracket excluded)',
-    diagram: 'optic_olt',
+    diagram: 'xgspon_olt',
     networkDIagram: 'opticalLine'
   },
   {
@@ -168,7 +168,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '265W (PSU DC) 310W (PSU AC)',
     dimensions: '482.6 x 133 x 280 mm (3RU, Wing Bracket included)',
-    diagram: 'optic_olt',
+    diagram: 'xgspon_olt',
     networkDIagram: 'opticalLine'
   },
   {
@@ -248,7 +248,7 @@ const products = ref([
     power3: '',
     powercomsumptions: 'Max. 230W (PSU DC) Max. 245W (PSU AC)',
     dimensions: '420 x 44 x 280 mm (1RU)',
-    diagram: 'optic_olt',
+    diagram: 'xgspon_olt',
     networkDIagram: 'opticalLine'
   },
   {
@@ -328,7 +328,7 @@ const products = ref([
     power3: '',
     powercomsumptions: 'Max. 155W (PSU DC) Max. 170W (PSU AC)',
     dimensions: '440 x 44 x 280 mm (1RU)',
-    diagram: 'optic_olt',
+    diagram: 'xgspon_olt',
     networkDIagram: 'opticalLine'
   },
   {
@@ -408,7 +408,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '160 x 39.5 x 150 mm',
-    diagram: 'optic_ont',
+    diagram: 'xgspon_ont',
     networkDIagram: 'opticalLine'
   },
   {
@@ -488,7 +488,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '160 × 40 x 140 mm',
-    diagram: 'optic_ont',
+    diagram: 'xgspon_ont',
     networkDIagram: 'opticalLine'
   },
   {
@@ -568,7 +568,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '',
-    diagram: 'optic_onu',
+    diagram: 'xgspon_onu',
     networkDIagram: 'opticalLine'
   },
   {
@@ -648,7 +648,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '20 x 210 x 44 mm',
-    diagram: 'optic_onu',
+    diagram: 'xgspon_onu',
     networkDIagram: 'opticalLine'
   },
   {
@@ -729,7 +729,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '',
     diagram: '',
-    networkDIagram: 'optic_sfp'
+    networkDIagram: 'xgspon_sfp'
   },
   {
     id: '10',
@@ -808,7 +808,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '482.6mm x 265.9mm x 280mm',
-    diagram: 'optic_olt',
+    diagram: 'gpon_olt',
     networkDIagram: 'gponline'
   },
   {
@@ -888,7 +888,7 @@ const products = ref([
     power3: '',
     powercomsumptions: 'Approximately 206 W',
     dimensions: '297 mm x 20.5 mm x 252.5 mm',
-    diagram: 'optic_olt',
+    diagram: 'gpon_olt',
     networkDIagram: 'gponline'
   },
   {
@@ -968,7 +968,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '440 x 44 x 300mm',
-    diagram: 'optic_olt',
+    diagram: 'gpon_olt',
     networkDIagram: 'gponline'
   },
   {
@@ -1048,13 +1048,13 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '440 x 44 x 300mm',
-    diagram: 'optic_olt',
+    diagram: 'gpon_olt',
     networkDIagram: 'gponline'
   },
   {
     id: '14',
     module: 'B',
-    image: 'https://ik.imagekit.io/iamfake/products/onu-d2224gp.png?updatedAt=1750092496705',
+    image: 'https://ik.imagekit.io/iamfake/products/onu-d2224gp.png?updatedAt=1757310940085',
     category: 'GPON',
     subCategory: 'ONU PoE',
     brand: 'dasan',
@@ -1128,7 +1128,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '< 22W (without POE), < 400W (with POE)',
     dimensions: '440mm x 44mm x 208mm',
-    diagram: 'optic_onu',
+    diagram: 'gpon_onu',
     networkDIagram: 'gponline'
   },
   {
@@ -1208,13 +1208,13 @@ const products = ref([
     power3: '',
     powercomsumptions: 'Less than 140W (at PoE full-load)',
     dimensions: '280 x 44 x 180mm',
-    diagram: 'optic_onu',
+    diagram: 'gpon_onu',
     networkDIagram: 'gponline'
   },
   {
     id: '16',
     module: 'B',
-    image: 'https://ik.imagekit.io/iamfake/products/D2224g.png?updatedAt=1750092485713',
+    image: 'https://ik.imagekit.io/iamfake/products/D2224g.png?updatedAt=1757315109362',
     category: 'GPON',
     subCategory: 'ONU',
     brand: 'dasan',
@@ -1288,7 +1288,7 @@ const products = ref([
     power3: '',
     powercomsumptions: 'Maximum:20W(220V/50Hz)',
     dimensions: '440 x 44 x 208mm',
-    diagram: 'optic_onu',
+    diagram: 'gpon_onu',
     networkDIagram: 'gponline'
   },
   {
@@ -1368,7 +1368,7 @@ const products = ref([
     power3: '',
     powercomsumptions: 'Max. 40W',
     dimensions: '17.32 x 1.73 x 10.47 in (440 x 44 x 266 mm)',
-    diagram: 'optic_onu',
+    diagram: 'gpon_onu',
     networkDIagram: 'gponline'
   },
   {
@@ -1448,7 +1448,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '27W',
     dimensions: '440 x 44 x 240 mm',
-    diagram: 'optic_onu',
+    diagram: 'gpon_onu',
     networkDIagram: 'gponline'
   },
   {
@@ -1528,7 +1528,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '212 × 40 x 140 mm',
-    diagram: 'optic_ont',
+    diagram: 'gpon_ont',
     networkDIagram: 'gponline'
   },
   {
@@ -1608,7 +1608,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '160 x 40 x 140 mm (Antenna excluded) 212.6 x 186.5 x 140 mm (Antenna included)',
-    diagram: 'optic_ont',
+    diagram: 'gpon_ont',
     networkDIagram: 'gponline'
   },
   {
@@ -1688,7 +1688,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '180 x 131 x 28 mm (Foot exluded)',
-    diagram: 'optic_ont',
+    diagram: 'gpon_ont',
     networkDIagram: 'gponline'
   },
   {
@@ -1768,7 +1768,7 @@ const products = ref([
     power3: '',
     powercomsumptions: '',
     dimensions: '28 x 66 x 108 mm',
-    diagram: 'optic_ont',
+    diagram: 'gpon_ont',
     networkDIagram: 'gponline'
   },
   {

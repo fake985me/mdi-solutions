@@ -8,13 +8,13 @@
 
     <main>
       <section class="cards text-gray-300 p-2">
-        <article class="card bg-gray-900 transform transition duration-500 hover:scale-125 hidden-none z-10">
+        <article class="card h-[280px] bg-gray-900 transform transition duration-500 hover:scale-125 hidden-none z-10">
           <h2>Original Firmware</h2>
           <p>No dedicated TR-069 status page on ONT Web GUI</p>
           <img src="../../assets/static/solutions/firmware-ori.png" alt=""/>
         </article>
 
-        <article class="card bg-gray-900 transform transition duration-500 hover:scale-125 hidden-none z-5">
+        <article class="card h-[280px] bg-gray-900 transform transition duration-500 hover:scale-125 hidden-none z-5">
           <h2>Modified Firmware</h2>
           <p>Added page to view TR-069 status page on ONT Web GUI</p>
           <img src="../../assets/static/solutions/firmware-custom.png" alt=""/>

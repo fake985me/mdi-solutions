@@ -1,6 +1,6 @@
 <template>
   <div class="relative group w-full bg-white rounded shadow p-4" @click="restartAnimation">
-    <div class="relative w-full" style="aspect-ratio: 815.1 / 578.2;">
+    <div class="relative w-full" style="aspect-ratio: 815.1 / 538.2;">
       <!-- Background Diagram -->
       <img v-if="imageDiagramSrc" :src="imageDiagramSrc"
         class="absolute top-0 left-0 w-full h-auto object-contain pointer-events-none" alt="Network Diagram" />
@@ -25,7 +25,7 @@
 
       <!-- SVG Overlay -->
       <div class="svg">
-        <svg :key="svgKey" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 815.1 578.2">
+        <svg :key="svgKey" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 815.1 538.2">
           <!-- Light Green omni-->
           <line x1="53.3" y1="335.3" x2="90" y2="391.7" fill="none" class="line green" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="3" />
@@ -107,7 +107,7 @@
           <polygon points="261.8 428.2 261.8 439.8 213.4 439.8 213.4 428.2 227.7 404.9 261.8 428.2" fill="#6b6c6d" />
           <rect x="213.4" y="428.2" width="48.4" height="11.6" />
 
-          <rect x=".5" y=".5" width="814.1" height="577.2" fill="none" opacity="0" stroke="#f5f5f5"
+          <rect x=".5" y=".5" width="814.1" height="537.2" fill="none" opacity="0" stroke="#f5f5f5"
             stroke-miterlimit="10" />
         </svg>
       </div>
@@ -142,7 +142,7 @@ const imageDiagramSrc = computed(() => {
 
 // ======= Konstanta ukuran viewBox SVG =======
 const VIEW_W = 815.1
-const VIEW_H = 578.2
+const VIEW_H = 538.2
 
 // ======= Titik anchor per subCategory =======
 // Setiap item: { x, y, sizePct } — sizePct dipakai untuk penyesuaian ukuran per titik
@@ -171,8 +171,9 @@ const ANCHORS = {
   // - Ujung polyline kuning bawah (334.1, 317.3)
   // - Ujung 3 cabang hijau bawah (532.9,491.2), (521.9,457.5), (528.6,423.9)
   ONT: [
-    { x: 495.1, y: 190.1, sizePct: 5.5 },
-    { x: 485, y: 450.3, sizePct: 5.5 },
+    { x: 350, y: 220.1, sizePct: 6 },
+    { x: 280, y: 345, sizePct: 6 },
+    { x: 590, y: 330, sizePct: 6 },
   ],
 }
 
