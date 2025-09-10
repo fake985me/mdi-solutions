@@ -54,17 +54,24 @@
                 <div class="ml-4 mb-4">
                   <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">Contact
                   </h3>
-                  <p class="text-gray-600 dark:text-slate-400">Office : +62 21 2930-6714</p>
+                  <ul class="space-y-2 space-x-10 text-sm text-gray-700 dark:text-gray-400">
+                    <li><strong>Office :</strong>
+                      <a href="mailto:support@mdi-solutions.com" class="text-blue-600 text-lg hover:underline">
+                        <span class="md:inline">021 2930-6714
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
                   <ul class="space-y-2 space-x-10 text-sm text-gray-700 dark:text-gray-400">
                     <li><strong>Mail : </strong>
                       <a href="mailto:support@mdi-solutions.com" class="text-blue-600 hover:underline">
-                        <span class="hidden md:inline">support@mdi-solutions.com
+                        <span class="md:inline">support@mdi-solutions.com
                         </span>
                       </a>
                     </li>
                     <li>
                       <a href="mailto:info@mdi-solutions.com" class="text-blue-600 hover:underline">
-                        <span class="hidden md:inline">info@mdi-solutions.com
+                        <span class="md:inline">info@mdi-solutions.com
                         </span>
                       </a>
                     </li>
@@ -85,7 +92,7 @@
                   <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">Sales and Marketing</h3>
                   <p class="text-gray-600 dark:text-slate-400">Eko Wibowo : +62 857-1623-9555</p>
                   <p class="text-gray-600 dark:text-slate-400">Hadi : +62 887-0978-7005</p>
-                  <p class="text-gray-600 dark:text-slate-400">Karma Satrianak : +62 877-8900-8833</p>
+                  <p class="text-gray-600 dark:text-slate-400">Karma : +62 877-8900-8833</p>
                 </div>
               </li>
             </ul>

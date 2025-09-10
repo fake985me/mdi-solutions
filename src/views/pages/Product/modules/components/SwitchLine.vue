@@ -1,6 +1,6 @@
 <template>
   <div class="relative group w-full bg-white rounded shadow p-4" @click="restartAnimation">
-    <div class="relative w-full" style="aspect-ratio: 815.1 / 578.2;">
+    <div class="relative w-full" style="aspect-ratio: 815.1 / 538.2;">
       <!-- Background Diagram -->
       <img v-if="imageDiagramSrc" :src="imageDiagramSrc"
         class="absolute top-0 left-0 w-full h-auto object-contain pointer-events-none" alt="Network Diagram" />
@@ -35,39 +35,42 @@
 
       <!-- SVG Overlay -->
       <div class="svg">
-        <svg :key="svgKey" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 815.1 578.2">
+        <svg :key="svgKey" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 815.1 538.2">
 
-          <line x1="407.6" y1="76.5" x2="407.6" y2="216.8" fill="none" class="line lightblue" stroke-miterlimit="10"
+          <line x1="55.16" y1="221.38" x2="114.01" y2="311.75" fill="none" class="line green" stroke-miterlimit="10"
             stroke-width="4" />
 
-          <polyline points="407.6 216.8 379 265.6 227 289.6 116.3 338.2 116.3 391.8" class="line blue"
+          <line x1="146.33" y1="353.67" x2="233.39" y2="414.75" fill="none" class="line green" stroke-miterlimit="10"
+            stroke-width="4" />
+
+          <polyline points="233.39 414.75 329.33 380.44 602.54 251.26 655.31 278.19" class="line red"
             stroke-miterlimit="10" stroke-width="4" />
-          <polyline points="407.6 216.8 393.1 275.9 288.2 336.2 288.3 391.8" class="line blue" stroke-miterlimit="10"
+          <polyline points="234.13 414.29 335.43 390.44 464.61 327.94 507.32 358.57" class="line red" stroke-miterlimit="10"
             stroke-width="4" />
-          <polyline points="407.6 216.8 421.9 275.9 493.9 336.2 493.8 391.8" class="line blue" stroke-miterlimit="10"
+          <polyline points="233.39 414.75 324.04 370.38 642.91 220.21 566.84 181.23" class="line red" stroke-miterlimit="10"
             stroke-width="4" />
-          <polyline points="407.6 216.8 436.1 265.6 572.1 289.6 698.8 338.2 698.8 391.8" class="line blue"
+          <polyline points="233.39 414.75 318.66 361.17 479.44 286.49 409.45 242.91" class="line red"
             stroke-miterlimit="10" stroke-width="4" />
 
 
-          <polyline points="116.3 391.4 104.4 426.1 61.4 447.4" fill="none" class="line green" stroke-miterlimit="10" />
-          <line x1="116.3" y1="391.8" x2="116.3" y2="460.2" fill="none" class="line green" stroke-miterlimit="10" />
-          <polyline points="116.3 391.8 131.4 426.1 174.4 447.4" fill="none" class="line green"
+          <polyline points="534.21 372.98 567.57 394.59 589.3 381.03 632.76 409.73" fill="none" class="line black" stroke-miterlimit="10" />
+          <line x1="508.28" y1="371.32" x2="576.52" y2="418.33" fill="none" class="line black" stroke-miterlimit="10" />
+          <polyline points="489.6 372.98 533.8 404.27 502.04 423.78 514.13 430.6" fill="none" class="line black"
             stroke-miterlimit="10" />
 
-          <polyline points="288 391.6 275.4 426.1 232.4 447.4" fill="none" class="line green" stroke-miterlimit="10" />
-          <line x1="287.9" y1="391.9" x2="287.4" y2="460.2" fill="none" class="line green" stroke-miterlimit="10" />
-          <polyline points="288 391.6 302.4 426.1 345.4 447.4" fill="none" class="line green" stroke-miterlimit="10" />
+          <polyline points="584.13 171.46 543.25 149.08 573.91 136.69 554.25 126.59" fill="none" class="line black" stroke-miterlimit="10" />
+          <line x1="555.53" y1="170.83" x2="505.27" y2="143" fill="none" class="line black" stroke-miterlimit="10" />
+          <polyline points="544.49 180.17 510.22 161.59 473.37 175.83 435.39 156.92" fill="none" class="line black" stroke-miterlimit="10" />
 
-          <polyline points="494.3 391.8 465.7 426.1 422.7 447.4" fill="none" class="line green"
+          <polyline points="682.24 296.8 715.6 318.41 737.33 304.85 780.79 333.55" fill="none" class="line black"
             stroke-miterlimit="10" />
-          <line x1="494.3" y1="391.8" x2="494" y2="460.2" fill="none" class="line green" stroke-miterlimit="10" />
-          <polyline points="494.3 391.8 524 426.1 567 447.4" fill="none" class="line green" stroke-miterlimit="10" />
+          <line x1="656.31" y1="295.14" x2="724.55" y2="342.15" fill="none" class="line black" stroke-miterlimit="10" />
+          <polyline points="637.64 296.8 681.83 328.09 650.07 347.59 662.17 354.42" fill="none" class="line black" stroke-miterlimit="10" />
 
-          <polyline points="698.8 391.8 683.7 426.1 640.7 447.4" fill="none" class="line green"
+          <polyline points="413.07 226.65 372.19 204.27 402.85 191.89 383.19 181.79" fill="none" class="line black"
             stroke-miterlimit="10" />
-          <line x1="698.8" y1="391.8" x2="698.8" y2="460.2" fill="none" class="line green" stroke-miterlimit="10" />
-          <polyline points="698.8 391.8 710.7 426.1 753.7 447.4" fill="none" class="line green"
+          <line x1="384.47" y1="226.02" x2="334.21" y2="198.19" fill="none" class="line black" stroke-miterlimit="10" />
+          <polyline points="373.43 235.36 339.17 216.78 302.31 231.02 268.24 209.39" fill="none" class="line black"
             stroke-miterlimit="10" />
 
           <rect x=".5" y=".5" width="814.1" height="577.2" fill="none" opacity="0" stroke="#f5f5f5"
@@ -97,7 +100,11 @@ const diagrams = import.meta.glob('@/assets/static/network_diagram/switch/*.png'
   import: 'default',
 })
 const imageDiagramSrc = computed(() => {
-  const name = props.diagram || props.product?.diagram
+  const p = props.product
+  if (!p) return ''
+
+// nama file dari field diagram
+  const name = props.diagram || p.diagram
   if (!name) return ''
   const path = `/src/assets/static/network_diagram/switch/${name}.png`
   return diagrams[path] || ''
@@ -105,14 +112,14 @@ const imageDiagramSrc = computed(() => {
 
 // ======= Konstanta ukuran viewBox SVG =======
 const VIEW_W = 815.1
-const VIEW_H = 578.2
+const VIEW_H = 538.2
 
 // ======= Titik anchor per subCategory =======
 // Setiap item: { x, y, sizePct } — sizePct dipakai untuk penyesuaian ukuran per titik
 const ANCHORS = {
   // OLT: 1 titik di ujung polyline biru
   BACKBONE: [
-    { x: 440, y: 240, sizePct: 8 },
+    { x: 280, y: 430, sizePct: 10 },
   ],
 
   // ONU & ONU PoE:
@@ -120,22 +127,22 @@ const ANCHORS = {
   // - Ujung 3 cabang hijau (710.2,349.3), (702.1,322.2), (702.1,288.1)
   // - Ujung line kuning lurus ke kiri (334.1,309.7)
   'L3 SWITCH': [
-    { x: 150.1, y: 405.6, sizePct: 8 },
-    { x: 320.1, y: 405.6, sizePct: 8 },
-    { x: 530.1, y: 405.6, sizePct: 8 },
-    { x: 730.1, y: 405.6, sizePct: 8 },
+    { x: 440, y: 250, sizePct: 12 },
+    { x: 610, y: 190, sizePct: 12 },
+    { x: 560, y: 380, sizePct: 12 },
+    { x: 710, y: 305, sizePct: 12 },
   ],
   'L2 SWITCH': [
-    { x: 150.1, y: 405.6, sizePct: 8 },
-    { x: 320.1, y: 405.6, sizePct: 8 },
-    { x: 530.1, y: 405.6, sizePct: 8 },
-    { x: 730.1, y: 405.6, sizePct: 8 },
+    { x: 440, y: 250, sizePct: 12 },
+    { x: 610, y: 190, sizePct: 12 },
+    { x: 560, y: 380, sizePct: 12 },
+    { x: 710, y: 305, sizePct: 12 },
   ],
   'PoE SWITCH': [
-    { x: 150.1, y: 405.6, sizePct: 8 },
-    { x: 320.1, y: 405.6, sizePct: 8 },
-    { x: 530.1, y: 405.6, sizePct: 8 },
-    { x: 730.1, y: 405.6, sizePct: 8 },
+    { x: 440, y: 250, sizePct: 12 },
+    { x: 610, y: 190, sizePct: 12 },
+    { x: 560, y: 380, sizePct: 12 },
+    { x: 710, y: 305, sizePct: 12 },
   ],
 }
 
@@ -161,6 +168,7 @@ const resolvedMarkers = computed(() => {
   if (!p) return []
 
   const sub = p.subCategory || ''
+  const cat = p.category || ''
   const points = ANCHORS[sub] || FALLBACK
 
   // Kamu bisa tambahkan offset kecil per sub kategori jika perlu:
@@ -258,20 +266,9 @@ svg {
   stroke-width: 1.5px;
 }
 
-.blue {
-  stroke: #64abf9;
+.red {
+  stroke: #ba112d;
   stroke-width: 2px;
-}
-
-.lightblue {
-  stroke: #79caf1;
-  stroke-width: 4px;
-  fill: #7ad0f2;
-}
-
-.yellow {
-  stroke: #f4cd15;
-  stroke-width: 3px;
 }
 
 .green {
@@ -280,16 +277,16 @@ svg {
 }
 
 /* (Opsional) Variasi kecepatan animasi per warna */
-.line.blue {
-  animation-duration: 4s;
+.line.red {
+  animation-duration: 14s;
 }
 
 .line.green {
-  animation-duration: 6s;
+  animation-duration: 10s;
 }
 
 .line.black {
-  animation-duration: 8s;
+  animation-duration: 14s;
 }
 
 /* (Opsional) Delay berurutan jika pakai class step-X */

@@ -38,9 +38,8 @@ import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useProducts } from '@/composable/useProducts'
 
-import OpticLine from './OpticLine.vue'
+import OpticLine from './xgsponLine.vue'
 import SwitchLine from './SwitchLine.vue'
-import Wireless from './WifiLine.vue'
 import DiagramUnavailable from './DiagramUnavailable.vue'
 import GponLine from './GponLine.vue'
 

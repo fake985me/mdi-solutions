@@ -4,9 +4,9 @@ function generateSlug(text) {
   return text
     .toLowerCase()
     .trim()
-    .replace(/[^\w\s-]/g, '')
-    .replace(/[\s_-]+/g, '-')
-    .replace(/^-+|-+$/g, '')
+    .replace(/[^\w\s-]/g, '') // hapus karakter aneh
+    .replace(/[\s_-]+/g, '-') // ganti spasi & underscore jadi "-"
+    .replace(/^-+|-+$/g, '') // hapus - di awal/akhir
 }
 
 // Data produk
@@ -89,7 +89,7 @@ const products = ref([
     powercomsumptions: '875W (SFU x 2 + FAN x 2 + PSU_DC x 2 + IU_XGSPON8 x 6 + IU_10GE8 x 2)',
     dimensions: '443.8 x 265.9 x 280 mm (Wing Bracket excluded)',
     diagram: 'xgspon_olt',
-    networkDIagram: 'opticalLine'
+    networkDIagram: 'xgsponLine'
   },
   {
     id: '2',
@@ -169,7 +169,7 @@ const products = ref([
     powercomsumptions: '265W (PSU DC) 310W (PSU AC)',
     dimensions: '482.6 x 133 x 280 mm (3RU, Wing Bracket included)',
     diagram: 'xgspon_olt',
-    networkDIagram: 'opticalLine'
+    networkDIagram: 'xgsponLine'
   },
   {
     id: '3',
@@ -249,7 +249,7 @@ const products = ref([
     powercomsumptions: 'Max. 230W (PSU DC) Max. 245W (PSU AC)',
     dimensions: '420 x 44 x 280 mm (1RU)',
     diagram: 'xgspon_olt',
-    networkDIagram: 'opticalLine'
+    networkDIagram: 'xgsponLine'
   },
   {
     id: '4',
@@ -329,7 +329,7 @@ const products = ref([
     powercomsumptions: 'Max. 155W (PSU DC) Max. 170W (PSU AC)',
     dimensions: '440 x 44 x 280 mm (1RU)',
     diagram: 'xgspon_olt',
-    networkDIagram: 'opticalLine'
+    networkDIagram: 'xgsponLine'
   },
   {
     id: '5',
@@ -409,7 +409,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '160 x 39.5 x 150 mm',
     diagram: 'xgspon_ont',
-    networkDIagram: 'opticalLine'
+    networkDIagram: 'xgsponLine'
   },
   {
     id: '6',
@@ -489,14 +489,14 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '160 × 40 x 140 mm',
     diagram: 'xgspon_ont',
-    networkDIagram: 'opticalLine'
+    networkDIagram: 'xgsponLine'
   },
   {
     id: '7',
     module: 'A',
     image: 'https://ik.imagekit.io/iamfake/products/ont%20zaram.png?updatedAt=1753866204414',
     category: 'XGSPON',
-    subCategory: 'ONU',
+    subCategory: 'ONU PoE',
     brand: 'zaram',
     title: 'ZX-ONT-PoE',
     subtitle: 'XGSPON ONU',
@@ -569,7 +569,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '',
     diagram: 'xgspon_onu',
-    networkDIagram: 'opticalLine'
+    networkDIagram: 'xgsponLine'
   },
   {
     id: '8',
@@ -649,7 +649,7 @@ const products = ref([
     powercomsumptions: '',
     dimensions: '20 x 210 x 44 mm',
     diagram: 'xgspon_onu',
-    networkDIagram: 'opticalLine'
+    networkDIagram: 'xgsponLine'
   },
   {
     id: '9',
@@ -3774,8 +3774,11 @@ const products = ref([
 ])
 
 // Tambahkan slug otomatis
-products.value.forEach((product) => {
-  product.slug = generateSlug(product.title)
+products.value.forEach((p) => {
+  const baseTitle = p.title || ''       // aman kalau title kosong
+  const baseCat = p.category || ''
+  const baseSub = p.subCategory || ''
+  p.slug = generateSlug(`${baseTitle} ${baseCat} ${baseSub}`)
 })
 
 function useProducts() {

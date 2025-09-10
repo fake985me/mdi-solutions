@@ -87,8 +87,6 @@
                 :diagram="effectiveProduct.diagram" />
               <SwitchLine v-else-if="diagramType === 'switchline'" :product="effectiveProduct"
                 :diagram="effectiveProduct.diagram" />
-              <Wireless v-else-if="diagramType === 'wireless'" :product="effectiveProduct"
-                :diagram="effectiveProduct.diagram" />
               <div v-else class="text-center text-gray-500 mt-4">
                 Diagram belum tersedia untuk produk ini.
               </div>
@@ -112,10 +110,9 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useProducts } from '@/composable/useProducts'
-import OpticLine from './components/OpticLine.vue'
+import { useProducts, useProductBySlug } from '@/composable/useProducts'
+import OpticLine from './components/xgsponLine.vue'
 import SwitchLine from './components/SwitchLine.vue'
-import Wireless from './components/WifiLine.vue'
 import GponLine from './components/GponLine.vue'
 
 const route = useRoute()
@@ -129,17 +126,17 @@ const props = defineProps({
 
 const { products } = useProducts()
 
+// ambil produk sesuai slug unik
 const selectedProduct = computed(() => {
   const slug = route.params.slug
   if (!slug) return props.product || null
-  const list = products?.value || []
-  return list.find((p) => p.slug === slug) || props.product || null
+  return useProductBySlug(slug) || props.product || null
 })
 
 const effectiveProduct = computed(() => selectedProduct.value || props.product || null)
 
 const diagramType = computed(() =>
-  (effectiveProduct.value?.networkDIagram || '').toString().trim().toLowerCase()
+  (effectiveProduct.value.networkDIagram || '').toString().trim().toLowerCase()
 )
 
 const features = computed(() =>

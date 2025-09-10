@@ -32,17 +32,17 @@
           <line x1="110.2" y1="417.9" x2="164.7" y2="456.1" fill="none" class="line green" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="3" />
           <!-- Biru (OLT) -->
-          <line x1="172.1" y1="453.7" x2="226.8" y2="427.8" fill="none" class="line blue" stroke-linecap="round"
+          <line x1="172.1" y1="453.7" x2="226.8" y2="427.8" fill="none" class="line yellow" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="3" />
 
           <!-- Biru (distribusi) -->
-          <polyline points="248.1 421.1 453.1 324.2 486 341" fill="none" class="line blue" stroke-linecap="round"
+          <polyline points="248.1 421.1 453.1 324.2 486 341" fill="none" class="line yellow" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
-          <polyline points="250.5 428.4 366.8 372.1 393.5 391.3" fill="none" class="line blue" stroke-linecap="round"
+          <polyline points="250.5 428.4 366.8 372.1 393.5 391.3" fill="none" class="line yellow" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
-          <polyline points="241.7 416.2 478.3 304.8 430.7 280.4" fill="none" class="line blue" stroke-linecap="round"
+          <polyline points="241.7 416.2 478.3 304.8 430.7 280.4" fill="none" class="line yellow" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
-          <polyline points="235.2 411.7 376.1 346.2 332.4 319" fill="none" class="line blue" stroke-linecap="round"
+          <polyline points="235.2 411.7 376.1 346.2 332.4 319" fill="none" class="line yellow" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
 
 
@@ -134,11 +134,16 @@ const diagrams = import.meta.glob('@/assets/static/network_diagram/optic/*.png',
   import: 'default',
 })
 const imageDiagramSrc = computed(() => {
-  const name = props.diagram || props.product?.diagram
+  const p = props.product
+  if (!p) return ''
+
+// nama file dari field diagram
+  const name = props.diagram || p.diagram
   if (!name) return ''
   const path = `/src/assets/static/network_diagram/optic/${name}.png`
   return diagrams[path] || ''
 })
+
 
 // ======= Konstanta ukuran viewBox SVG =======
 const VIEW_W = 815.1
@@ -296,20 +301,9 @@ svg {
   stroke-width: 1.5px;
 }
 
-.blue {
-  stroke: #64abf9;
-  stroke-width: 2px;
-}
-
-.lightblue {
-  stroke: #79caf1;
-  stroke-width: 4px;
-  fill: #7ad0f2;
-}
-
 .yellow {
-  stroke: #f4cd15;
-  stroke-width: 3px;
+  stroke: #ff9331;
+  stroke-width: 2px;
 }
 
 .green {
@@ -318,16 +312,16 @@ svg {
 }
 
 /* (Opsional) Variasi kecepatan animasi per warna */
-.line.blue {
-  animation-duration: 4s;
+.line.yellow {
+  animation-duration: 14s;
 }
 
 .line.green {
-  animation-duration: 6s;
+  animation-duration: 10s;
 }
 
 .line.black {
-  animation-duration: 8s;
+  animation-duration: 14s;
 }
 
 /* (Opsional) Delay berurutan jika pakai class step-X */

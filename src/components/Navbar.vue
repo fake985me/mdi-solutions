@@ -174,6 +174,7 @@ const navigation = ref([
           { name: 'OLT', href: '/product?category=XGSPON&sub=OLT' },
           { name: 'ONT', href: '/product?category=XGSPON&sub=ONT' },
           { name: 'ONU', href: '/product?category=XGSPON&sub=ONU' },
+          { name: 'ONU PoE', href: '/product?category=XGSPON&sub=ONU+PoE' },
           { name: 'XGSPON Stick', href: '/product?category=XGSPON&sub=XGSPON+STICK' },
         ]
       },

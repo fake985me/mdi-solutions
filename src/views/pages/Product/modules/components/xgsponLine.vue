@@ -10,8 +10,7 @@
         <!-- Layer posisi (translate) -->
         <div class="marker-pos">
           <!-- Layer scale -->
-          <div class="marker-scale">
-            <!-- Marker -->
+          <div class="marker-scale" :class="{ 'mirror-x': m.mirror }">
             <img :src="m.image" :alt="m.title || 'Marker'" class="marker-img cursor-pointer" />
           </div>
 
@@ -32,17 +31,17 @@
           <line x1="110.2" y1="417.9" x2="164.7" y2="456.1" fill="none" class="line green" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="3" />
           <!-- Biru (OLT) -->
-          <line x1="172.1" y1="453.7" x2="226.8" y2="427.8" fill="none" class="line blue" stroke-linecap="round"
+          <line x1="172.1" y1="453.7" x2="226.8" y2="427.8" fill="none" class="line blues" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="3" />
 
           <!-- Biru (distribusi) -->
-          <polyline points="248.1 421.1 453.1 324.2 486 341" fill="none" class="line blue" stroke-linecap="round"
+          <polyline points="248.1 421.1 453.1 324.2 486 341" fill="none" class="line blues" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
-          <polyline points="250.5 428.4 366.8 372.1 393.5 391.3" fill="none" class="line blue" stroke-linecap="round"
+          <polyline points="250.5 428.4 366.8 372.1 393.5 391.3" fill="none" class="line blues" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
-          <polyline points="241.7 416.2 478.3 304.8 430.7 280.4" fill="none" class="line blue" stroke-linecap="round"
+          <polyline points="241.7 416.2 478.3 304.8 430.7 280.4" fill="none" class="line blues" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
-          <polyline points="235.2 411.7 376.1 346.2 332.4 319" fill="none" class="line blue" stroke-linecap="round"
+          <polyline points="235.2 411.7 376.1 346.2 332.4 319" fill="none" class="line blues" stroke-linecap="round"
             stroke-linejoin="round" stroke-width="2" />
 
 
@@ -102,12 +101,10 @@
             stroke-linejoin="round" />
 
 
-
-
           <polygon points="261.8 428.2 261.8 439.8 213.4 439.8 213.4 428.2 227.7 404.9 261.8 428.2" fill="#6b6c6d" />
           <rect x="213.4" y="428.2" width="48.4" height="11.6" />
 
-          <rect x=".5" y=".5" width="814.1" height="537.2" fill="none" opacity="0" stroke="#f5f5f5"
+          <rect x=".5" y=".5" width="814.1" height="577.2" fill="none" opacity="0" stroke="#f5f5f5"
             stroke-miterlimit="10" />
         </svg>
       </div>
@@ -129,14 +126,18 @@ const props = defineProps({
 useRoute()
 
 // ======= Load background diagram (opsional, sesuai foldermu) =======
-const diagrams = import.meta.glob('@/assets/static/network_diagram/optic/*.png', {
+const diagrams = import.meta.glob('@/assets/static/network_diagram/xgspon/*.png', {
   eager: true,
   import: 'default',
 })
 const imageDiagramSrc = computed(() => {
+  const p = props.product
+  if (!p) return ''
+
+  // nama file dari field diagram
   const name = props.diagram || props.product?.diagram
   if (!name) return ''
-  const path = `/src/assets/static/network_diagram/optic/${name}.png`
+  const path = `/src/assets/static/network_diagram/xgspon/${name}.png`
   return diagrams[path] || ''
 })
 
@@ -157,13 +158,14 @@ const ANCHORS = {
   // - Ujung 3 cabang hijau (710.2,349.3), (702.1,322.2), (702.1,288.1)
   // - Ujung line kuning lurus ke kiri (334.1,309.7)
   ONU: [
-    { x: 360.1, y: 158.7, sizePct: 8 },
-    { x: 600.1, y: 266.7, sizePct: 8 },
-    { x: 485.1, y: 473.7, sizePct: 8 },
+    { x: 370, y: 160, sizePct: 8 },
+    { x: 600, y: 265, sizePct: 8 },
+    { x: 485, y: 475, sizePct: 8 },
   ],
   'ONU PoE': [
-    { x: 540.1, y: 236.7, sizePct: 9 },
-    { x: 580.1, y: 320.6, sizePct: 9 },
+    { x: 365, y: 155, sizePct: 8 },
+    { x: 600, y: 260, sizePct: 8, mirror: true },
+    { x: 485, y: 470, sizePct: 8, mirror: true },
   ],
 
   // ONT:
@@ -171,9 +173,9 @@ const ANCHORS = {
   // - Ujung polyline kuning bawah (334.1, 317.3)
   // - Ujung 3 cabang hijau bawah (532.9,491.2), (521.9,457.5), (528.6,423.9)
   ONT: [
-    { x: 350, y: 220.1, sizePct: 6 },
-    { x: 280, y: 345, sizePct: 6 },
-    { x: 590, y: 330, sizePct: 6 },
+    { x: 350, y: 212.1, sizePct: 6 },
+    { x: 280, y: 340, sizePct: 6 },
+    { x: 590, y: 325, sizePct: 6 },
   ],
 }
 
@@ -187,7 +189,7 @@ function toStyle(pt, extra = {}) {
     top: `${(pt.y / VIEW_H) * 100}%`,
     left: `${(pt.x / VIEW_W) * 100}%`,
     width: `${pt.sizePct ?? 6}%`,
-    transform: 'translate(-25%, -25%)',
+    transform: `translate(-25%, -25%)`,
     ...extra,
   }
 }
@@ -201,14 +203,11 @@ const resolvedMarkers = computed(() => {
   const sub = p.subCategory || ''
   const points = ANCHORS[sub] || FALLBACK
 
-  // Kamu bisa tambahkan offset kecil per sub kategori jika perlu:
-  // contoh: untuk OLT geser ke atas 1% agar tidak menimpa garis.
-  const offset = (sub === 'OLT') ? { transform: 'translate(-60%, calc(-30% - 2px))' } : {}
-
   return points.map((pt) => ({
     image: p.image,
-    title: p.title,
-    style: toStyle(pt, offset),
+    title: p.title, // kasih label biar kelihatan
+    mirror: !!pt.mirror,
+    style: toStyle(pt),
   }))
 })
 
@@ -263,6 +262,10 @@ watchEffect(() => {
   transform: translateX(-50%) scale(1);
 }
 
+.mirror-x {
+  transform: scaleX(-1);
+}
+
 /* ======= ANIMASI GARIS BERJALAN TERUS ======= */
 
 /* Keyframe animasi garis dash */
@@ -270,6 +273,7 @@ watchEffect(() => {
   0% {
     stroke-dashoffset: 1000;
   }
+
   100% {
     stroke-dashoffset: 0;
   }
@@ -295,20 +299,9 @@ svg {
   stroke-width: 1.5px;
 }
 
-.blue {
+.blues {
   stroke: #64abf9;
   stroke-width: 2px;
-}
-
-.lightblue {
-  stroke: #79caf1;
-  stroke-width: 4px;
-  fill: #7ad0f2;
-}
-
-.yellow {
-  stroke: #f4cd15;
-  stroke-width: 3px;
 }
 
 .green {
@@ -317,33 +310,76 @@ svg {
 }
 
 /* (Opsional) Variasi kecepatan animasi per warna */
-.line.blue {
-  animation-duration: 4s;
+.line.blues {
+  animation-duration: 14s;
 }
 
 .line.green {
-  animation-duration: 6s;
+  animation-duration: 10s;
 }
 
 .line.black {
-  animation-duration: 8s;
+  animation-duration: 14s;
 }
 
 /* (Opsional) Delay berurutan jika pakai class step-X */
-.line.step-1 { animation-delay: 0s; }
-.line.step-2 { animation-delay: 0.2s; }
-.line.step-3 { animation-delay: 0.5s; }
-.line.step-4 { animation-delay: 0.7s; }
-.line.step-5 { animation-delay: 1s; }
-.line.step-6 { animation-delay: 1.3s; }
-.line.step-7 { animation-delay: 1.6s; }
-.line.step-8 { animation-delay: 1.9s; }
-.line.step-9 { animation-delay: 2.2s; }
-.line.step-10 { animation-delay: 2.5s; }
-.line.step-11 { animation-delay: 2.8s; }
-.line.step-12 { animation-delay: 3.1s; }
-.line.step-13 { animation-delay: 3.4s; }
-.line.step-14 { animation-delay: 3.7s; }
-.line.step-15 { animation-delay: 4s; }
+.line.step-1 {
+  animation-delay: 0s;
+}
 
+.line.step-2 {
+  animation-delay: 0.2s;
+}
+
+.line.step-3 {
+  animation-delay: 0.5s;
+}
+
+.line.step-4 {
+  animation-delay: 0.7s;
+}
+
+.line.step-5 {
+  animation-delay: 1s;
+}
+
+.line.step-6 {
+  animation-delay: 1.3s;
+}
+
+.line.step-7 {
+  animation-delay: 1.6s;
+}
+
+.line.step-8 {
+  animation-delay: 1.9s;
+}
+
+.line.step-9 {
+  animation-delay: 2.2s;
+}
+
+.line.step-10 {
+  animation-delay: 2.5s;
+}
+
+.line.step-11 {
+  animation-delay: 2.8s;
+}
+
+.line.step-12 {
+  animation-delay: 3.1s;
+}
+
+.line.step-13 {
+  animation-delay: 3.4s;
+}
+
+.line.step-14 {
+  animation-delay: 3.7s;
+}
+
+.line.step-15 {
+  animation-delay: 4s;
+}
 </style>
