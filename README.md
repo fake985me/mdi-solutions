@@ -29,11 +29,3 @@ npm run dev
 ```sh
 npm run build
 ```
-
-### update file
-```
-    git remote add origin https://github.com/fake985me/mdi-solutions.git
-    git branch -M main
-    git push -u origin main
-
-```
