@@ -150,7 +150,7 @@ const VIEW_H = 538.2
 const ANCHORS = {
   // OLT: 1 titik di ujung polyline biru
   OLT: [
-    { x: 200.7, y: 465.8, sizePct: 8 },
+    { x: 300.7, y: 465.8, sizePct: 8 },
   ],
 
   // ONU & ONU PoE:
