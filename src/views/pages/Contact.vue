@@ -90,9 +90,9 @@
                 </div>
                 <div class="ml-4 mb-4">
                   <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">Sales and Marketing</h3>
-                  <p class="text-gray-600 dark:text-slate-400">Eko Wibowo : +62 857-1623-9555</p>
-                  <p class="text-gray-600 dark:text-slate-400">Hadi : +62 887-0978-7005</p>
-                  <p class="text-gray-600 dark:text-slate-400">Karma : +62 877-8900-8833</p>
+                  <p class="text-gray-600 dark:text-slate-400">0822-8999-7922</p>
+                  <!-- <p class="text-gray-600 dark:text-slate-400">Hadi : +62 887-0978-7005</p>
+                  <p class="text-gray-600 dark:text-slate-400">Karma : +62 877-8900-8833</p> -->
                 </div>
               </li>
             </ul>
